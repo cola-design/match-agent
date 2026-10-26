@@ -1,0 +1,38 @@
+{
+  "source": "/workspace/attachments/0a65b59d-e452-40db-9203-cb8b8c8b8122/product-data.rar",
+  "products_type1_rows": 116632,
+  "type2_rows": 884476,
+  "type1_pages": 117,
+  "type2_pages": 885,
+  "type1_status": {
+    "有效": 69170,
+    "无效": 47462
+  },
+  "type2_status": {
+    "无效": 717806,
+    "有效": 166670
+  },
+  "products_candidates": 116632,
+  "products_pending_review": 116632,
+  "products_source_invalid_current": 47462,
+  "type2_only_candidates": 7514,
+  "price_candidates": 69170,
+  "issue_count": 9887,
+  "shared_codes": 9153,
+  "type1_only_codes": 107479,
+  "type2_only_codes": 7514,
+  "encoding_repaired": true,
+  "price_policy": {
+    "standard_days": 180,
+    "volatile_days": 90,
+    "tax_rate_default": 0.13,
+    "source_override_allowed": true
+  },
+  "outputs": {
+    "products": "/workspace/project-review/cleaned_formal_api/products_candidates.jsonl",
+    "products_source_invalid_current": "/workspace/project-review/cleaned_formal_api/products_source_invalid_current.jsonl",
+    "type2_only": "/workspace/project-review/cleaned_formal_api/type2_only_candidates.jsonl",
+    "issues": "/workspace/project-review/cleaned_formal_api/issues.jsonl",
+    "prices": "/workspace/project-review/cleaned_formal_api/prices_candidates.jsonl"
+  }
+}
