@@ -8,15 +8,23 @@
 products_pending_review.jsonl
 ~~~
 
-该文件包含上游状态为“有效”的 69170 条产品记录，记录状态全部是 PENDING_REVIEW。
+该文件包含全部 116632 条产品记录，记录状态全部是 PENDING_REVIEW。上游 STATUS 字段单独保留，后续状态变化可以通过增量同步更新。
 
-可选导入：
+当前上游快照中 STATUS=无效 的记录单独复制在：
 
 ~~~text
-products_inactive.jsonl
+products_source_invalid_current.jsonl
 ~~~
 
-该文件包含上游状态为“无效”的 47462 条记录。导入后保持 INACTIVE，Dify 查询必须过滤掉它们。
+该文件包含当前快照中 STATUS=无效 的 47462 条记录。它们可能是资料未补全，后续可能恢复有效，不能当成永久停用记录。
+
+自动发布候选文件：
+
+~~~text
+products_auto_active_candidates.jsonl
+~~~
+
+该文件包含 54171 条通过 AUTO_RULE_V1 的产品：上游当前有效、描述和类别完整、有标准参数，且没有已识别的 type1/type2 冲突、重复标准参数或缺少规格。导入后这些记录的 data_status 已经是 ACTIVE；其余产品继续使用 products_pending_review.jsonl。
 
 暂时不要导入：
 
@@ -63,27 +71,23 @@ mongoimport --uri "$MONGO_URI" \
   --upsertFields material_code
 ~~~
 
-无效产品需要导入时，再执行：
+如果需要导入全量产品主数据，使用 products_pending_review.jsonl。若只想先让 YAML 使用自动通过产品，使用 products_auto_active_candidates.jsonl。两个文件不能同时导入同一 products 集合，否则后一次 upsert 会改变前一次的 data_status。
+
+当前状态筛选副本不需要重复导入：
 
 ~~~bash
-mongoimport --uri "$MONGO_URI" \
-  --db match_agent \
-  --collection products \
-  --file products_inactive.jsonl \
-  --mode upsert \
-  --upsertFields material_code
+echo "products_source_invalid_current.jsonl 仅供核对"
 ~~~
 
 导入后检查：
 
 ~~~javascript
 db.products.countDocuments({data_status: "PENDING_REVIEW"})
-db.products.countDocuments({data_status: "INACTIVE"})
 db.products.countDocuments({data_status: "ACTIVE"})
 db.products.countDocuments({material_code: {$exists: false}})
 ~~~
 
-第一批导入后，ACTIVE 数量应为 0。人工确认并完成工程复核后，再将允许使用的产品改为 ACTIVE。
+导入自动发布候选后，ACTIVE 数量应为 54171；导入全量待审文件后，ACTIVE 数量应为 0。
 
 ## 当前价格文件
 

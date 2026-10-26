@@ -301,15 +301,18 @@ today = date(2026, 10, 25)
 products_path = OUT / "products_candidates.jsonl"
 products_pending_path = OUT / "products_pending_review.jsonl"
 products_source_invalid_path = OUT / "products_source_invalid_current.jsonl"
+products_auto_active_path = OUT / "products_auto_active_candidates.jsonl"
 type2_only_path = OUT / "type2_only_candidates.jsonl"
 issues_path = OUT / "issues.jsonl"
 prices_path = OUT / "prices_candidates.jsonl"
 product_count = jsonl(products_path, product_docs())
 pending_count = 0
 source_invalid_count = 0
+auto_active_count = 0
 with products_path.open("r", encoding="utf-8") as source, \
         products_pending_path.open("w", encoding="utf-8") as pending, \
-        products_source_invalid_path.open("w", encoding="utf-8") as source_invalid:
+        products_source_invalid_path.open("w", encoding="utf-8") as source_invalid, \
+        products_auto_active_path.open("w", encoding="utf-8") as auto_active:
     for line in source:
         record = json.loads(line)
         pending.write(line)
@@ -317,6 +320,23 @@ with products_path.open("r", encoding="utf-8") as source, \
         if record.get("source_status") == "无效":
             source_invalid.write(line)
             source_invalid_count += 1
+        flags = set(record.get("quality_flags", []))
+        auto_ok = (
+            record.get("source_status") == "有效"
+            and bool(record.get("description"))
+            and bool(record.get("category", {}).get("leaf"))
+            and bool(record.get("standard_specs"))
+            and not flags.intersection({
+                "TYPE1_TYPE2_ATTRIBUTE_CONFLICT",
+                "DUPLICATE_STANDARD_SPEC",
+                "MISSING_SPECIFICATIONS",
+            })
+        )
+        if auto_ok:
+            record["data_status"] = "ACTIVE"
+            record["publication_basis"] = "AUTO_RULE_V1"
+            auto_active.write(json.dumps(record, ensure_ascii=False) + "\n")
+            auto_active_count += 1
 type2_only_count = jsonl(type2_only_path, type2_only_docs())
 jsonl(issues_path, iter(issues))
 
@@ -357,6 +377,7 @@ summary = {
     "products_candidates": product_count,
     "products_pending_review": pending_count,
     "products_source_invalid_current": source_invalid_count,
+    "products_auto_active_candidates": auto_active_count,
     "type2_only_candidates": type2_only_count,
     "price_candidates": price_count,
     "issue_count": len(issues),
@@ -368,6 +389,7 @@ summary = {
     "outputs": {
         "products": str(products_path),
         "products_source_invalid_current": str(products_source_invalid_path),
+        "products_auto_active_candidates": str(products_auto_active_path),
         "type2_only": str(type2_only_path),
         "issues": str(issues_path),
         "prices": str(prices_path),
