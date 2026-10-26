@@ -8,7 +8,6 @@
 - `unit_price_ex_tax`：未税单价（CNY）
 - `pricing_unit`：计价单位，当前统一为 `件`
 - `tax_rate`：0.13
-- `currency`：CNY
 - `price_version`：CN-MARKET-2026-V1
 - `valid_from`：2026-10-26
 - `valid_to`：2027-10-25
