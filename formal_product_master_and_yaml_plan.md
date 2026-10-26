@@ -79,19 +79,11 @@
 - INACTIVE 不参与选型；
 - 只有人工确认后的记录才能改为 ACTIVE。
 
-## type1/type2 关系
+## type1/type2 属性处理
 
-type=1 作为产品主记录来源，type=2 作为属性补充和校验来源。
+type=1 作为产品主记录来源，type=2 作为属性明细来源。相同物料编码下的有效 type2 属性可以补充到同一产品文档的 source_attributes 和 standard_specs。
 
-允许的关联状态：
-
-- TYPE1_AND_TYPE2_MATCHED：存在有效 type2 属性；
-- TYPE1_AND_TYPE2_INVALID_ONLY：只找到无效 type2 属性；
-- TYPE1_ONLY：没有可用 type2 属性；
-- TYPE2_ONLY：只有 type2，缺少 type1 主记录；
-- CONFLICT：两种来源的同名属性值不一致。
-
-type2 独有记录先进入待核查文件，不直接发布为 ACTIVE 产品。
+相同属性和值只保留一份；相同属性但值不同不覆盖，写入独立的 type2 核对问题清单。type2 独有记录没有 type1 产品主记录，不直接发布为 ACTIVE 产品。
 
 ## 价格库 prices
 

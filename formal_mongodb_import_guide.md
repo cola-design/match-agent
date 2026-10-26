@@ -97,3 +97,7 @@ prices_candidates.jsonl 包含 69170 条待核价记录。税率暂按 13% 作�
 
 接口返回的 STATUS=有效/无效 是上游当前快照状态，不是永久生命周期状态。无效可能表示资料尚未补全，后续可能恢复有效；有效也可能后续变为无效。产品记录应保留在 products 中，只更新 source_status。Dify 正式选型同时检查 source_status、人工确认状态和发布状态，不能因为一次无效快照删除产品。
 
+## type1 与 type2 属性处理
+
+products 以 type1 的产品记录为基础，并把同一物料编码下、状态为有效的 type2 属性补充到 source_attributes 和 standard_specs。相同属性和值只保留一份；不同值不覆盖，记录在 type2_audit_issues.jsonl 中。type2 独有记录仍然只作待核查数据，不直接导入 products。
+

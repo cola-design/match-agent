@@ -172,6 +172,7 @@ type2: dict[str, list[dict[str, Any]]] = defaultdict(list)
 type2_base: dict[str, dict[str, Any]] = {}
 type2_invalid: Counter[str] = Counter()
 issues: list[dict[str, Any]] = []
+type2_audit_issues: list[dict[str, Any]] = []
 page_counts = Counter()
 row_counts = Counter()
 status_counts = {"1": Counter(), "2": Counter()}
@@ -220,10 +221,10 @@ def compare_attrs(code: str, attrs1: list[dict[str, Any]], attrs2: list[dict[str
     for name in set(by_name1) & set(by_name2):
         if by_name1[name] != by_name2[name]:
             flags.append("TYPE1_TYPE2_ATTRIBUTE_CONFLICT")
-            issues.append({"material_code": code, "issue": "TYPE1_TYPE2_ATTRIBUTE_CONFLICT", "source": "type1/type2", "detail": name})
+            type2_audit_issues.append({"material_code": code, "issue": "TYPE1_TYPE2_ATTRIBUTE_CONFLICT", "source": "type1/type2", "detail": name})
     if any(len(values) > 1 for values in by_name2.values()):
         flags.append("DUPLICATE_TYPE2_ATTRIBUTE")
-        issues.append({"material_code": code, "issue": "DUPLICATE_TYPE2_ATTRIBUTE", "source": "type2", "detail": [name for name, values in by_name2.items() if len(values) > 1]})
+        type2_audit_issues.append({"material_code": code, "issue": "DUPLICATE_TYPE2_ATTRIBUTE", "source": "type2", "detail": [name for name, values in by_name2.items() if len(values) > 1]})
     return sorted(set(flags))
 
 def product_docs() -> Iterator[dict[str, Any]]:
@@ -239,15 +240,6 @@ def product_docs() -> Iterator[dict[str, Any]]:
             flags.append("MISSING_CATEGORY")
         if not row.get("SPEC_STRING"):
             flags.append("MISSING_SPECIFICATIONS")
-        if attrs2:
-            join_status = "TYPE1_AND_TYPE2_MATCHED"
-            flags.extend(compare_attrs(code, attrs1, attrs2))
-        elif type2_invalid.get(code):
-            join_status = "TYPE1_AND_TYPE2_INVALID_ONLY"
-            flags.append("TYPE2_VALID_ATTRIBUTES_MISSING")
-        else:
-            join_status = "TYPE1_ONLY"
-            flags.append("TYPE2_RECORD_MISSING")
         all_attrs = attrs1 + attrs2
         standard, standard_flags = add_standard_specs(all_attrs, issues, code)
         flags.extend(standard_flags)
@@ -268,7 +260,6 @@ def product_docs() -> Iterator[dict[str, Any]]:
             "specification_text": "；".join(f"{attr['name']}={attr['value']}" for attr in attrs1),
             "source_status": source_status,
             "data_status": data_status,
-            "join_status": join_status,
             "quality_flags": sorted(set(flags)),
             "last_update_date": row.get("LAST_UPDATE_DATE", ""),
             "provenance": {
@@ -276,7 +267,6 @@ def product_docs() -> Iterator[dict[str, Any]]:
                 "date_from": "2017-01-01",
                 "type1_page": item["page"],
                 "type2_attribute_count_valid": len(attrs2),
-                "type2_attribute_count_invalid": type2_invalid.get(code, 0),
             },
         }
 
@@ -292,7 +282,6 @@ def type2_only_docs() -> Iterator[dict[str, Any]]:
             "standard_specs": add_standard_specs(attrs, issues, code)[0],
             "source_attributes": attrs,
             "data_status": "PENDING_REVIEW",
-            "join_status": "TYPE2_ONLY",
             "quality_flags": ["TYPE1_PRODUCT_RECORD_MISSING"],
             "provenance": {"source": "product-spec-api", "date_from": "2017-01-01", "type2_only": True},
         }
@@ -304,6 +293,7 @@ products_source_invalid_path = OUT / "products_source_invalid_current.jsonl"
 products_auto_active_path = OUT / "products_auto_active_candidates.jsonl"
 type2_only_path = OUT / "type2_only_candidates.jsonl"
 issues_path = OUT / "issues.jsonl"
+type2_audit_issues_path = OUT / "type2_audit_issues.jsonl"
 prices_path = OUT / "prices_candidates.jsonl"
 product_count = jsonl(products_path, product_docs())
 pending_count = 0
@@ -339,6 +329,9 @@ with products_path.open("r", encoding="utf-8") as source, \
             auto_active_count += 1
 type2_only_count = jsonl(type2_only_path, type2_only_docs())
 jsonl(issues_path, iter(issues))
+for code in sorted(set(type1) & set(type2)):
+    compare_attrs(code, type1[code]["attrs"], type2[code])
+jsonl(type2_audit_issues_path, iter(type2_audit_issues))
 
 def price_candidates() -> Iterator[dict[str, Any]]:
     for code in sorted(type1):
@@ -381,6 +374,7 @@ summary = {
     "type2_only_candidates": type2_only_count,
     "price_candidates": price_count,
     "issue_count": len(issues),
+    "type2_audit_issue_count": len(type2_audit_issues),
     "shared_codes": len(set(type1) & set(type2)),
     "type1_only_codes": len(set(type1) - set(type2)),
     "type2_only_codes": len(set(type2) - set(type1)),
@@ -392,6 +386,7 @@ summary = {
         "products_auto_active_candidates": str(products_auto_active_path),
         "type2_only": str(type2_only_path),
         "issues": str(issues_path),
+        "type2_audit_issues": str(type2_audit_issues_path),
         "prices": str(prices_path),
     },
 }
