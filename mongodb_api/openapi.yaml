@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: match-agent MongoDB API
+  version: 1.0.0
+servers:
+  - url: https://YOUR_API_HOST
+security:
+  - ApiKeyAuth: []
+paths:
+  /health:
+    get:
+      operationId: health
+      responses:
+        '200': {description: OK}
+  /v1/products/{material_code}:
+    get:
+      operationId: getProductByCode
+      parameters:
+        - {name: material_code, in: path, required: true, schema: {type: string}}
+      responses:
+        '200': {description: Product records}
+  /v1/prices/{material_code}:
+    get:
+      operationId: getPriceByCode
+      parameters:
+        - {name: material_code, in: path, required: true, schema: {type: string}}
+        - {name: as_of, in: query, required: false, schema: {type: string, format: date}}
+      responses:
+        '200': {description: Price records}
+  /v1/products/search:
+    get:
+      operationId: searchProducts
+      parameters:
+        - {name: q, in: query, required: true, schema: {type: string}}
+        - {name: limit, in: query, required: false, schema: {type: integer, default: 30, maximum: 50}}
+      responses:
+        '200': {description: Product candidates}
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
