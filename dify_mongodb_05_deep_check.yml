@@ -1,0 +1,317 @@
+app:
+  description: 只读故障定位。将线程、无凭据原生hello、无凭据驱动hello与认证分开；先打印阶段结果再清理客户端。原生hello仅适用于IPv4、明文mongodb://端点；遇到TLS配置主动跳过，不降低TLS保护。
+  icon: 🧪
+  icon_background: '#E4FBCC'
+  mode: advanced-chat
+  name: MongoDB诊断5：线程、协议、认证分离
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    retriever_resource:
+      enabled: false
+    opening_statement: 输入私有只读URI和数据库名match_agent。诊断不会修改数据。截图仅保留输出，避免展示输入中的密码。
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - id: 1800000001001-source-1820000000001-target
+      source: '1800000001001'
+      sourceHandle: source
+      target: '1820000000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+    - id: 1820000000001-source-1820000000002-target
+      source: '1820000000001'
+      sourceHandle: source
+      target: '1820000000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1820000000002-source-1820000000003-target
+      source: '1820000000002'
+      sourceHandle: source
+      target: '1820000000003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1820000000003-source-1820000000004-target
+      source: '1820000000003'
+      sourceHandle: source
+      target: '1820000000004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1820000000004-source-1800000001003-target
+      source: '1820000000004'
+      sourceHandle: source
+      target: '1800000001003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+    nodes:
+    - data:
+        desc: 填写只读 MongoDB 连接字符串和数据库名称。
+        selected: false
+        title: 输入 MongoDB 参数
+        type: start
+        variables:
+        - label: MongoDB连接字符串
+          max_length: 500
+          options: []
+          required: true
+          type: paragraph
+          variable: mongo_uri
+        - label: 数据库名称
+          max_length: 100
+          options: []
+          required: true
+          type: text-input
+          variable: db_name
+      height: 160
+      id: '1800000001001'
+      position:
+        x: 30
+        y: 200
+      positionAbsolute:
+        x: 30
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str) -> dict:\n    stage = 'import_threading'\n    try:\n        import threading\n        flag = threading.Event()\n        stage = 'thread_start'\n        print('MONGO_DIAG thread_start', flush=True)\n        worker = threading.Thread(target=flag.set, daemon=True)\n        worker.start()\n        stage = 'thread_wait'\n        done = flag.wait(0.5)\n        worker.join(timeout=0.5)\n        data = {'ok': bool(done), 'stage': 'thread_completed' if done else stage,\n                'worker_alive': worker.is_alive()}\n    except Exception as exc:\n        data = {'ok': False, 'stage': stage, 'error_type': type(exc).__name__}\n    return {'result': json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 独立诊断步骤；运行日志中的MONGO_DIAG仅输出安全阶段标记。请仅分享输出，不分享输入中的连接凭据。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 1 后台线程是否可运行
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+      height: 130
+      id: '1820000000001'
+      position: &id001
+        x: 360
+        y: 200
+      positionAbsolute: *id001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str) -> dict:\n    stage = 'parse_uri'\n    conn = None\n    try:\n        import socket\n        import struct\n        import time\n        import ipaddress\n        from urllib.parse import urlsplit, parse_qs\n        from bson import BSON\n        uri = urlsplit(mongo_uri.strip())\n        if uri.scheme != 'mongodb':\n            raise ValueError('Only mongodb scheme supported by this probe')\n        host = str(ipaddress.IPv4Address(uri.hostname))\n        options = parse_qs(uri.query.lower())\n        if options.get('tls', options.get('ssl', ['false']))[-1] == 'true':\n            return {'result': json.dumps({'ok': False, 'stage': 'tls_required',\n                'reason': 'Raw hello probe skipped: use a TLS-capable probe. TLS was not disabled.'})}\n        stage = 'socket_connect'\n        conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n        conn.settimeout(2)\n        conn.connect((host, uri.port or 27017))\n\
+          \        # OP_MSG hello is a standard unauthenticated handshake command (MongoDB >= 3.6).\n        # This probe does not implement login and never sends the URI credentials.\n        body = struct.pack('<I', 0) + b'\\x00' + BSON.encode({'hello': 1, '$db': 'admin'})\n        request_id = 17027\n        packet = struct.pack('<iiii', 16 + len(body), request_id, 0, 2013) + body\n        stage = 'send_hello'\n        print('MONGO_DIAG send_hello', flush=True)\n        conn.sendall(packet)\n        deadline = time.monotonic() + 3\n        def recv_exact(length):\n            data = b''\n            while len(data) < length:\n                remaining = deadline - time.monotonic()\n                if remaining <= 0:\n                    raise TimeoutError()\n                conn.settimeout(min(2, remaining))\n                chunk = conn.recv(length - len(data))\n                if not chunk:\n                    raise ConnectionError('EOF')\n                data += chunk\n          \
+          \  return data\n        stage = 'receive_hello_header'\n        length, response_id, response_to, opcode = struct.unpack('<iiii', recv_exact(16))\n        if length < 16 or length > 1048576 or response_to != request_id:\n            raise ValueError('Unexpected response framing')\n        stage = 'receive_hello_body'\n        payload = recv_exact(length - 16)\n        stage = 'decode_hello'\n        if opcode != 2013 or len(payload) < 10 or payload[4] != 0:\n            raise ValueError('Unexpected protocol response')\n        doc_length = struct.unpack_from('<i', payload, 5)[0]\n        if doc_length < 5 or 5 + doc_length > len(payload):\n            raise ValueError('Invalid BSON length')\n        doc = BSON(payload[5:5 + doc_length]).decode()\n        data = {'ok': doc.get('ok') == 1, 'stage': 'hello_response',\n                'server_code': doc.get('code'),\n                'replica_set': bool(doc.get('setName')),\n                'is_primary': doc.get('isWritablePrimary',\
+          \ doc.get('ismaster')),\n                'is_mongos': doc.get('msg') == 'isdbgrid',\n                'member_count': len(doc.get('hosts') or []),\n                'max_wire_version': doc.get('maxWireVersion')}\n        print('MONGO_DIAG hello_response_received', flush=True)\n    except Exception as exc:\n        data = {'ok': False, 'stage': stage, 'error_type': type(exc).__name__,\n                'errno': getattr(exc, 'errno', None)}\n    finally:\n        if conn is not None:\n            conn.close()\n    return {'result': json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 独立诊断步骤；运行日志中的MONGO_DIAG仅输出安全阶段标记。请仅分享输出，不分享输入中的连接凭据。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 2 原生MongoDB握手（不发送密码）
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+      height: 130
+      id: '1820000000002'
+      position: &id002
+        x: 700
+        y: 200
+      positionAbsolute: *id002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, thread_result: str, hello_result: str) -> dict:\n    if not json.loads(thread_result).get('ok') or not json.loads(hello_result).get('ok'):\n        return {'result': json.dumps({'ok': False, 'stage': 'skipped', 'reason': 'Check thread and hello results first.'})}\n    stage = 'import_driver'\n    client = None\n    try:\n        from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode\n        import pymongo\n        parsed = urlsplit(mongo_uri.strip())\n        # Remove credentials and auth-specific options; preserve topology/TLS settings.\n        options = [(key, value) for key, value in parse_qsl(parsed.query)\n                   if key.lower() not in ('authsource', 'authmechanism', 'authmechanismproperties')]\n        plain_uri = urlunsplit((parsed.scheme, parsed.netloc.rsplit('@', 1)[-1], parsed.path,\n                              urlencode(options), ''))\n        stage = 'driver_client_setup'\n      \
+          \  print('MONGO_DIAG driver_client_setup', flush=True)\n        client = pymongo.MongoClient(plain_uri, connect=False, retryReads=False, retryWrites=False,\n                                    serverSelectionTimeoutMS=1500, connectTimeoutMS=1500,\n                                    socketTimeoutMS=1500, timeoutMS=2500)\n        stage = 'driver_hello_without_credentials'\n        print('MONGO_DIAG driver_hello_without_credentials_begin', flush=True)\n        with pymongo.timeout(2.5):\n            doc = client.admin.command('hello')\n        print('MONGO_DIAG driver_hello_without_credentials_done', flush=True)\n        data = {'ok': doc.get('ok') == 1, 'stage': 'driver_hello_without_credentials'}\n    except Exception as exc:\n        data = {'ok': False, 'stage': stage, 'error_type': type(exc).__name__}\n        if isinstance(getattr(exc, 'code', None), int):\n            data['error_code'] = exc.code\n        print('MONGO_DIAG error_before_cleanup ' + json.dumps(data), flush=True)\n\
+          \    # Print the safe result BEFORE close so cleanup cannot hide the preceding error in stdout.\n    print('MONGO_DIAG result_before_cleanup ' + json.dumps(data), flush=True)\n    if client is not None:\n        print('MONGO_DIAG client_close_begin', flush=True)\n        try:\n            client.close()\n        except Exception as exc:\n            data = {'ok': False, 'stage': 'client_close', 'error_type': type(exc).__name__, 'operation': data}\n        print('MONGO_DIAG client_close_done', flush=True)\n    return {'result': json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 独立诊断步骤；运行日志中的MONGO_DIAG仅输出安全阶段标记。请仅分享输出，不分享输入中的连接凭据。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 3 PyMongo握手（移除账号密码）
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+        - variable: thread_result
+          value_type: string
+          value_selector:
+          - '1820000000001'
+          - result
+        - variable: hello_result
+          value_type: string
+          value_selector:
+          - '1820000000002'
+          - result
+      height: 130
+      id: '1820000000003'
+      position: &id003
+        x: 1040
+        y: 200
+      positionAbsolute: *id003
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, driver_result: str) -> dict:\n    if not json.loads(driver_result).get('ok'):\n        return {'result': json.dumps({'ok': False, 'stage': 'skipped', 'reason': 'Unauthenticated driver probe did not pass.'})}\n    client = None\n    stage = 'client_setup'\n    try:\n        import pymongo\n        client = pymongo.MongoClient(mongo_uri.strip(), connect=False, retryReads=False, retryWrites=False,\n                                    serverSelectionTimeoutMS=1500, connectTimeoutMS=1500,\n                                    socketTimeoutMS=1500, timeoutMS=2500)\n        stage = 'authenticate_and_ping'\n        print('MONGO_DIAG authenticate_and_ping_begin', flush=True)\n        with pymongo.timeout(2.5):\n            client[db_name.strip()].command('ping')\n        print('MONGO_DIAG authenticate_and_ping_done', flush=True)\n        stage = 'read_product'\n        print('MONGO_DIAG read_product_begin', flush=True)\n        with\
+          \ pymongo.timeout(2.5):\n            product = client[db_name.strip()].products.find_one(\n                {'data_status': 'ACTIVE', 'source_status': '有效'},\n                {'_id': 0, 'material_code': 1}, max_time_ms=1000)\n        stage = 'read_price'\n        print('MONGO_DIAG read_price_begin', flush=True)\n        with pymongo.timeout(2.5):\n            price = client[db_name.strip()].prices.find_one(\n                {'status': 'ACTIVE'}, {'_id': 0, 'material_code': 1}, max_time_ms=1000)\n        data = {'ok': True, 'stage': 'completed', 'product': product or {}, 'price': price or {}}\n    except Exception as exc:\n        data = {'ok': False, 'stage': stage, 'error_type': type(exc).__name__}\n        if isinstance(getattr(exc, 'code', None), int):\n            data['error_code'] = exc.code\n    print('MONGO_DIAG result_before_cleanup ' + json.dumps(data), flush=True)\n    if client is not None:\n        print('MONGO_DIAG client_close_begin', flush=True)\n        try:\n \
+          \           client.close()\n        except Exception as exc:\n            data = {'ok': False, 'stage': 'client_close', 'error_type': type(exc).__name__, 'operation': data}\n        print('MONGO_DIAG client_close_done', flush=True)\n    return {'result': json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 独立诊断步骤；运行日志中的MONGO_DIAG仅输出安全阶段标记。请仅分享输出，不分享输入中的连接凭据。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 4 认证及少量读取
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+        - variable: driver_result
+          value_type: string
+          value_selector:
+          - '1820000000003'
+          - result
+      height: 130
+      id: '1820000000004'
+      position: &id004
+        x: 1380
+        y: 200
+      positionAbsolute: *id004
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '1 后台线程是否可运行：{{#1820000000001.result#}}
+
+
+          2 原生MongoDB握手（不发送密码）：{{#1820000000002.result#}}
+
+
+          3 PyMongo握手（移除账号密码）：{{#1820000000003.result#}}
+
+
+          4 认证及少量读取：{{#1820000000004.result#}}'
+        desc: 输出 MongoDB 测试结果。
+        selected: false
+        title: 输出深度诊断结果
+        type: answer
+        variables: []
+      height: 120
+      id: '1800000001003'
+      position: &id005
+        x: 1720
+        y: 200
+      positionAbsolute: *id005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
