@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
   title: match-agent MongoDB API
-  version: 1.0.0
+  version: 1.1.0
 servers:
-  - url: https://YOUR_API_HOST
+  - url: http://match-agent-mongo-api:8000
 security:
   - ApiKeyAuth: []
 paths:
@@ -11,14 +11,22 @@ paths:
     get:
       operationId: health
       responses:
-        '200': {description: OK}
+        '200': {description: Database connection ready}
+  /v1/products/search:
+    get:
+      operationId: searchProducts
+      parameters:
+        - {name: q, in: query, required: true, schema: {type: string, maxLength: 240}}
+        - {name: limit, in: query, required: false, schema: {type: integer, default: 30, maximum: 50, minimum: 1}}
+      responses:
+        '200': {description: Active product candidates requiring specification validation}
   /v1/products/{material_code}:
     get:
       operationId: getProductByCode
       parameters:
         - {name: material_code, in: path, required: true, schema: {type: string}}
       responses:
-        '200': {description: Product records}
+        '200': {description: Active product records}
   /v1/prices/{material_code}:
     get:
       operationId: getPriceByCode
@@ -26,15 +34,8 @@ paths:
         - {name: material_code, in: path, required: true, schema: {type: string}}
         - {name: as_of, in: query, required: false, schema: {type: string, format: date}}
       responses:
-        '200': {description: Price records}
-  /v1/products/search:
-    get:
-      operationId: searchProducts
-      parameters:
-        - {name: q, in: query, required: true, schema: {type: string}}
-        - {name: limit, in: query, required: false, schema: {type: integer, default: 30, maximum: 50}}
-      responses:
-        '200': {description: Product candidates}
+        '200': {description: Active price records valid on the quotation date}
+        '409': {description: Excessive price versions for one material}
 components:
   securitySchemes:
     ApiKeyAuth:

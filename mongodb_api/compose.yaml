@@ -1,0 +1,44 @@
+name: match-agent-mongo-api
+services:
+  match-agent-mongo-api:
+    build: .
+    restart: unless-stopped
+    init: true
+    environment:
+      MONGODB_URI: ${MONGODB_URI:?Set MONGODB_URI in .env}
+      MONGODB_DB: ${MONGODB_DB:-match_agent}
+      MONGODB_API_KEY: ${MONGODB_API_KEY:?Set MONGODB_API_KEY in .env}
+      TZ: Asia/Shanghai
+    # Optional host-side checks only; this does not publish port 8000 on the LAN.
+    ports:
+      - "127.0.0.1:18000:8000"
+    networks:
+      dify_shared:
+        aliases:
+          - match-agent-mongo-api
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/live', timeout=3).close()"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+networks:
+  dify_shared:
+    external: true
+    name: ${DIFY_NETWORK:?Set DIFY_NETWORK to an existing Dify Docker network}
