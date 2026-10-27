@@ -1,0 +1,146 @@
+app:
+  description: 仅检查Dify代码沙箱到MongoDB IPv4地址的TCP端口连通性，不使用账号密码，不访问数据库记录。
+  icon: 🧪
+  icon_background: '#E4FBCC'
+  mode: advanced-chat
+  name: MongoDB诊断3：TCP端口连通性
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    retriever_resource:
+      enabled: false
+    opening_statement: 填写MongoDB服务器的完整IPv4地址和端口。无需用户名、密码或API密钥。
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1800000001001-source-1800000001002-target
+      source: '1800000001001'
+      sourceHandle: source
+      target: '1800000001002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1800000001002-source-1800000001003-target
+      source: '1800000001002'
+      sourceHandle: source
+      target: '1800000001003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 只填写IPv4地址和端口，不填写mongodb://、用户名或密码。
+        selected: false
+        title: 输入数据库服务器地址和端口
+        type: start
+        variables:
+        - label: MongoDB服务器IPv4地址（仅IP）
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: mongo_host
+        - label: MongoDB端口（通常27017）
+          max_length: 10
+          options: []
+          required: true
+          type: text-input
+          variable: mongo_port
+      height: 160
+      id: '1800000001001'
+      position:
+        x: 30
+        y: 200
+      positionAbsolute:
+        x: 30
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\nimport socket\nimport ipaddress\n\ndef main(mongo_host: str, mongo_port: str) -> dict:\n    stage = \"validate_input\"\n    try:\n        host = str(ipaddress.IPv4Address(mongo_host.strip()))\n        port = int(mongo_port.strip())\n        if not 1 <= port <= 65535:\n            raise ValueError(\"invalid port\")\n        stage = \"tcp_connection\"\n        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as conn:\n            conn.settimeout(2.0)\n            conn.connect((host, port))\n        data = {\n            \"ok\": True,\n            \"stage\": \"tcp_connected\",\n            \"message\": \"TCP端口可达；尚未验证MongoDB认证或读权限。\"\n        }\n    except Exception as exc:\n        data = {\n            \"ok\": False,\n            \"stage\": stage,\n            \"error_type\": type(exc).__name__,\n            \"errno\": getattr(exc, \"errno\", None)\n        }\n    return {\"result\": json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 直接连接IPv4端口，socket超时设为2秒；无PyMongo、无DNS解析、无凭据。沙箱强制终止仍需查看运行日志。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: TCP端口测试（不登录数据库）
+        type: code
+        variables:
+        - value_selector:
+          - '1800000001001'
+          - mongo_host
+          value_type: string
+          variable: mongo_host
+        - value_selector:
+          - '1800000001001'
+          - mongo_port
+          value_type: string
+          variable: mongo_port
+      height: 130
+      id: '1800000001002'
+      position:
+        x: 360
+        y: 200
+      positionAbsolute:
+        x: 360
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: TCP连通性检查结果：{{#1800000001002.result#}}
+        desc: 输出 MongoDB 测试结果。
+        selected: false
+        title: 输出端口检查结果
+        type: answer
+        variables: []
+      height: 120
+      id: '1800000001003'
+      position:
+        x: 700
+        y: 200
+      positionAbsolute:
+        x: 700
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
