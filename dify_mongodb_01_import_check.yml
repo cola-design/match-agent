@@ -1,0 +1,124 @@
+app:
+  description: 独立只读诊断，不修改数据库；错误输出不包含连接字符串。
+  icon: 🧪
+  icon_background: '#E4FBCC'
+  mode: advanced-chat
+  name: MongoDB诊断1：仅检查PyMongo
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    retriever_resource:
+      enabled: false
+    opening_statement: 点击运行测试；第1份无需数据库参数。
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1800000001001-source-1800000001002-target
+      source: '1800000001001'
+      sourceHandle: source
+      target: '1800000001002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1800000001002-source-1800000001003-target
+      source: '1800000001002'
+      sourceHandle: source
+      target: '1800000001003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 无需输入连接字符串；仅测试依赖导入。
+        selected: false
+        title: 输入 MongoDB 参数
+        type: start
+        variables: []
+      height: 160
+      id: '1800000001001'
+      position:
+        x: 30
+        y: 200
+      positionAbsolute:
+        x: 30
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main() -> dict:\n    try:\n        import pymongo\n        data = {\"ok\": True, \"stage\": \"import_pymongo\", \"version\": str(pymongo.version)}\n    except Exception as exc:\n        data = {\"ok\": False, \"stage\": \"import_pymongo\", \"error_type\": type(exc).__name__}\n    return {\"result\": json.dumps(data, ensure_ascii=False)}\n"
+        code_language: python3
+        desc: 只检查依赖，不发出数据库请求。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: MongoDB诊断1：仅检查PyMongo
+        type: code
+        variables: []
+      height: 130
+      id: '1800000001002'
+      position:
+        x: 360
+        y: 200
+      positionAbsolute:
+        x: 360
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: MongoDB测试结果：{{#1800000001002.result#}}
+        desc: 输出 MongoDB 测试结果。
+        selected: false
+        title: 输出测试结果
+        type: answer
+        variables: []
+      height: 120
+      id: '1800000001003'
+      position:
+        x: 700
+        y: 200
+      positionAbsolute:
+        x: 700
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
