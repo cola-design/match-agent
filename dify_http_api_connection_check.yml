@@ -1,0 +1,189 @@
+app:
+  description: 仅通过HTTP节点检查独立API的健康接口，无PyMongo依赖，不修改数据库。
+  icon: 🧪
+  icon_background: '#E4FBCC'
+  mode: advanced-chat
+  name: API连接检查（电脑或服务器）
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - id: d9d99477-ae3d-416d-aa87-1d729b238601
+    name: MONGODB_API_BASE_URL
+    value_type: string
+    value: ''
+    description: 电脑临时测试填http://电脑IPv4:8000；服务器部署后只改此地址。末尾不加斜杠。
+    selector:
+    - env
+    - MONGODB_API_BASE_URL
+  - id: df00d21d-e594-48d6-9280-a393813cab55
+    name: MONGODB_API_KEY
+    value_type: secret
+    value: ''
+    description: API服务启动时的MONGODB_API_KEY，不是MongoDB密码。
+    selector:
+    - env
+    - MONGODB_API_KEY
+  features:
+    file_upload:
+      enabled: false
+    retriever_resource:
+      enabled: false
+    opening_statement: 先设置环境变量MONGODB_API_BASE_URL和MONGODB_API_KEY，再发送任意消息运行。
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - id: 1800000001001-source-1830000000100-target
+      source: '1800000001001'
+      sourceHandle: source
+      target: '1830000000100'
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: start
+        targetType: http-request
+        isInIteration: false
+        isInLoop: false
+      zIndex: 0
+    - id: 1830000000100-source-1800000001002-target
+      source: '1830000000100'
+      sourceHandle: source
+      target: '1800000001002'
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+      zIndex: 0
+    - id: 1800000001002-source-1800000001003-target
+      source: '1800000001002'
+      sourceHandle: source
+      target: '1800000001003'
+      targetHandle: target
+      type: custom
+      data:
+        sourceType: code
+        targetType: answer
+        isInIteration: false
+        isInLoop: false
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 配置引用环境变量，无需填写数据库账号。
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 160
+      id: '1800000001001'
+      position:
+        x: 30
+        y: 200
+      positionAbsolute:
+        x: 30
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        type: http-request
+        title: HTTP检查API与MongoDB连接
+        desc: 通过独立API读取MongoDB，不在Dify代码沙箱中导入PyMongo。
+        selected: false
+        method: get
+        url: '{{#env.MONGODB_API_BASE_URL#}}/health'
+        authorization:
+          type: no-auth
+          config: null
+        headers: 'X-API-Key:{{#env.MONGODB_API_KEY#}}
+
+          Accept:application/json'
+        params: ''
+        body:
+          type: none
+          data: []
+        timeout:
+          connect: 5
+          read: 15
+          write: 5
+        ssl_verify: true
+        isInIteration: false
+        isInLoop: false
+      height: 130
+      id: '1830000000100'
+      position: &id001
+        x: 360
+        y: 200
+      positionAbsolute: *id001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        title: 解释健康检查结果
+        type: code
+        selected: false
+        code_language: python3
+        code: "import json\n\ndef main(body: str, status_code: int) -> dict:\n    code = int(status_code)\n    # Echo only API health state, not request headers or unexpected response content.\n    if code != 200:\n        return {\"result\": json.dumps({\"ok\": False, \"http_status\": code}, ensure_ascii=False)}\n    try:\n        data = json.loads(body)\n    except (ValueError, TypeError):\n        return {\"result\": json.dumps({\"ok\": False, \"http_status\": code, \"reason\": \"invalid_json\"})}\n    if not isinstance(data, dict):\n        return {\"result\": json.dumps({\"ok\": False, \"http_status\": code, \"reason\": \"unexpected_body\"})}\n    return {\"result\": json.dumps({\"ok\": data.get(\"status\") == \"ok\", \"http_status\": code,\n                                  \"database\": data.get(\"database\", \"\")}, ensure_ascii=False)}\n"
+        outputs:
+          result:
+            children: null
+            type: string
+        variables:
+        - variable: body
+          value_type: string
+          value_selector:
+          - '1830000000100'
+          - body
+        - variable: status_code
+          value_type: number
+          value_selector:
+          - '1830000000100'
+          - status_code
+      height: 130
+      id: '1800000001002'
+      position: &id002
+        x: 700
+        y: 200
+      positionAbsolute: *id002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: API检查结果：{{#1800000001002.result#}}
+        desc: 输出 MongoDB 测试结果。
+        selected: false
+        title: 输出API检查结果
+        type: answer
+        variables: []
+      height: 120
+      id: '1800000001003'
+      position: &id003
+        x: 1040
+        y: 200
+      positionAbsolute: *id003
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
