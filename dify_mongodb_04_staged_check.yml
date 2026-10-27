@@ -1,0 +1,318 @@
+app:
+  description: 依次定位导入、客户端初始化与关闭、握手认证、读取权限。全程只读，不统计全库。
+  icon: 🧪
+  icon_background: '#E4FBCC'
+  mode: advanced-chat
+  name: MongoDB诊断4：分节点定位超时
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    retriever_resource:
+      enabled: false
+    opening_statement: 填写私有只读连接字符串和数据库名称match_agent。失败时展开运行详情，看哪个编号的代码节点超时。
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - id: 1800000001001-source-1810000000001-target
+      source: '1800000001001'
+      sourceHandle: source
+      target: '1810000000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+    - id: 1810000000001-source-1810000000002-target
+      source: '1810000000001'
+      sourceHandle: source
+      target: '1810000000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1810000000002-source-1810000000003-target
+      source: '1810000000002'
+      sourceHandle: source
+      target: '1810000000003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1810000000003-source-1810000000004-target
+      source: '1810000000003'
+      sourceHandle: source
+      target: '1810000000004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+    - id: 1810000000004-source-1800000001003-target
+      source: '1810000000004'
+      sourceHandle: source
+      target: '1800000001003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+      data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+    nodes:
+    - data:
+        desc: 填写只读 MongoDB 连接字符串和数据库名称。
+        selected: false
+        title: 输入 MongoDB 参数
+        type: start
+        variables:
+        - label: MongoDB连接字符串
+          max_length: 500
+          options: []
+          required: true
+          type: paragraph
+          variable: mongo_uri
+        - label: 数据库名称
+          max_length: 100
+          options: []
+          required: true
+          type: text-input
+          variable: db_name
+      height: 160
+      id: '1800000001001'
+      position:
+        x: 30
+        y: 200
+      positionAbsolute:
+        x: 30
+        y: 200
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, previous_result: str = \"\") -> dict:\n    client = None\n    stage = \"validate_input\"\n    def emit(data):\n        return {\"result\": json.dumps(data, ensure_ascii=False)}\n    try:\n        if previous_result and not json.loads(previous_result).get(\"ok\"):\n            return emit({\"ok\": False, \"stage\": \"skipped\", \"previous\": json.loads(previous_result)})\n        uri = mongo_uri.strip()\n        if not uri.startswith(\"mongodb://\") or \"\\n\" in uri or \"\\r\" in uri or chr(92) + \"n\" in uri:\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Use a single-line mongodb:// URI without newline characters.\"})\n        if not db_name.strip():\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Database name is required.\"})\n        stage = \"import_pymongo\"\n        import pymongo\n        return emit({\"ok\": True, \"stage\": \"import_pymongo\", \"version\": str(pymongo.version)})\n\
+          \    except Exception as exc:\n        data = {\"ok\": False, \"stage\": stage, \"error_type\": type(exc).__name__}\n        if isinstance(getattr(exc, \"code\", None), int):\n            data[\"error_code\"] = exc.code\n        return emit(data)\n    finally:\n        if client is not None:\n            client.close()\n"
+        code_language: python3
+        desc: 仅独立诊断；若被强制终止，请查看这个节点的标题。错误输出不包含连接字符串。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 1 导入PyMongo
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+      height: 130
+      id: '1810000000001'
+      position: &id001
+        x: 360
+        y: 200
+      positionAbsolute: *id001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, previous_result: str = \"\") -> dict:\n    client = None\n    stage = \"validate_input\"\n    def emit(data):\n        return {\"result\": json.dumps(data, ensure_ascii=False)}\n    try:\n        if previous_result and not json.loads(previous_result).get(\"ok\"):\n            return emit({\"ok\": False, \"stage\": \"skipped\", \"previous\": json.loads(previous_result)})\n        uri = mongo_uri.strip()\n        if not uri.startswith(\"mongodb://\") or \"\\n\" in uri or \"\\r\" in uri or chr(92) + \"n\" in uri:\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Use a single-line mongodb:// URI without newline characters.\"})\n        if not db_name.strip():\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Database name is required.\"})\n        stage = \"import_pymongo\"\n        import pymongo\n        stage = \"client_setup\"\n        client = pymongo.MongoClient(\n       \
+          \     uri, connect=False, retryReads=False, retryWrites=False,\n            serverSelectionTimeoutMS=1500, connectTimeoutMS=1500,\n            socketTimeoutMS=1500, timeoutMS=2500\n        )\n        stage = \"client_close\"\n        client.close()\n        client = None\n        return emit({\"ok\": True, \"stage\": \"client_setup_and_close\"})\n    except Exception as exc:\n        data = {\"ok\": False, \"stage\": stage, \"error_type\": type(exc).__name__}\n        if isinstance(getattr(exc, \"code\", None), int):\n            data[\"error_code\"] = exc.code\n        return emit(data)\n    finally:\n        if client is not None:\n            client.close()\n"
+        code_language: python3
+        desc: 仅独立诊断；若被强制终止，请查看这个节点的标题。错误输出不包含连接字符串。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 2 创建与关闭客户端（不主动连接）
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+        - variable: previous_result
+          value_type: string
+          value_selector:
+          - '1810000000001'
+          - result
+      height: 130
+      id: '1810000000002'
+      position: &id002
+        x: 700
+        y: 200
+      positionAbsolute: *id002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, previous_result: str = \"\") -> dict:\n    client = None\n    stage = \"validate_input\"\n    def emit(data):\n        return {\"result\": json.dumps(data, ensure_ascii=False)}\n    try:\n        if previous_result and not json.loads(previous_result).get(\"ok\"):\n            return emit({\"ok\": False, \"stage\": \"skipped\", \"previous\": json.loads(previous_result)})\n        uri = mongo_uri.strip()\n        if not uri.startswith(\"mongodb://\") or \"\\n\" in uri or \"\\r\" in uri or chr(92) + \"n\" in uri:\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Use a single-line mongodb:// URI without newline characters.\"})\n        if not db_name.strip():\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Database name is required.\"})\n        stage = \"import_pymongo\"\n        import pymongo\n        stage = \"client_setup\"\n        client = pymongo.MongoClient(\n       \
+          \     uri, connect=False, retryReads=False, retryWrites=False,\n            serverSelectionTimeoutMS=1500, connectTimeoutMS=1500,\n            socketTimeoutMS=1500, timeoutMS=2500\n        )\n        stage = \"ping_and_auth\"\n        with pymongo.timeout(2.5):\n            client[db_name.strip()].command(\"ping\")\n        stage = \"client_close\"\n        client.close()\n        client = None\n        return emit({\"ok\": True, \"stage\": \"ping_and_auth\"})\n    except Exception as exc:\n        data = {\"ok\": False, \"stage\": stage, \"error_type\": type(exc).__name__}\n        if isinstance(getattr(exc, \"code\", None), int):\n            data[\"error_code\"] = exc.code\n        return emit(data)\n    finally:\n        if client is not None:\n            client.close()\n"
+        code_language: python3
+        desc: 仅独立诊断；若被强制终止，请查看这个节点的标题。错误输出不包含连接字符串。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 3 MongoDB握手与认证
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+        - variable: previous_result
+          value_type: string
+          value_selector:
+          - '1810000000002'
+          - result
+      height: 130
+      id: '1810000000003'
+      position: &id003
+        x: 1040
+        y: 200
+      positionAbsolute: *id003
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(mongo_uri: str, db_name: str, previous_result: str = \"\") -> dict:\n    client = None\n    stage = \"validate_input\"\n    def emit(data):\n        return {\"result\": json.dumps(data, ensure_ascii=False)}\n    try:\n        if previous_result and not json.loads(previous_result).get(\"ok\"):\n            return emit({\"ok\": False, \"stage\": \"skipped\", \"previous\": json.loads(previous_result)})\n        uri = mongo_uri.strip()\n        if not uri.startswith(\"mongodb://\") or \"\\n\" in uri or \"\\r\" in uri or chr(92) + \"n\" in uri:\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Use a single-line mongodb:// URI without newline characters.\"})\n        if not db_name.strip():\n            return emit({\"ok\": False, \"stage\": stage, \"reason\": \"Database name is required.\"})\n        stage = \"import_pymongo\"\n        import pymongo\n        stage = \"client_setup\"\n        client = pymongo.MongoClient(\n       \
+          \     uri, connect=False, retryReads=False, retryWrites=False,\n            serverSelectionTimeoutMS=1500, connectTimeoutMS=1500,\n            socketTimeoutMS=1500, timeoutMS=2500\n        )\n        db = client[db_name.strip()]\n        stage = \"read_products\"\n        with pymongo.timeout(2.5):\n            product = db.products.find_one(\n                {\"data_status\": \"ACTIVE\", \"source_status\": \"有效\"},\n                {\"_id\": 0, \"material_code\": 1}, max_time_ms=1000)\n        stage = \"read_prices\"\n        with pymongo.timeout(2.5):\n            price = db.prices.find_one(\n                {\"status\": \"ACTIVE\"},\n                {\"_id\": 0, \"material_code\": 1}, max_time_ms=1000)\n        stage = \"client_close\"\n        client.close()\n        client = None\n        return emit({\"ok\": True, \"stage\": \"completed\", \"product\": product or {}, \"price\": price or {}})\n    except Exception as exc:\n        data = {\"ok\": False, \"stage\": stage, \"\
+          error_type\": type(exc).__name__}\n        if isinstance(getattr(exc, \"code\", None), int):\n            data[\"error_code\"] = exc.code\n        return emit(data)\n    finally:\n        if client is not None:\n            client.close()\n"
+        code_language: python3
+        desc: 仅独立诊断；若被强制终止，请查看这个节点的标题。错误输出不包含连接字符串。
+        isInIteration: false
+        isInLoop: false
+        iteration_id: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 4 验证两库读取权限
+        type: code
+        variables:
+        - variable: mongo_uri
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - mongo_uri
+        - variable: db_name
+          value_type: string
+          value_selector:
+          - '1800000001001'
+          - db_name
+        - variable: previous_result
+          value_type: string
+          value_selector:
+          - '1810000000003'
+          - result
+      height: 130
+      id: '1810000000004'
+      position: &id004
+        x: 1380
+        y: 200
+      positionAbsolute: *id004
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '分步诊断结果：
+
+
+          1 导入PyMongo：{{#1810000000001.result#}}
+
+
+          2 创建与关闭客户端（不主动连接）：{{#1810000000002.result#}}
+
+
+          3 MongoDB握手与认证：{{#1810000000003.result#}}
+
+
+          4 验证两库读取权限：{{#1810000000004.result#}}'
+        desc: 输出 MongoDB 测试结果。
+        selected: false
+        title: 输出测试结果
+        type: answer
+        variables: []
+      height: 120
+      id: '1800000001003'
+      position: &id005
+        x: 1720
+        y: 200
+      positionAbsolute: *id005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
