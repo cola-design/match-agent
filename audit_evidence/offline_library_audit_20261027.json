@@ -1,0 +1,307 @@
+{
+  "product_counts": {
+    "products": 116632,
+    "source_无效": 47462,
+    "source_有效": 69170,
+    "empty_standard_specs": 8212,
+    "numeric_value_not_in_text_tokens": 67806,
+    "numeric_entries": 500532,
+    "complex_text_with_scalar_number": 13829,
+    "materials_with_definite_numeric_issue": 47063
+  },
+  "product_types": {
+    "material_code": {
+      "str": 116632
+    },
+    "category": {
+      "dict": 116632
+    },
+    "standard_specs": {
+      "dict": 116632
+    },
+    "source_attributes": {
+      "list": 116632
+    },
+    "quality_flags": {
+      "list": 116632
+    }
+  },
+  "numeric_problem_examples": [
+    {
+      "material_code": "01020020107",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020114",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020115",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020117",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020125",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020126",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020134",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020140",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020141",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020142",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020145",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020150",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020262",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020353",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020354",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020358",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020359",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020409",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020429",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020430",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020431",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020499",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020501",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC380V",
+      "value_num": 80,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020534",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "DC24V",
+      "value_num": 4,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020563",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020703",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020703",
+      "field": "special_note",
+      "raw_name": "特殊说明",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01020020709",
+      "field": "accessory_voltage",
+      "raw_name": "附件电压等级",
+      "value_text": "AC220V",
+      "value_num": 20,
+      "unit": "V"
+    },
+    {
+      "material_code": "01040010001",
+      "field": "frame_current_a",
+      "raw_name": "壳架",
+      "value_text": "DZ108-20",
+      "value_num": 8,
+      "unit": null
+    },
+    {
+      "material_code": "01040010002",
+      "field": "frame_current_a",
+      "raw_name": "壳架",
+      "value_text": "DZ108-20",
+      "value_num": 8,
+      "unit": null
+    }
+  ],
+  "spec_field_coverage": {
+    "rated_voltage": 6185,
+    "rated_current_a": 94199,
+    "mounting_method": 55904,
+    "frame_current_a": 92589,
+    "pole_count": 92455,
+    "trip_mechanism": 42493,
+    "protection_type": 21609,
+    "special_note": 61792,
+    "accessory_code": 40312,
+    "accessory_voltage": 23098,
+    "breaking_capacity": 85758,
+    "model": 32212,
+    "operating_current_a": 4675,
+    "control_voltage": 32924,
+    "controller_type": 29470,
+    "frequency_hz": 577,
+    "ip_rating": 357,
+    "operating_voltage": 1717
+  },
+  "price_counts": {
+    "prices": 69170,
+    "pricing_unit:件": 69170,
+    "tax_rate:0.13": 69170,
+    "status:ACTIVE": 69170,
+    "price_basis:MARKET_REFERENCE_ESTIMATE": 69170,
+    "confidence:MEDIUM": 67979,
+    "price_version:CN-MARKET-2026-V1": 69170,
+    "source:中国市场参考估价（按品类、规格和额定参数生成）": 69170,
+    "confidence:LOW": 1191
+  },
+  "active_numeric_scan": {
+    "products_checked": 63321,
+    "products_with_flags": 24333,
+    "numeric_entries_flagged": 31352
+  }
+}
