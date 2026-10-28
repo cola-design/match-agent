@@ -1,0 +1,507 @@
+[
+  {
+    "material_code": "338020100234",
+    "item_id": "16275882",
+    "description": "TGDY55II-40 385V 3P+N(祥云3.0)",
+    "category": {
+      "code": "338.33802.3380206",
+      "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+      "path": [
+        "保护器类",
+        "电涌保护器",
+        "TGDY55(祥云3.0)"
+      ],
+      "root": "保护器类",
+      "middle": "电涌保护器",
+      "leaf": "TGDY55(祥云3.0)"
+    },
+    "standard_specs": {
+      "pole_count": {
+        "value_text": "3P+N",
+        "value_num": 3,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "试验分类",
+        "value": "II",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "冲击电流（kA）",
+        "value": "/",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "最大放电电流（kA）",
+        "value": "40kA",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大持续工作电压",
+        "value": "385",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "极数",
+        "value": "3P+N",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "摇信",
+        "value": "/",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "备注",
+        "value": "/",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P+N；摇信=/；备注=/",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2026-05-17 22:47:15.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 53,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  },
+  {
+    "material_code": "338020100235",
+    "item_id": "16275787",
+    "description": "TGDY55II-40 385V 3P+N F(祥云3.0)",
+    "category": {
+      "code": "338.33802.3380206",
+      "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+      "path": [
+        "保护器类",
+        "电涌保护器",
+        "TGDY55(祥云3.0)"
+      ],
+      "root": "保护器类",
+      "middle": "电涌保护器",
+      "leaf": "TGDY55(祥云3.0)"
+    },
+    "standard_specs": {
+      "pole_count": {
+        "value_text": "3P+N",
+        "value_num": 3,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "试验分类",
+        "value": "II",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "冲击电流（kA）",
+        "value": "/",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "最大放电电流（kA）",
+        "value": "40kA",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大持续工作电压",
+        "value": "385",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "极数",
+        "value": "3P+N",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "摇信",
+        "value": "是",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "备注",
+        "value": "/",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P+N；摇信=是；备注=/",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2024-06-20 00:00:00.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 52,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  },
+  {
+    "material_code": "338020100237",
+    "item_id": "16275789",
+    "description": "TGDY55II-40 385V 4P(祥云3.0)",
+    "category": {
+      "code": "338.33802.3380206",
+      "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+      "path": [
+        "保护器类",
+        "电涌保护器",
+        "TGDY55(祥云3.0)"
+      ],
+      "root": "保护器类",
+      "middle": "电涌保护器",
+      "leaf": "TGDY55(祥云3.0)"
+    },
+    "standard_specs": {
+      "pole_count": {
+        "value_text": "4P",
+        "value_num": 4,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "试验分类",
+        "value": "II",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "冲击电流（kA）",
+        "value": "/",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "最大放电电流（kA）",
+        "value": "40kA",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大持续工作电压",
+        "value": "385",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "极数",
+        "value": "4P",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "摇信",
+        "value": "/",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "备注",
+        "value": "/",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=/；备注=/",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2026-05-17 22:47:15.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 52,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  },
+  {
+    "material_code": "338020100238",
+    "item_id": "16275790",
+    "description": "TGDY55II-40 385V 4P F(祥云3.0)",
+    "category": {
+      "code": "338.33802.3380206",
+      "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+      "path": [
+        "保护器类",
+        "电涌保护器",
+        "TGDY55(祥云3.0)"
+      ],
+      "root": "保护器类",
+      "middle": "电涌保护器",
+      "leaf": "TGDY55(祥云3.0)"
+    },
+    "standard_specs": {
+      "pole_count": {
+        "value_text": "4P",
+        "value_num": 4,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "试验分类",
+        "value": "II",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "冲击电流（kA）",
+        "value": "/",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "最大放电电流（kA）",
+        "value": "40kA",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大持续工作电压",
+        "value": "385",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "极数",
+        "value": "4P",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "摇信",
+        "value": "是",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "备注",
+        "value": "/",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=是；备注=/",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2026-01-13 00:00:00.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 52,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  },
+  {
+    "material_code": "338020600106",
+    "item_id": "16788036",
+    "description": "TGDY55II-40 385V 4P(祥云3.0)(一体式)",
+    "category": {
+      "code": "338.33802.3380206",
+      "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+      "path": [
+        "保护器类",
+        "电涌保护器",
+        "TGDY55(祥云3.0)"
+      ],
+      "root": "保护器类",
+      "middle": "电涌保护器",
+      "leaf": "TGDY55(祥云3.0)"
+    },
+    "standard_specs": {
+      "pole_count": {
+        "value_text": "4P",
+        "value_num": 4,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "试验分类",
+        "value": "II",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "冲击电流（kA）",
+        "value": "/",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "最大放电电流（kA）",
+        "value": "40kA",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大持续工作电压",
+        "value": "385",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "极数",
+        "value": "4P",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "摇信",
+        "value": "/",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "备注",
+        "value": "(一体式)",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=/；备注=(一体式)",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2026-05-17 22:47:15.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 96,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  },
+  {
+    "material_code": "338020700012",
+    "item_id": "16450348",
+    "description": "TGSCB1-40II 4P新",
+    "category": {
+      "code": "338.33803.3380302",
+      "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+      "path": [
+        "保护器类",
+        "SPD后备保护器",
+        "TGSCB1(新)"
+      ],
+      "root": "保护器类",
+      "middle": "SPD后备保护器",
+      "leaf": "TGSCB1(新)"
+    },
+    "standard_specs": {
+      "rated_voltage": {
+        "value_text": "AC230/400V",
+        "value_num": 30,
+        "raw_name": "额定工作电压",
+        "source": "type1"
+      },
+      "pole_count": {
+        "value_text": "4P",
+        "value_num": 4,
+        "unit": "P",
+        "raw_name": "极数",
+        "source": "type1"
+      },
+      "breaking_capacity": {
+        "value_text": "100kA",
+        "value_num": 100,
+        "unit": "kA",
+        "raw_name": "分断能力",
+        "source": "type1"
+      }
+    },
+    "source_attributes": [
+      {
+        "name": "额定工作电压",
+        "value": "AC230/400V",
+        "source": "type1",
+        "position": 0
+      },
+      {
+        "name": "试验类型",
+        "value": "II",
+        "source": "type1",
+        "position": 1
+      },
+      {
+        "name": "冲击电流",
+        "value": "/",
+        "source": "type1",
+        "position": 2
+      },
+      {
+        "name": "最大放电电流",
+        "value": "40kA",
+        "source": "type1",
+        "position": 3
+      },
+      {
+        "name": "标称放电电流",
+        "value": "20kA",
+        "source": "type1",
+        "position": 4
+      },
+      {
+        "name": "极数",
+        "value": "4P",
+        "source": "type1",
+        "position": 5
+      },
+      {
+        "name": "分断能力",
+        "value": "100kA",
+        "source": "type1",
+        "position": 6
+      }
+    ],
+    "specification_text": "额定工作电压=AC230/400V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=4P；分断能力=100kA",
+    "source_status": "有效",
+    "data_status": "ACTIVE",
+    "quality_flags": [],
+    "last_update_date": "2026-01-13 00:00:00.0",
+    "provenance": {
+      "source": "product-spec-api",
+      "date_from": "2017-01-01",
+      "type1_page": 75,
+      "type2_attribute_count_valid": 0
+    },
+    "publication_basis": "AUTO_RULE_V1"
+  }
+]

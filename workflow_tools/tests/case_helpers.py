@@ -12,7 +12,7 @@ from openpyxl import load_workbook
 
 ROOT=Path(__file__).resolve().parents[2]
 FIXTURES=Path(__file__).parent/'fixtures'
-DOC=yaml.safe_load((ROOT/'formal_selection_quote_v18_2_http_api.yml').read_text())
+DOC=yaml.safe_load((ROOT/'formal_selection_quote_v18_2_1_http_api.yml').read_text())
 NODES={n['id']:n for n in DOC['workflow']['graph']['nodes']}
 
 

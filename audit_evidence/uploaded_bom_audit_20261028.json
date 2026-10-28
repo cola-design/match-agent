@@ -1,0 +1,165 @@
+{
+  "scope": "User-supplied V18.2 workbook audit and offline V18.2.1 replay; no live database query, deployment or writes",
+  "uploaded_workbook_sha256": "f9e736540e1e4f0411ffa85b6bb7b039a1cae964270b505112ef960c39df1fc0",
+  "uploaded_workbook_type": "BOM_CONFIRMATION",
+  "uploaded_workflow_version": "V18.2",
+  "rows": 12,
+  "quantities": [
+    1,
+    1,
+    1,
+    1,
+    3,
+    3,
+    1,
+    1,
+    1,
+    1,
+    4,
+    1
+  ],
+  "units": [
+    "只",
+    "只",
+    "只",
+    "只",
+    "个",
+    "个",
+    "个",
+    "件",
+    "件",
+    "件",
+    "个",
+    "套"
+  ],
+  "uploaded_status_counts": {
+    "MATCHED": 1,
+    "NEED_REVIEW": 2,
+    "NOT_RETRIEVED": 9
+  },
+  "issues": [
+    {
+      "symbol": "SCB",
+      "error": "Category aliases 后备保护器 and SPD后备保护器 not normalized",
+      "fix": "Exact family alias; no fuzzy category bypass"
+    },
+    {
+      "symbol": "SPD",
+      "error": "4P requirement retained actual 3P+N products 338020100234 and 338020100235",
+      "fix": "Exact full pole topology in selection and quote revalidation"
+    },
+    {
+      "symbol": "BOX",
+      "error": "ip_rating shown as an internal English key",
+      "fix": "Display 防护等级; source value preserved"
+    }
+  ],
+  "confirmation_round_trip_guard": "VALID",
+  "hidden_context_intact": true,
+  "layout_checked": {
+    "actual_row_heights_pt": [
+      57,
+      137
+    ],
+    "main_print_area": "A1:J16",
+    "freeze_panes": "A5",
+    "font": "Microsoft YaHei 10.5",
+    "wrapped_cells": true,
+    "hidden_metadata_excluded_from_print": true,
+    "visual_limit": "Workbook structure inspected; no fresh Excel/WPS/LibreOffice rendering in this audit"
+  },
+  "prices_checked": false,
+  "price_reason": "This workbook is a pre-confirmation BOM and has no price rows",
+  "patched_workflow": "formal_selection_quote_v18_2_1_http_api.yml",
+  "patched_sha256": "5271fdcf5eb57f70cd4ceea5945eff085fbbae7b896fcb50b044ed21752a256a",
+  "offline_tests_passed": 26,
+  "offline_replay": [
+    {
+      "symbol": "QF",
+      "match_status": "NEED_REVIEW",
+      "material_code": "",
+      "candidate_codes": [
+        "335012800535",
+        "335012800536",
+        "335012800537"
+      ]
+    },
+    {
+      "symbol": "QS",
+      "match_status": "MATCHED",
+      "material_code": "336010500031",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "SCB",
+      "match_status": "MATCHED",
+      "material_code": "338020700012",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "SPD",
+      "match_status": "NEED_REVIEW",
+      "material_code": "",
+      "candidate_codes": [
+        "338020100237",
+        "338020100238",
+        "338020600106"
+      ]
+    },
+    {
+      "symbol": "XG",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "L25",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "L16",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "BR270",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "BR160",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "PE",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "F",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    },
+    {
+      "symbol": "BOX",
+      "match_status": "NOT_RETRIEVED",
+      "material_code": "",
+      "candidate_codes": []
+    }
+  ],
+  "fixture_note": "SCB category_path reconstructed from rejection text because confirmation context does not persist category_path; product fixtures from prior source snapshot, not a new live database call",
+  "pending": [
+    "Re-run V18.2.1 in user Dify and inspect generated confirmation workbook",
+    "Validate actual printed appearance in target Excel/WPS",
+    "Confirm auxiliary/cabinet enterprise records through API or database",
+    "Confirm BOM and validate full pricing branch before server release"
+  ]
+}
