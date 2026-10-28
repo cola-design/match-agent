@@ -140,7 +140,7 @@ def run(legacy_archive=None):
     output = ROOT / 'audit_evidence/test_50kw_formal_product_coverage_20261028.json'
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2))
     with output.with_suffix('.csv').open('w', encoding='utf-8-sig', newline='') as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator='\n')
         writer.writerow(['位号', '测试用例要求', '正式产品快照有对应记录', '对应正式编码',
                          '该编码发布状态', '旧测试编码', '旧测试记录状态'])
         for case in report['cases']:
