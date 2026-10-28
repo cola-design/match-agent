@@ -92,4 +92,3 @@ def category(name: str, code: str) -> dict[str, Any]:
         result["middle"] = path[1] if len(path) > 1 else path[0]
         result["leaf"] = path[-1]
     return result
-
