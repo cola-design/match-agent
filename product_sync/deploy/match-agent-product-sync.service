@@ -1,0 +1,12 @@
+[Unit]
+Description=Reconcile upstream product specifications into MongoDB
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/match-agent-sync/product_sync
+ExecStart=/usr/bin/docker compose run --rm sync --apply
+# Exit nonzero when the pull, snapshot checks, write guards or verification fail.
+TimeoutStartSec=4h

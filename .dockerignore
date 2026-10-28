@@ -1,0 +1,11 @@
+*
+!product_sync/
+!product_sync/**
+!mongodb_api/
+!mongodb_api/product_contract.py
+product_sync/.env
+product_sync/.env.*
+!product_sync/.env.example
+product_sync/tests/
+product_sync/__pycache__/
+product_sync/sync_state/

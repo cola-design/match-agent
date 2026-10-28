@@ -1,0 +1,19 @@
+{
+  "scope": "Original uploaded product-data.rar, offline staging only; not a live source call or database migration",
+  "result": "passed",
+  "snapshot": {
+    "type1": {
+      "pages": 117,
+      "rows": 116632,
+      "duplicate_versions_resolved": 0
+    },
+    "type2": {
+      "pages": 885,
+      "rows": 884476,
+      "duplicate_versions_resolved": 0
+    },
+    "unique_products": 116632,
+    "type2_only_codes": 23429
+  },
+  "page_sequences_contiguous": true
+}

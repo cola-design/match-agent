@@ -1,0 +1,23 @@
+name: match-agent-product-sync
+services:
+  sync:
+    build:
+      context: ..
+      dockerfile: product_sync/Dockerfile
+    env_file: .env
+    init: true
+    cpus: 1.0
+    mem_limit: 1g
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: [/tmp]
+    volumes:
+      - sync_state:/state
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+volumes:
+  sync_state:

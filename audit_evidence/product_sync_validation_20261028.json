@@ -1,0 +1,34 @@
+{
+  "scope": "Offline unit checks and isolated fixture HTTP/MongoDB integration; no user database or live source contacted",
+  "sync_unit_tests_passed": 17,
+  "api_regression_tests_passed": 15,
+  "workflow_regression_tests_passed": 6,
+  "integration": {
+    "ok": true,
+    "mongo_version": "7.0.45",
+    "preview_no_writes": true,
+    "mixed_snapshot_diff": true,
+    "repeat_zero_writes": true,
+    "missing_products_preserved": true,
+    "manual_fields_preserved": true,
+    "fetch_failure_no_writes": true,
+    "concurrent_override_guard": true,
+    "prices_unchanged": true
+  },
+  "original_archive_staging_report": "product_sync_original_archive_staging_20261028.json",
+  "compose_configuration_validated": true,
+  "timer_calendar_validated": "*-*-* 02:00:00 Asia/Shanghai",
+  "offline_container_runtime_check": {
+    "basis": "Existing cached Python 3.12 dependency image, not a target-server production build",
+    "non_root_uid": 10001,
+    "entrypoint_and_shared_imports": "passed",
+    "fresh_persistent_volume_write_permission": "passed"
+  },
+  "pending": [
+    "Live API credentials and source pagination/version contract validation",
+    "Live read-only sync preview after product field repair has completed",
+    "Authorized writer-account verification and initial reviewed apply",
+    "Production image build on target network and timer activation",
+    "Operational disk retention, backup and failed-job monitoring configuration"
+  ]
+}
