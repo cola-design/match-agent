@@ -91,6 +91,20 @@ $env:SOURCE_DATE_FROM = '2017-01-01'
 
 当前产品数少于预期、属性快照异常、重复冲突、分页重复、原库结构类型错误，会停止。默认变化超过原库20%时，允许生成预览，但禁止正式写入。阈值调整必须有预览依据，不要只为让任务成功而关闭校验。
 
+### 已保存页的本地诊断
+
+如果预览报告为 `SOURCE_MATERIAL_CODE_NOT_NONEMPTY_STRING`，表示源记录的 ITEM_NUM 缺失、不是字符串、为空或含内部空白。这不是 MongoDB 密码错误。程序已在校验前保存原始响应，不用重新拉一遍数据即可定位。
+
+旧包用户先在包含 product_sync 和 mongodb_api 的根目录下载单文件：
+
+```powershell
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/cola-design/match-agent/main/product_sync/diagnose_snapshot.py" -OutFile ".\product_sync\diagnose_snapshot.py"
+.\.venv\Scripts\python.exe .\product_sync\diagnose_snapshot.py
+Copy-Item .\sync_state\source_diagnostic.json "$env:USERPROFILE\Desktop\sync_source_diagnostic.json"
+```
+
+诊断默认读取 latest.json 指向的运行；可用 `--run-id 运行编号` 指定旧运行。它只查看该次运行每种类型最后保存的一页，输出准确页码、行号、编码实际类型、编码值及少量记录标识，不读取接口密钥、不请求网络、不访问数据库，也不修改原运行报告。先核对诊断报告再决定源数据处理策略；不要擅自补前导零或静默跳过不完整产品快照后写库。
+
 ## 5. 服务器独立部署（本机预览通过后）
 
 推荐固定目录 `/opt/match-agent-sync`，将解压后两个子目录和根目录 `.dockerignore` 一起放到这里：
