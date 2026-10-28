@@ -48,3 +48,5 @@ Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/cola-
 26 项离线检查通过，包括这次实际输入的类别别名回归、真实 3P+N 产品剔除、极数冲突与缺失处理、报价二次极数检查及原有 22 项回归。
 
 机器可读核验记录：`audit_evidence/uploaded_bom_audit_20261028.json`。离线复算示例明确标记为“待 Dify 重新运行核验”，不作为用户 Dify 已通过的证据。
+
+后续已对正式产品导入快照及旧测试库完成全量覆盖核验：4 项主要元件存在，8 项辅料/柜体仅有旧库的临时 TEST_ONLY 记录。详见 [50kW 产品覆盖核验](test_50kw_database_coverage_20261028.md)。

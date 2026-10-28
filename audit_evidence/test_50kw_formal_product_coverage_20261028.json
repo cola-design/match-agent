@@ -1,0 +1,3236 @@
+{
+  "scope": "Full saved formal-product import snapshot; read-only; not a new query of user MongoDB",
+  "sources": [
+    {
+      "name": "products_pending_review_json_parts.zip",
+      "sha256": "6e3ae30d295ddb0548ad9bda2284132221de5b0bcc748dd6e7510b2ad6470ced"
+    },
+    {
+      "name": "products_auto_active_json_parts.zip",
+      "sha256": "1bd0af22646c929676cb2e1c2845975cc0ddb956f8ec72382d81335a03baca7a"
+    },
+    {
+      "name": "formal_mongodb_import_bundle.tar.gz",
+      "sha256": "bbc1d6812410ccd78de6e8d8346013fbf87bd16421ff3f9d9d5ccb49eaa2dad9"
+    }
+  ],
+  "products_scanned": 116632,
+  "active_overlay_codes": 63321,
+  "other_main_records": 53311,
+  "source_status_counts": {
+    "无效": 47462,
+    "有效": 69170
+  },
+  "type2_only_candidates_scanned": 7514,
+  "category_counts": {
+    "高压负荷开关": 314,
+    "高压隔离开关": 154,
+    "高压真空断路器": 460,
+    "漏电断路器": 16636,
+    "缺省": 3,
+    "双电源自动转换开关": 2825,
+    "电动机调速器、保护器": 1944,
+    "塑壳断路器": 29923,
+    "万能式断路器": 33386,
+    "隔离开关": 2693,
+    "小型断路器": 3939,
+    "小型漏电断路器": 3926,
+    "接触器": 3371,
+    "交流接触器": 1,
+    "中间继电器": 304,
+    "接触器辅助": 166,
+    "热继电器": 305,
+    "时间继电器": 550,
+    "小型电磁继电器": 225,
+    "起动柜、起动器": 285,
+    "电涌保护器": 177,
+    "低压软起动器": 66,
+    "恒压供水控制器": 2,
+    "低压变频器": 144,
+    "控制变压器": 1932,
+    "机床控制变压器": 603,
+    "变压器": 9,
+    "电抗器": 164,
+    "调压器": 33,
+    "稳压器": 94,
+    "控制器": 35,
+    "普通电容": 396,
+    "智能电容": 357,
+    "塑壳式互感器": 2482,
+    "浇注式互感器": 500,
+    "模数化插座": 7,
+    "小三箱类": 111,
+    "接线端子": 109,
+    "避雷器": 12,
+    "熔断器": 313,
+    "光伏熔断器": 24,
+    "按钮": 1332,
+    "刀开关": 535,
+    "倒顺开关": 3,
+    "脚踏开关": 3,
+    "转换开关": 609,
+    "信号灯": 422,
+    "行程开关": 52,
+    "42系列电流电压表": 480,
+    "69系列电流电压表": 33,
+    "6系列电流电压表": 674,
+    "85系列电流电压表": 57,
+    "PA系列电流电压表": 8,
+    "PD系列电流电压表": 11,
+    "PZ系列电流电压表": 53,
+    "44系列电流电压表": 32,
+    "59系列电流电压表": 16,
+    "99系列电流电压表": 103,
+    "PD系列电子表": 32,
+    "PV系列电流电压表": 3,
+    "DD型单相液晶电能表": 34,
+    "DD型电子表": 46,
+    "DD型单相预付费电能表": 21,
+    "DS系列电子表": 131,
+    "DT型三相液晶电能表": 65,
+    "DT型电子表": 440,
+    "单相费控智能电能表": 6,
+    "DD系列机械表": 4,
+    "DT系列机械表": 7,
+    "开关电源": 133,
+    "元器件配件": 423,
+    "TG精品配件": 65,
+    "变频器配件": 1,
+    "有源治理": 27,
+    "电容器投切开关": 14,
+    "快速熔断器": 195,
+    "不带过流保护漏电断路器": 143,
+    "小型隔离开关": 86,
+    "自恢复式过欠压保护器": 81,
+    "SPD后备保护器": 116,
+    "机械应急启动装置（交流接触器）": 29,
+    "断相与相序保护继电器": 6,
+    "直流继电器": 333,
+    "新能源变压器": 221,
+    "开合式互感器": 169,
+    "水泵控制器": 1,
+    "水泵控制箱": 8,
+    "跌落式熔断器": 16,
+    "环网柜": 3,
+    "高压成套设备": 4,
+    "P256型电流电压表": 243,
+    "TGPDK型电流电压表": 6,
+    "DT型三相预付费电能表": 24,
+    "DJ系列电子表": 18,
+    "集中控制器": 2,
+    "物联网智能电表": 53,
+    "预付费电能表": 8,
+    "低压成套设备": 4,
+    "箱变成套设备": 1,
+    "预制舱": 1,
+    "一二次融合成套环网箱": 2,
+    "储能类": 4
+  },
+  "cases": [
+    {
+      "symbol": "QF",
+      "requirement": "TGB1N-125H 4P C100 10kA",
+      "known_formal_or_legacy_test_code": "335012800535",
+      "code_present_in_formal_snapshot": true,
+      "known_code_record": {
+        "material_code": "335012800535",
+        "description": "TGB1N-125H 4P C100(祥云3.0)",
+        "category": {
+          "code": "335.33501.3350165",
+          "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+          "path": [
+            "小型断路器类",
+            "小型断路器",
+            "TGB1N(祥云3.0)"
+          ],
+          "root": "小型断路器类",
+          "middle": "小型断路器",
+          "leaf": "TGB1N(祥云3.0)"
+        },
+        "source_status": "有效",
+        "effective_data_status": "ACTIVE",
+        "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+        "quality_flags": []
+      },
+      "broad_model_or_relevant_family_matches": 84,
+      "active_broad_matches": 76,
+      "matches": [
+        {
+          "material_code": "335012800487",
+          "description": "TGB1N-125H 1P B100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=B；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800488",
+          "description": "TGB1N-125H 1P B125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=B；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800489",
+          "description": "TGB1N-125H 1P B63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=B；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800490",
+          "description": "TGB1N-125H 1P B80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=B；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800491",
+          "description": "TGB1N-125H 1P C100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800492",
+          "description": "TGB1N-125H 1P C125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800493",
+          "description": "TGB1N-125H 1P C63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=C；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800494",
+          "description": "TGB1N-125H 1P C80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800495",
+          "description": "TGB1N-125H 1P D100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800496",
+          "description": "TGB1N-125H 1P D125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800497",
+          "description": "TGB1N-125H 1P D63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800498",
+          "description": "TGB1N-125H 1P D80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=1P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800499",
+          "description": "TGB1N-125H 2P B100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=B；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800500",
+          "description": "TGB1N-125H 2P B125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=B；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800501",
+          "description": "TGB1N-125H 2P B63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=B；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800502",
+          "description": "TGB1N-125H 2P B80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=B；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800503",
+          "description": "TGB1N-125H 2P C100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800504",
+          "description": "TGB1N-125H 2P C100 +MX1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=MX1；名称=分励脱扣器；工作电压=AC230V/400V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800505",
+          "description": "TGB1N-125H 2P C125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800506",
+          "description": "TGB1N-125H 2P C63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800507",
+          "description": "TGB1N-125H 2P C80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800508",
+          "description": "TGB1N-125H 2P C80 +MX1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX1；名称=分励脱扣器；工作电压=AC230V/400V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800509",
+          "description": "TGB1N-125H 2P D100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800510",
+          "description": "TGB1N-125H 2P D125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800511",
+          "description": "TGB1N-125H 2P D63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800512",
+          "description": "TGB1N-125H 2P D80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800513",
+          "description": "TGB1N-125H 3P B100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=B；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800514",
+          "description": "TGB1N-125H 3P B125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=B；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800515",
+          "description": "TGB1N-125H 3P B63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=B；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800516",
+          "description": "TGB1N-125H 3P B80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=B；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800517",
+          "description": "TGB1N-125H 3P C100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800518",
+          "description": "TGB1N-125H 3P C100 +SD1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=SD1；名称=报警触头；工作电压=AC415V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800519",
+          "description": "TGB1N-125H 3P C100 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800520",
+          "description": "TGB1N-125H 3P C125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800521",
+          "description": "TGB1N-125H 3P C125 +SD1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=SD1；名称=报警触头；工作电压=AC415V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800522",
+          "description": "TGB1N-125H 3P C63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800523",
+          "description": "TGB1N-125H 3P C80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800524",
+          "description": "TGB1N-125H 3P C80 +MX1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX1；名称=分励脱扣器；工作电压=AC230V/400V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800525",
+          "description": "TGB1N-125H 3P C80 MX1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800526",
+          "description": "TGB1N-125H 3P D100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800527",
+          "description": "TGB1N-125H 3P D125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800528",
+          "description": "TGB1N-125H 3P D125 +SD1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=SD1；名称=报警触头；工作电压=AC415V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800529",
+          "description": "TGB1N-125H 3P D63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800530",
+          "description": "TGB1N-125H 3P D80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800531",
+          "description": "TGB1N-125H 4P B100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=B；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800532",
+          "description": "TGB1N-125H 4P B125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=B；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800533",
+          "description": "TGB1N-125H 4P B63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=B；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800534",
+          "description": "TGB1N-125H 4P B80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=B；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800535",
+          "description": "TGB1N-125H 4P C100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800536",
+          "description": "TGB1N-125H 4P C100 +OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800537",
+          "description": "TGB1N-125H 4P C100 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800538",
+          "description": "TGB1N-125H 4P C125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800539",
+          "description": "TGB1N-125H 4P C125 MX1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=MX1+OF1；名称=分励脱扣器+辅助触头；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800540",
+          "description": "TGB1N-125H 4P C63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800541",
+          "description": "TGB1N-125H 4P C80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800542",
+          "description": "TGB1N-125H 4P C80 MX1 +OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX1+OF1；名称=分励脱扣器+辅助触头；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800543",
+          "description": "TGB1N-125H 4P D100(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800544",
+          "description": "TGB1N-125H 4P D125(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800545",
+          "description": "TGB1N-125H 4P D63(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800546",
+          "description": "TGB1N-125H 4P D80(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=/；名称=/；工作电压=/；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800547",
+          "description": "TGB1N-125H 4P D80 SD1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=SD1+OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800884",
+          "description": "TGB1N-125H 3P D100 MX+OF1 AC/DC24V-48V(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC24V/AC48V/DC24/DC48V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335012800885",
+          "description": "TGB1N-125H 3P D125 MX+OF1 AC/DC24V-48V(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC24V/AC48V/DC24/DC48V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500024",
+          "description": "TGB1N-125H 4P C80 MX+OF1 AC/DC24V-48V(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX+OF1 DC24V；名称=分励辅助脱扣器；工作电压=MX1:AC24V/AC48V/DC24/DC48V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500028",
+          "description": "TGB1N-125H 3P C125 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=MX+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500029",
+          "description": "TGB1N-125H 3P C125 MX1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=MX1+OF1；名称=分励脱扣器+辅助触头；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500100",
+          "description": "TGB1N-125H 4P D80 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500108",
+          "description": "TGB1N-125H 2P C125 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500184",
+          "description": "TGB1N-125H 3P D80 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500185",
+          "description": "TGB1N-125H 3P D100 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500255",
+          "description": "TGB1N-125H 3P C80 +SD1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=SD1；名称=报警触头；工作电压=AC415V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500260",
+          "description": "TGB1N-125H 4P D80 +OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500332",
+          "description": "TGB1N-125H 3P C80 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500392",
+          "description": "TGB1N-125H 3P C80 SD1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500393",
+          "description": "TGB1N-125H 3P C100 SD1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500394",
+          "description": "TGB1N-125H 3P C100 SD1+OF1+MX1 DC24V(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=100A；分断能力=10kA；附件描述=MX1+OF1+SD1；名称=分励脱扣器+辅助触头+报警触头；工作电压=MX1:DC24V OF:AC415V SD1：AC415V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500395",
+          "description": "TGB1N-125H 2P C80 SD1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=2P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=SD1+OF1；名称=报警触头+辅助触头；工作电压=SD1:AC415V/DC125V OF1：AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500396",
+          "description": "TGB1N-125H 3P D80 +MX1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=80A；分断能力=10kA；附件描述=MX1；名称=分励脱扣器；工作电压=AC230V/400V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500397",
+          "description": "TGB1N-125H 3P D100 +MX1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=100A；分断能力=10kA；附件描述=MX1；名称=分励脱扣器；工作电压=AC230V/400V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500399",
+          "description": "TGB1N-125H 3P C80 MX+OF1+SD1 AC/DC24V-48V(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=C；额定电流=80A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC24V/AC48V/DC24/DC48V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500640",
+          "description": "TGB1N-125H 3P D63 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500641",
+          "description": "TGB1N-125H 3P D63 MX+OF1+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=63A；分断能力=10kA；附件描述=MX+OF1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500764",
+          "description": "TGB1N-125H 3P D125 MX+OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=3P；脱扣特性=D；额定电流=125A；分断能力=10kA；附件描述=MX1+OF1；名称=分励辅助脱扣器；工作电压=MX1:AC220V/AC240V/AC380V/AC415V OF:AC415V；保护电压=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "335016500840",
+          "description": "TGB1N-125H 4P C125 +OF1(祥云3.0)",
+          "category": {
+            "code": "335.33501.3350165",
+            "name": "小型断路器类.小型断路器.TGB1N(祥云3.0)",
+            "path": [
+              "小型断路器类",
+              "小型断路器",
+              "TGB1N(祥云3.0)"
+            ],
+            "root": "小型断路器类",
+            "middle": "小型断路器",
+            "leaf": "TGB1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "壳架电流=125A；极数=4P；脱扣特性=C；额定电流=125A；分断能力=10kA；附件描述=OF1；名称=辅助触头；工作电压=AC380V/AC415V/DC110V/DC125V；保护电压=/",
+          "quality_flags": []
+        }
+      ],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "335012800535",
+        "物料描述": "TGB1N-125H 4P C100(祥云3.0)",
+        "产品类别": "小型断路器",
+        "产品系列": "TGB1N(祥云3.0)",
+        "规格参数": "壳架电流=125A; 极数=4P; 脱扣特性=C; 额定电流=100A; 分断能力=10kA; 附件描述=/; 名称=/; 工作电压=/; 保护电压=/",
+        "状态": "待核实",
+        "数据质量": "OLD_SOURCE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "QS",
+      "requirement": "TGH1N-125 4P 100A",
+      "known_formal_or_legacy_test_code": "336010500031",
+      "code_present_in_formal_snapshot": true,
+      "known_code_record": {
+        "material_code": "336010500031",
+        "description": "TGH1N-125 4P 100A(祥云3.0)",
+        "category": {
+          "code": "336.33601.3360114",
+          "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+          "path": [
+            "小型隔离类",
+            "小型隔离开关",
+            "TGH1N(祥云3.0)"
+          ],
+          "root": "小型隔离类",
+          "middle": "小型隔离开关",
+          "leaf": "TGH1N(祥云3.0)"
+        },
+        "source_status": "有效",
+        "effective_data_status": "ACTIVE",
+        "specification_text": "名称壳架电流=125A；极数=4P；额定电流=100A",
+        "quality_flags": []
+      },
+      "broad_model_or_relevant_family_matches": 20,
+      "active_broad_matches": 20,
+      "matches": [
+        {
+          "material_code": "336010500019",
+          "description": "TGH1N-125 1P 100A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=1P；额定电流=100A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500020",
+          "description": "TGH1N-125 1P 125A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=1P；额定电流=125A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500021",
+          "description": "TGH1N-125 1P 32A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=1P；额定电流=32A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500022",
+          "description": "TGH1N-125 1P 63A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=1P；额定电流=63A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500023",
+          "description": "TGH1N-125 2P 100A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=2P；额定电流=100A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500024",
+          "description": "TGH1N-125 2P 125A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=2P；额定电流=125A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500025",
+          "description": "TGH1N-125 2P 32A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=2P；额定电流=32A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500026",
+          "description": "TGH1N-125 2P 63A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=2P；额定电流=63A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500027",
+          "description": "TGH1N-125 3P 100A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=3P；额定电流=100A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500028",
+          "description": "TGH1N-125 3P 125A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=3P；额定电流=125A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500029",
+          "description": "TGH1N-125 3P 32A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=3P；额定电流=32A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500030",
+          "description": "TGH1N-125 3P 63A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=3P；额定电流=63A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500031",
+          "description": "TGH1N-125 4P 100A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=4P；额定电流=100A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500032",
+          "description": "TGH1N-125 4P 125A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=4P；额定电流=125A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500033",
+          "description": "TGH1N-125 4P 32A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=4P；额定电流=32A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336010500034",
+          "description": "TGH1N-125 4P 63A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=4P；额定电流=63A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336011400001",
+          "description": "TGH1N-125 2P 50A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=2P；额定电流=50A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336011400089",
+          "description": "TGH1N-125 4P 80A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=4P；额定电流=80A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336011400090",
+          "description": "TGH1N-125 3P 25A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=3P；额定电流=25A",
+          "quality_flags": []
+        },
+        {
+          "material_code": "336011400091",
+          "description": "TGH1N-125 1P 25A(祥云3.0)",
+          "category": {
+            "code": "336.33601.3360114",
+            "name": "小型隔离类.小型隔离开关.TGH1N(祥云3.0)",
+            "path": [
+              "小型隔离类",
+              "小型隔离开关",
+              "TGH1N(祥云3.0)"
+            ],
+            "root": "小型隔离类",
+            "middle": "小型隔离开关",
+            "leaf": "TGH1N(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "名称壳架电流=125A；极数=1P；额定电流=25A",
+          "quality_flags": []
+        }
+      ],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "336010500031",
+        "物料描述": "TGH1N-125 4P 100A(祥云3.0)",
+        "产品类别": "小型隔离开关",
+        "产品系列": "TGH1N(祥云3.0)",
+        "规格参数": "名称壳架电流=125A; 极数=4P; 额定电流=100A",
+        "状态": "待核实",
+        "数据质量": "OLD_SOURCE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "SCB",
+      "requirement": "TGSCB1-40II 4P II 20/40kA",
+      "known_formal_or_legacy_test_code": "338020700012",
+      "code_present_in_formal_snapshot": true,
+      "known_code_record": {
+        "material_code": "338020700012",
+        "description": "TGSCB1-40II 4P新",
+        "category": {
+          "code": "338.33803.3380302",
+          "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+          "path": [
+            "保护器类",
+            "SPD后备保护器",
+            "TGSCB1(新)"
+          ],
+          "root": "保护器类",
+          "middle": "SPD后备保护器",
+          "leaf": "TGSCB1(新)"
+        },
+        "source_status": "有效",
+        "effective_data_status": "ACTIVE",
+        "specification_text": "额定工作电压=AC230/400V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=4P；分断能力=100kA",
+        "quality_flags": []
+      },
+      "broad_model_or_relevant_family_matches": 12,
+      "active_broad_matches": 4,
+      "matches": [
+        {
+          "material_code": "338020700009",
+          "description": "TGSCB1-40II 1P新",
+          "category": {
+            "code": "338.33803.3380302",
+            "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1(新)"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1(新)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "额定工作电压=AC230V/240V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=1P；分断能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020700010",
+          "description": "TGSCB1-40II 2P新",
+          "category": {
+            "code": "338.33803.3380302",
+            "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1(新)"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1(新)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "额定工作电压=AC230V/240V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=2P；分断能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020700011",
+          "description": "TGSCB1-40II 3P新",
+          "category": {
+            "code": "338.33803.3380302",
+            "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1(新)"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1(新)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "额定工作电压=AC230/400V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=3P；分断能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020700012",
+          "description": "TGSCB1-40II 4P新",
+          "category": {
+            "code": "338.33803.3380302",
+            "name": "保护器类.SPD后备保护器.TGSCB1(新)",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1(新)"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1(新)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "额定工作电压=AC230/400V；试验类型=II；冲击电流=/；最大放电电流=40kA；标称放电电流=20kA；极数=4P；分断能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100037",
+          "description": "TGSCB1-40II 1P 100kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=1P；分段能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100038",
+          "description": "TGSCB1-40II 2P 100kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=2P；分段能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100039",
+          "description": "TGSCB1-40II 3P 100kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=3P；分段能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100040",
+          "description": "TGSCB1-40II 4P 100kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=4P；分段能力=100kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100069",
+          "description": "TGSCB1-40II 1P 65kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=1P；分段能力=65kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100070",
+          "description": "TGSCB1-40II 2P 65kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=2P；分段能力=65kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100071",
+          "description": "TGSCB1-40II 3P 65kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=3P；分段能力=65kA",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338030100072",
+          "description": "TGSCB1-40II 4P 65kA",
+          "category": {
+            "code": "338.33803.3380301",
+            "name": "保护器类.SPD后备保护器.TGSCB1",
+            "path": [
+              "保护器类",
+              "SPD后备保护器",
+              "TGSCB1"
+            ],
+            "root": "保护器类",
+            "middle": "SPD后备保护器",
+            "leaf": "TGSCB1"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验类别=II；冲击放电电流=/；最大放电电流=40kA；极数=4P；分段能力=65kA",
+          "quality_flags": []
+        }
+      ],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "338020700012",
+        "物料描述": "TGSCB1-40II 4P新",
+        "产品类别": "SPD后备保护器",
+        "产品系列": "TGSCB1(新)",
+        "规格参数": "额定工作电压=AC230/400V; 试验类型=II; 冲击电流=/; 最大放电电流=40kA; 标称放电电流=20kA; 极数=4P; 分断能力=100kA",
+        "状态": "待核实",
+        "数据质量": "OLD_SOURCE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "SPD",
+      "requirement": "TGDY55II-40 385V 4P Imax40kA",
+      "known_formal_or_legacy_test_code": "338020100237",
+      "code_present_in_formal_snapshot": true,
+      "known_code_record": {
+        "material_code": "338020100237",
+        "description": "TGDY55II-40 385V 4P(祥云3.0)",
+        "category": {
+          "code": "338.33802.3380206",
+          "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+          "path": [
+            "保护器类",
+            "电涌保护器",
+            "TGDY55(祥云3.0)"
+          ],
+          "root": "保护器类",
+          "middle": "电涌保护器",
+          "leaf": "TGDY55(祥云3.0)"
+        },
+        "source_status": "有效",
+        "effective_data_status": "ACTIVE",
+        "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=/；备注=/",
+        "quality_flags": []
+      },
+      "broad_model_or_relevant_family_matches": 23,
+      "active_broad_matches": 22,
+      "matches": [
+        {
+          "material_code": "338020100225",
+          "description": "TGDY55II-40 385V 1P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=1P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100226",
+          "description": "TGDY55II-40 385V 1P F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=1P；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100227",
+          "description": "TGDY55II-40 385V 1P+N(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=1P+N；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100228",
+          "description": "TGDY55II-40 385V 1P+N F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=1P+N；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100230",
+          "description": "TGDY55II-40 385V 2P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=2P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100231",
+          "description": "TGDY55II-40 385V 2P F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=2P；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100232",
+          "description": "TGDY55II-40 385V 3P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100233",
+          "description": "TGDY55II-40 385V 3P F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100234",
+          "description": "TGDY55II-40 385V 3P+N(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P+N；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100235",
+          "description": "TGDY55II-40 385V 3P+N F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=3P+N；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100237",
+          "description": "TGDY55II-40 385V 4P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020100238",
+          "description": "TGDY55II-40 385V 4P F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=是；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600017",
+          "description": "TGDY55II-40 275V 2P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=275；极数=2P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600019",
+          "description": "TGDY55II-40 275V 4P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=275；极数=4P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600021",
+          "description": "TGDY55II-40 320V 2P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=320；极数=2P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600023",
+          "description": "TGDY55II-40 320V 4P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=320；极数=4P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600025",
+          "description": "TGDY55II-40 320V 3P+N(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=320；极数=3P+N；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600028",
+          "description": "TGDY55II-40 460V 3P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=460；极数=3P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600029",
+          "description": "TGDY55II-40 460V 4P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=460；极数=4P；摇信=/；备注=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600048",
+          "description": "TGDY55II-40 420V 4P(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "无效",
+          "effective_data_status": "PENDING_REVIEW",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=420；极数=4P；摇信=/",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600104",
+          "description": "TGDY55II-40 275V 4P(祥云3.0)(一体式)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=275；极数=4P；摇信=/；备注=(一体式)",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600106",
+          "description": "TGDY55II-40 385V 4P(祥云3.0)(一体式)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=385；极数=4P；摇信=/；备注=(一体式)",
+          "quality_flags": []
+        },
+        {
+          "material_code": "338020600125",
+          "description": "TGDY55II-40 275V 2P F(祥云3.0)",
+          "category": {
+            "code": "338.33802.3380206",
+            "name": "保护器类.电涌保护器.TGDY55(祥云3.0)",
+            "path": [
+              "保护器类",
+              "电涌保护器",
+              "TGDY55(祥云3.0)"
+            ],
+            "root": "保护器类",
+            "middle": "电涌保护器",
+            "leaf": "TGDY55(祥云3.0)"
+          },
+          "source_status": "有效",
+          "effective_data_status": "ACTIVE",
+          "specification_text": "试验分类=II；冲击电流（kA）=/；最大放电电流（kA）=40kA；最大持续工作电压=275；极数=2P；摇信=是；备注=/",
+          "quality_flags": []
+        }
+      ],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "338020100237",
+        "物料描述": "TGDY55II-40 385V 4P(祥云3.0)",
+        "产品类别": "电涌保护器",
+        "产品系列": "TGDY55(祥云3.0)",
+        "规格参数": "试验分类=II; 冲击电流（kA）=/; 最大放电电流（kA）=40kA; 最大持续工作电压=385; 极数=4P; 摇信=/; 备注=/",
+        "状态": "待核实",
+        "数据质量": "OLD_SOURCE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "XG",
+      "requirement": "PG29",
+      "known_formal_or_legacy_test_code": "TMP-AUX-PG29-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-PG29-01",
+        "物料描述": "PG29 尼龙防水接头（单孔，非金属）",
+        "产品类别": "电缆防水接头",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=个; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "L25",
+      "requirement": "DTLC-25mm²",
+      "known_formal_or_legacy_test_code": "TMP-AUX-DTLC25-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-DTLC25-01",
+        "物料描述": "DTLC-25mm² 铜铝接线鼻",
+        "产品类别": "铜铝接线鼻",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=个; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "L16",
+      "requirement": "DTLC-16mm²",
+      "known_formal_or_legacy_test_code": "TMP-AUX-DTLC16-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-DTLC16-01",
+        "物料描述": "DTLC-16mm² 铜铝接线鼻",
+        "产品类别": "铜铝接线鼻",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=个; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "BR270",
+      "requirement": "表位支架270",
+      "known_formal_or_legacy_test_code": "TMP-AUX-BRACKET270-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-BRACKET270-01",
+        "物料描述": "电能表安装支架 270（具体尺寸单位待核对）",
+        "产品类别": "表位支架",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=件; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "BR160",
+      "requirement": "表位支架160",
+      "known_formal_or_legacy_test_code": "TMP-AUX-BRACKET160-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-BRACKET160-01",
+        "物料描述": "电能表安装支架 160（具体尺寸单位待核对）",
+        "产品类别": "表位支架",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=件; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "PE",
+      "requirement": "PE接地排标准5孔",
+      "known_formal_or_legacy_test_code": "TMP-AUX-PE5-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-PE5-01",
+        "物料描述": "PE接地排 标准5孔",
+        "产品类别": "接地排",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=件; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "F",
+      "requirement": "304不锈钢膨胀螺栓M8×80",
+      "known_formal_or_legacy_test_code": "TMP-AUX-ANCHOR-M8X80-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-ANCHOR-M8X80-01",
+        "物料描述": "304不锈钢膨胀螺栓 M8×80",
+        "产品类别": "紧固件",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=个; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    },
+    {
+      "symbol": "BOX",
+      "requirement": "550×700×150mm 201不锈钢 0.8mm IP54 RAL7035 双门",
+      "known_formal_or_legacy_test_code": "TMP-AUX-BOX-550700150-01",
+      "code_present_in_formal_snapshot": false,
+      "known_code_record": null,
+      "broad_model_or_relevant_family_matches": 0,
+      "active_broad_matches": 0,
+      "matches": [],
+      "type2_only_matches": [],
+      "legacy_test_record": {
+        "物料编码": "TMP-AUX-BOX-550700150-01",
+        "物料描述": "201不锈钢柜体 550×700×150mm 0.8mm IP54 RAL7035 双门",
+        "产品类别": "柜体箱体",
+        "产品系列": "50kW测试辅材/柜体",
+        "规格参数": "计量单位=套; 适用项目=TEST-PV50-TA-001; 数据类型=临时辅料待正式编码映射",
+        "状态": "TEST_ONLY/需工程师核实/正式物料编码待确认",
+        "数据质量": "PROJECT_SAMPLE_UNVERIFIED"
+      }
+    }
+  ],
+  "legacy_archive": {
+    "name": "产品库.zip",
+    "sha256": "f5a24bb619ba2323207945f23d2fe595ff16d703805383a7e1169df39043aea2",
+    "note": "Original uploaded Markdown product archive, independently read without the cleaning output"
+  }
+}
