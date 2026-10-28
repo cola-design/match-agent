@@ -1,6 +1,8 @@
 # Dify 同服务器部署 MongoDB API（Linux + Docker Compose）
 
-此服务是独立容器，不是 Dify Python 沙箱的一部分。Dify 调 HTTP API，API 使用只读账号查询 MongoDB。所有数据操作均为读取。
+此服务是独立容器，不是 Dify Python 沙箱的一部分。Dify 调 HTTP API，API 使用只读账号查询 MongoDB。API接口的数据操作均为读取。
+
+**先在电脑修复现有产品字段时，请使用 [产品字段修复步骤.md](产品字段修复步骤.md)。** 独立工具 `repair_products.py` 默认只读预览；只有显式 `--apply` / `--rollback` 才会写入 products，须使用有更新权限的账号。它与正在运行的API进程分开，不操作价格。
 
 ```text
 Dify HTTP节点 → match-agent-mongo-api:8000 → MongoDB:27017
@@ -130,6 +132,7 @@ PY
 
 ```text
 GET /v1/products/search?q=型号或规格&limit=30
+GET /v1/products/search?q=型号与规格&model=明确型号&category=类别&limit=30
 GET /v1/products/物料编码
 GET /v1/prices/物料编码?as_of=YYYY-MM-DD
 ```
@@ -139,6 +142,8 @@ GET /v1/prices/物料编码?as_of=YYYY-MM-DD
 价格过滤：`status=ACTIVE` 且有效期覆盖报价日期，缺省日期按北京时间。
 
 候选搜索只负责召回，后续仍需工作流校验类别和全部规格，不得直接采用第一条结果。多个有效价格同时返回时，应保留冲突供工作流阻断，不自动选择某一条。
+
+1.2.0版本保障指定型号匹配，在截取前按检索词命中排序。未传model时，从q的首个明确型号词推断；纯规格词仍按关键词召回。API会将可解析的嵌套JSON字符串还原为对象/数组，重新计算保守的单值数值派生字段；原始规格文字和数据库不变。损坏的结构字段返回503，不能视作无匹配。数据库真实类型仍须用独立修复工具处理。
 
 API 不会把已入库的估算价变成经过市场核验的采购价，`price_basis` 原样返回。
 

@@ -1,5 +1,7 @@
 # products_pending_review 分片导入说明
 
+**2026-10-28补充：不能只用条数验收。** 已在实际导入库中发现Navicat把嵌套对象/数组存成JSON字符串。已导入的数据不要再次插入或删库；按 [产品字段修复步骤](mongodb_api/产品字段修复步骤.md) 先只读预览。后续导入必须核对实际BSON类型：material_code为string、category和standard_specs为object、source_attributes和quality_flags为array。检查脚本见 [check_live_field_types.js](audit_tools/check_live_field_types.js)。
+
 `products_pending_review_json_parts.zip` 包含 6 个标准 JSON 数组文件，共 116,632 条产品记录。
 
 1. 下载并解压 `products_pending_review_json_parts.zip`。

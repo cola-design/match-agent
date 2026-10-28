@@ -5,6 +5,9 @@ from datetime import datetime
 from pathlib import Path
 import unittest
 from unittest.mock import patch
+import sys
+import json
+sys.path.insert(0, str(Path(__file__).parents[1]))
 
 from fastapi.testclient import TestClient
 from pymongo.errors import ServerSelectionTimeoutError
@@ -28,6 +31,10 @@ class Collection:
         self.query = None
     def find(self, query, projection):
         self.query = query
+        return Cursor(self.rows)
+    def aggregate(self, pipeline, **kwargs):
+        self.pipeline = pipeline
+        self.query = pipeline[0]['$match']
         return Cursor(self.rows)
 
 class Database:
@@ -74,16 +81,20 @@ class APITest(unittest.TestCase):
         self.assertEqual(self.client.get('/health', headers=self.headers).status_code, 200)
 
     def test_static_search_is_not_a_material_code(self):
-        self.db.collections['products'].rows = [{'material_code': '001', '_id': 'hidden'}]
+        self.db.collections['products'].rows = [{'material_code':'001','description':'TGM1 160A','category':{'middle':'塑壳断路器'},'standard_specs':{},'source_attributes':[],'quality_flags':[],'_id':'hidden'}]
         response = self.client.get('/v1/products/search', params={'q': 'TGM1 160A'}, headers=self.headers)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), [{'material_code': '001'}])
+        self.assertEqual(response.json()[0]['material_code'], '001')
+        self.assertNotIn('_id',response.json()[0])
         query = self.db.collections['products'].query
         self.assertNotIn('material_code', query)
         self.assertEqual(query['data_status'], 'ACTIVE')
         self.assertEqual(query['source_status'], '有效')
-        tokens = {list(clause.values())[0]['$regex'] for clause in query['$or']}
-        self.assertEqual(tokens, {'TGM1', '160A'})
+        model_filter = query['$and'][0]['description']['$regex']
+        self.assertIn('TGM1', model_filter)
+        pipeline = self.db.collections['products'].pipeline
+        self.assertIn('$sort', pipeline[2])
+        self.assertIn('$limit', pipeline[3])
 
     def test_exact_code_preserves_leading_zero(self):
         self.client.get('/v1/products/00123456', headers=self.headers)
@@ -100,6 +111,33 @@ class APITest(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
         self.assertEqual([r['price_version'] for r in result.json()], ['A', 'B'])
         self.assertEqual(self.client.get('/v1/prices/001?as_of=not-a-date', headers=self.headers).status_code, 422)
+
+    def test_navicat_serialized_fields_normalized_without_writing(self):
+        record = {'material_code':'00123456','description':'TGB1N-125H 4P C100',
+                  'category':json.dumps({'middle':'小型断路器'}),
+                  'standard_specs':json.dumps({'voltage':{'value_text':'AC380V','value_num':80,'unit':'V'}}),
+                  'source_attributes':'[]','quality_flags':'[]', 'provenance':'{}', 'item_id':123,
+                  'data_status':'ACTIVE','source_status':'有效'}
+        self.db.collections['products'].rows = [record]
+        response=self.client.get('/v1/products/00123456',headers=self.headers)
+        self.assertEqual(response.status_code,200)
+        output=response.json()[0]
+        self.assertIsInstance(output['category'],dict)
+        self.assertIsInstance(output['source_attributes'],list)
+        self.assertEqual(output['standard_specs']['voltage']['value_num'],380)
+        self.assertEqual(output['item_id'],'123')
+        self.assertIsInstance(record['category'],str)
+
+    def test_invalid_nested_json_stops_instead_of_inventing_empty_specs(self):
+        record={'material_code':'00123456','category':'not-json','standard_specs':'{}','source_attributes':'[]','quality_flags':'[]'}
+        self.db.collections['products'].rows=[record]
+        response=self.client.get('/v1/products/00123456',headers=self.headers)
+        self.assertEqual(response.status_code,503)
+        self.assertEqual(response.json()['field'],'category')
+
+    def test_default_date_works_without_os_timezone_database(self):
+        self.db.collections['prices'].rows=[]
+        self.assertEqual(self.client.get('/v1/prices/001',headers=self.headers).status_code,200)
 
     def test_excessive_price_records_block(self):
         self.db.collections['prices'].rows = [{} for _ in range(101)]

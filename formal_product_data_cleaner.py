@@ -92,18 +92,10 @@ ALIASES = {
     "额定短路分断能力": "short_circuit_breaking_capacity",
 }
 
-def value_parts(value: str) -> dict[str, Any]:
-    result: dict[str, Any] = {"value_text": value}
-    if value in ("", "/"):
-        result["is_empty"] = True
-        return result
-    match = re.search(r"(?<![A-Za-z])([-+]?\d+(?:\.\d+)?)\s*([A-Za-zΩμ%]+)?", value)
-    if match:
-        number = float(match.group(1))
-        result["value_num"] = int(number) if number.is_integer() else number
-        if match.group(2):
-            result["unit"] = match.group(2)
-    return result
+def value_parts(value: str, field: str = "source_value") -> dict[str, Any]:
+    from mongodb_api.product_contract import normalize_spec
+    return normalize_spec({"value_text": value}, field)
+
 
 def parse_spec_string(raw: str, issues: list[dict[str, Any]], code: str, source: str) -> list[dict[str, Any]]:
     attrs = []
@@ -129,7 +121,7 @@ def add_standard_specs(attrs: list[dict[str, Any]], issues: list[dict[str, Any]]
         key = ALIASES.get(attr["name"])
         if not key:
             continue
-        item = value_parts(attr["value"])
+        item = value_parts(attr["value"], key)
         item["raw_name"] = attr["name"]
         item["source"] = attr.get("source", "")
         if key in standard:

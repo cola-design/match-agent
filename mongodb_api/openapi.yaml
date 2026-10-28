@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: match-agent MongoDB API
-  version: 1.1.0
+  version: 1.2.0
 servers:
   - url: http://match-agent-mongo-api:8000
 security:
@@ -17,6 +17,8 @@ paths:
       operationId: searchProducts
       parameters:
         - {name: q, in: query, required: true, schema: {type: string, maxLength: 240}}
+        - {name: model, in: query, required: false, schema: {type: string, maxLength: 180}}
+        - {name: category, in: query, required: false, schema: {type: string, maxLength: 180}}
         - {name: limit, in: query, required: false, schema: {type: integer, default: 30, maximum: 50, minimum: 1}}
       responses:
         '200': {description: Active product candidates requiring specification validation}

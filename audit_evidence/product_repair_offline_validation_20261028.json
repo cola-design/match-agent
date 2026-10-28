@@ -1,0 +1,19 @@
+{
+  "scope": "Published offline product snapshot; not the live user database",
+  "normalization": {
+    "scanned": 116632,
+    "standard_specs_changed": 83232,
+    "unsafe_scalar_removed": 172414,
+    "scalar_corrected_or_created": 43085
+  },
+  "all_invariants_passed": true,
+  "preserved": [
+    "material_code",
+    "source_status",
+    "data_status",
+    "specification_text",
+    "source_attributes",
+    "publication_basis"
+  ],
+  "idempotent": true
+}
