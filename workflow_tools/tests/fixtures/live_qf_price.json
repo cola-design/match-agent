@@ -1,0 +1,16 @@
+[
+  {
+    "material_code": "335012800535",
+    "unit_price_ex_tax": 60,
+    "pricing_unit": "件",
+    "tax_rate": 0.13,
+    "price_version": "CN-MARKET-2026-V1",
+    "valid_from": "2026-10-26T00:00:00",
+    "valid_to": "2027-10-25T00:00:00",
+    "status": "ACTIVE",
+    "price_basis": "MARKET_REFERENCE_ESTIMATE",
+    "confidence": "MEDIUM",
+    "category": "小型断路器",
+    "source": "中国市场参考估价（按品类、规格和额定参数生成）"
+  }
+]

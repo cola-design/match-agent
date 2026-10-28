@@ -1,0 +1,88 @@
+{
+  "scope": "Offline deterministic post-extraction checks and layout rendering; not a live Dify/LLM execution or user database mutation",
+  "workflow_version": "V18.2",
+  "workflow_sha256": "dc90f0a20c42f5c188b7cd2aae7c3c149cdd2d938099248383ef381effc4b13b",
+  "node_count": 108,
+  "new_version_checks_passed": 16,
+  "v18_1_regression_checks_passed": 6,
+  "case": {
+    "rows": 12,
+    "units": [
+      "只",
+      "只",
+      "只",
+      "只",
+      "个",
+      "个",
+      "个",
+      "件",
+      "件",
+      "件",
+      "个",
+      "套"
+    ],
+    "quantities": [
+      1,
+      1,
+      1,
+      1,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      4,
+      1
+    ],
+    "matched_symbols": [
+      "QS",
+      "SCB"
+    ],
+    "variant_choice_required": [
+      "QF",
+      "SPD"
+    ],
+    "unmatched_auxiliary_and_cabinet_rows": 8,
+    "missing_codes_fabricated": false
+  },
+  "reference_price_example": {
+    "scope": "One material only; not complete project quotation",
+    "source_material_code": "335012800535",
+    "source_price_basis": "MARKET_REFERENCE_ESTIMATE",
+    "source_unit_price_ex_tax": 60,
+    "quantity": 1,
+    "tax_rate": 0.13,
+    "markup_rate": 0.15,
+    "discount_rate": 0.02,
+    "material_subtotal": 60,
+    "adjusted_pre_tax": 67.62,
+    "adjusted_tax_included": 76.41
+  },
+  "hidden_context_round_trip": true,
+  "read_only_parameter_tampering_rejected": true,
+  "compact_row_counts_checked": [
+    1,
+    12,
+    120
+  ],
+  "long_text_over_capacity": "Explicit stop; no silent clipping",
+  "pdf_render": {
+    "v18_2_bom_preview": {
+      "pages": 3,
+      "page_horizontal_text_overflow_blocks": 0
+    },
+    "v18_2_quote_layout_preview": {
+      "pages": 3,
+      "page_horizontal_text_overflow_blocks": 0
+    }
+  },
+  "runtime_support_checked_against": "Dify1.10.1 public ToolManager config-variable resolver and ExcelExtractor; user export tool_node_version=2",
+  "public_api_environment_values_blank": true,
+  "pending": [
+    "Import and run in user Dify with actual model/provider and installed Excel plugin",
+    "Verify generated workbook in target Excel/WPS and resubmit confirmation",
+    "Obtain real enterprise records for unmatched auxiliary/cabinet items",
+    "Procurement verification of estimated prices before formal external use"
+  ]
+}

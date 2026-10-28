@@ -1,0 +1,1558 @@
+{
+  "schema_version": "component-selection-v12",
+  "selection_status": "READY_FOR_HUMAN_CONFIRMATION",
+  "items": [
+    {
+      "request_id": "REQ-001",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "C-71d0abbee75a7249",
+      "symbol": "QF",
+      "component_role": "进线小型断路器",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：TGB1N-125H；系统电压：380V；额定电流：100A；极数：4P；分断能力：10kA；脱扣特性：C；明确脱扣特性：C型脱扣",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": 100,
+        "pole_count": "4P",
+        "breaking_capacity_min_ka": 10,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "system_voltage_v": 380,
+        "trip_curve": "C",
+        "rated_current_a": 100,
+        "breaking_capacity_ka": 10,
+        "bit_number": "QF",
+        "model": "TGB1N-125H",
+        "quantity_per_cabinet": 1,
+        "unit": "只"
+      },
+      "shown_model": "TGB1N-125H",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "台",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-7f906c30f907e1e9"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          [
+            {
+              "page_index": null,
+              "text": "QF 进线小型断路器 TGB1N-125H ×1",
+              "location": "03 / 物料清单及数量",
+              "chunk_id": "DRAWING-001",
+              "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+              "source_verified": true,
+              "chunk_start": 0,
+              "chunk_end": 1213,
+              "source_spans": [
+                [
+                  367,
+                  391
+                ]
+              ],
+              "source_start": 367,
+              "source_end": 391
+            }
+          ]
+        ],
+        "protocol": [
+          {
+            "text": "QF 进线小型断路器 TGB1N-125H 4P C100；10kA；100A 1 只",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                880,
+                923
+              ]
+            ],
+            "source_start": 880,
+            "source_end": 923
+          }
+        ]
+      },
+      "parameter_facts": [
+        {
+          "field": "trip_curve",
+          "value": "C",
+          "source_text": "QF 进线小型断路器 TGB1N-125H 4P C100",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 880,
+            "source_end": 923,
+            "source_spans": [
+              [
+                880,
+                923
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "rated_current_a",
+          "value": 100,
+          "source_text": "QF 进线小型断路器 TGB1N-125H 4P C100",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 880,
+            "source_end": 923,
+            "source_spans": [
+              [
+                880,
+                923
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "QF 进线小型断路器 TGB1N-125H 4P C100",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 880,
+            "source_end": 923,
+            "source_spans": [
+              [
+                880,
+                923
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "trip_curve",
+          "value": "C",
+          "source_text": "QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 752,
+            "source_end": 778,
+            "source_spans": [
+              [
+                752,
+                778
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "rated_current_a",
+          "value": 100,
+          "source_text": "QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 752,
+            "source_end": 778,
+            "source_spans": [
+              [
+                752,
+                778
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 752,
+            "source_end": 778,
+            "source_spans": [
+              [
+                752,
+                778
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "trip_curve",
+          "value": "C",
+          "source_text": "3. QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 749,
+            "source_end": 800,
+            "source_spans": [
+              [
+                749,
+                800
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "rated_current_a",
+          "value": 100,
+          "source_text": "3. QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 749,
+            "source_end": 800,
+            "source_spans": [
+              [
+                749,
+                800
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "3. QF=TGB1N-125H 4P C100 10kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 749,
+            "source_end": 800,
+            "source_spans": [
+              [
+                749,
+                800
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        }
+      ],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "QF/C-71d0abbee75a7249",
+      "model_display": "TGB1N-125H"
+    },
+    {
+      "request_id": "REQ-002",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "C-02d0c9ca5b0126ca",
+      "symbol": "QS",
+      "component_role": "交流隔离开关",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：TGH1N-125；系统电压：380V；额定电流：100A；极数：4P",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": 100,
+        "pole_count": "4P",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "system_voltage_v": 380,
+        "rated_current_a": 100,
+        "bit_number": "QS",
+        "model": "TGH1N-125",
+        "quantity_per_cabinet": 1,
+        "unit": "只"
+      },
+      "shown_model": "TGH1N-125",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "台",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-8b9375f1834b6ce7"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          [
+            {
+              "page_index": null,
+              "text": "QS 交流隔离开关 TGH1N-125 ×1",
+              "location": "03 / 物料清单及数量",
+              "chunk_id": "DRAWING-001",
+              "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+              "source_verified": true,
+              "chunk_start": 0,
+              "chunk_end": 1213,
+              "source_spans": [
+                [
+                  392,
+                  414
+                ]
+              ],
+              "source_start": 392,
+              "source_end": 414
+            }
+          ]
+        ],
+        "protocol": [
+          {
+            "text": "QS 交流隔离开关 TGH1N-125 4P；100A；隔离操作 1 只",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                924,
+                960
+              ]
+            ],
+            "source_start": 924,
+            "source_end": 960
+          }
+        ]
+      },
+      "parameter_facts": [
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "QS 交流隔离开关 TGH1N-125 4P",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 924,
+            "source_end": 960,
+            "source_spans": [
+              [
+                924,
+                960
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "QS=TGH1N-125 4P 100A",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 779,
+            "source_end": 799,
+            "source_spans": [
+              [
+                779,
+                799
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "QS=TGH1N-125 4P 100A。",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 749,
+            "source_end": 800,
+            "source_spans": [
+              [
+                749,
+                800
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        }
+      ],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "QS/C-02d0c9ca5b0126ca",
+      "model_display": "TGH1N-125"
+    },
+    {
+      "request_id": "REQ-003",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "C-94424ddcbe29778d",
+      "symbol": "SCB",
+      "component_role": "SPD后备保护器",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：TGSCB1-40II；系统电压：380V；极数：4P；标称放电电流In：20kA；最大放电电流Imax：40kA；试验类别：II",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "4P",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "system_voltage_v": 380,
+        "nominal_discharge_current_ka": 20,
+        "max_discharge_current_ka": 40,
+        "test_class": "II",
+        "bit_number": "SCB",
+        "model": "TGSCB1-40II",
+        "quantity_per_cabinet": 1,
+        "unit": "只"
+      },
+      "shown_model": "TGSCB1-40II",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "台",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [
+        "具体参数待产品库匹配"
+      ],
+      "matched_protocol_rule_ids": [
+        "R-3d88636fd3d285c3"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          [
+            {
+              "page_index": null,
+              "text": "SCB SPD后备保护器 TGSCB1-40II ×1",
+              "location": "03 / 物料清单及数量",
+              "chunk_id": "DRAWING-001",
+              "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+              "source_verified": true,
+              "chunk_start": 0,
+              "chunk_end": 1213,
+              "source_spans": [
+                [
+                  415,
+                  442
+                ]
+              ],
+              "source_start": 415,
+              "source_end": 442
+            }
+          ]
+        ],
+        "protocol": [
+          {
+            "text": "SCB SPD后备保护器 TGSCB1-40II 4P；试验类别II；20/40kA 1 只",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                961,
+                1007
+              ]
+            ],
+            "source_start": 961,
+            "source_end": 1007,
+            "sources": [
+              {
+                "text": "SCB SPD后备保护器 TGSCB1-40II 4P；试验类别II；20/40kA 1 只",
+                "page_index": null,
+                "chunk_id": "PROTOCOL-001",
+                "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+                "source_verified": true,
+                "chunk_start": 0,
+                "chunk_end": 2100,
+                "source_spans": [
+                  [
+                    961,
+                    1007
+                  ]
+                ],
+                "source_start": 961,
+                "source_end": 1007
+              },
+              {
+                "text": "2.2 浪涌支路：从QF后、QS前的母线取电 → SCB后备保护器 → SPD → PE接地排。",
+                "page_index": null,
+                "chunk_id": "PROTOCOL-001",
+                "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+                "source_verified": true,
+                "chunk_start": 0,
+                "chunk_end": 2100,
+                "source_spans": [
+                  [
+                    542,
+                    590
+                  ]
+                ],
+                "source_start": 542,
+                "source_end": 590
+              }
+            ]
+          }
+        ]
+      },
+      "parameter_facts": [
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "SCB SPD后备保护器 TGSCB1-40II 4P",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 961,
+            "source_end": 1007,
+            "source_spans": [
+              [
+                961,
+                1007
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "浪涌支路SCB=TGSCB1-40II 4P",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 804,
+            "source_end": 859,
+            "source_spans": [
+              [
+                804,
+                859
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "4. 浪涌支路SCB=TGSCB1-40II 4P",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 801,
+            "source_end": 860,
+            "source_spans": [
+              [
+                801,
+                860
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        }
+      ],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "SCB/C-94424ddcbe29778d",
+      "model_display": "TGSCB1-40II"
+    },
+    {
+      "request_id": "REQ-004",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "C-94424ddcbe29778d",
+      "symbol": "SPD",
+      "component_role": "II类电涌保护器",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：TGDY55II-40；系统电压：380V；极数：4P；最大持续运行电压Uc：385V；最大放电电流Imax：40kA；试验类别：II",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "4P",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": 385,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "system_voltage_v": 380,
+        "max_discharge_current_ka": 40,
+        "test_class": "II",
+        "bit_number": "SPD",
+        "model": "TGDY55II-40",
+        "quantity_per_cabinet": 1,
+        "unit": "只"
+      },
+      "shown_model": "TGDY55II-40",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "台",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-5dc6e80321194ad5"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          [
+            {
+              "page_index": null,
+              "text": "SPD II类电涌保护器 TGDY55II-40 ×1",
+              "location": "03 / 物料清单及数量",
+              "chunk_id": "DRAWING-001",
+              "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+              "source_verified": true,
+              "chunk_start": 0,
+              "chunk_end": 1213,
+              "source_spans": [
+                [
+                  443,
+                  470
+                ]
+              ],
+              "source_start": 443,
+              "source_end": 470
+            }
+          ]
+        ],
+        "protocol": [
+          {
+            "text": "SPD II类电涌保护器 TGDY55II-40 Uc 385V；4P；Imax 40kA 1 只",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                1008,
+                1057
+              ]
+            ],
+            "source_start": 1008,
+            "source_end": 1057
+          }
+        ]
+      },
+      "parameter_facts": [
+        {
+          "field": "continuous_operating_voltage_v",
+          "value": 385,
+          "source_text": "SPD II类电涌保护器 TGDY55II-40 Uc 385V",
+          "source": {
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "chunk_id": "PROTOCOL-001",
+            "source_verified": true,
+            "source_start": 1008,
+            "source_end": 1057,
+            "source_spans": [
+              [
+                1008,
+                1057
+              ]
+            ],
+            "page_index": null
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "SPD=TGDY55II-40 385V 4P Imax40kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 804,
+            "source_end": 859,
+            "source_spans": [
+              [
+                804,
+                859
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "max_discharge_current_ka",
+          "value": 40,
+          "source_text": "SPD=TGDY55II-40 385V 4P Imax40kA",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 804,
+            "source_end": 859,
+            "source_spans": [
+              [
+                804,
+                859
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "pole_count",
+          "value": "4P",
+          "source_text": "SPD=TGDY55II-40 385V 4P Imax40kA。",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 801,
+            "source_end": 860,
+            "source_spans": [
+              [
+                801,
+                860
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        },
+        {
+          "field": "max_discharge_current_ka",
+          "value": 40,
+          "source_text": "SPD=TGDY55II-40 385V 4P Imax40kA。",
+          "source": {
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "chunk_id": "DRAWING-001",
+            "source_verified": true,
+            "source_start": 801,
+            "source_end": 860,
+            "source_spans": [
+              [
+                801,
+                860
+              ]
+            ],
+            "page_index": null,
+            "location": "04 / 图纸技术要求"
+          }
+        }
+      ],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "SPD/C-94424ddcbe29778d",
+      "model_display": "TGDY55II-40"
+    },
+    {
+      "request_id": "REQ-005",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "XG",
+      "component_role": "电缆防水接头",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：PG29",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "PG29",
+        "quantity_per_cabinet": 3,
+        "unit": "个"
+      },
+      "shown_model": "PG29",
+      "quantity_per_cabinet": 3,
+      "cabinet_quantity": 1,
+      "project_quantity": 3,
+      "quantity": 3,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-dfc8db92566c90ed"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "XG 电缆防水接头 PG29 ×3",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                471,
+                488
+              ]
+            ],
+            "source_start": 471,
+            "source_end": 488
+          }
+        ],
+        "protocol": [
+          {
+            "text": "1 电缆防水接头 PG29 3 个",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                1095,
+                1112
+              ]
+            ],
+            "source_start": 1095,
+            "source_end": 1112
+          }
+        ]
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "XG",
+      "model_display": "PG29"
+    },
+    {
+      "request_id": "REQ-006",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "L25",
+      "component_role": "铜铝接线鼻",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：DTLC-25mm²",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "DTLC-25mm²",
+        "quantity_per_cabinet": 3,
+        "unit": "个"
+      },
+      "shown_model": "DTLC-25mm²",
+      "quantity_per_cabinet": 3,
+      "cabinet_quantity": 1,
+      "project_quantity": 3,
+      "quantity": 3,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-47e7f41f7ed56c62"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "L25 铜铝接线鼻 DTLC-25mm² ×3",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                489,
+                512
+              ]
+            ],
+            "source_start": 489,
+            "source_end": 512
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "L25",
+      "model_display": "DTLC-25mm²"
+    },
+    {
+      "request_id": "REQ-007",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "L16",
+      "component_role": "铜铝接线鼻",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：DTLC-16mm²",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "DTLC-16mm²",
+        "quantity_per_cabinet": 1,
+        "unit": "个"
+      },
+      "shown_model": "DTLC-16mm²",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-2745a7d01b75af36"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "L16 铜铝接线鼻 DTLC-16mm² ×1",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                513,
+                536
+              ]
+            ],
+            "source_start": 513,
+            "source_end": 536
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "L16",
+      "model_display": "DTLC-16mm²"
+    },
+    {
+      "request_id": "REQ-008",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "BR270",
+      "component_role": "表位支架",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：270",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "270",
+        "quantity_per_cabinet": 1,
+        "unit": "件"
+      },
+      "shown_model": "270",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-c0b3ca776f838067"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "BR270 表位支架 270 ×1",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                537,
+                554
+              ]
+            ],
+            "source_start": 537,
+            "source_end": 554
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "BR270",
+      "model_display": "270"
+    },
+    {
+      "request_id": "REQ-009",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "BR160",
+      "component_role": "表位支架",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：160",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "160",
+        "quantity_per_cabinet": 1,
+        "unit": "件"
+      },
+      "shown_model": "160",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选",
+        "产品类别不一致：需求表位支架，候选{\"code\":\"330.33003.3300302\",\"name\":\"配电断路器类.漏电断路器.DZ20L\",\"path\":[\"配电断路器类\",\"漏电断路器\",\"DZ20L\"],\"root\":\"配电断路器类\",\"middle\":\"漏电断路器\",\"leaf\":\"DZ20L\"}"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-5803da3aef01049a"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "BR160 表位支架 160 ×1",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                555,
+                572
+              ]
+            ],
+            "source_start": 555,
+            "source_end": 572
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "BR160",
+      "model_display": "160"
+    },
+    {
+      "request_id": "REQ-010",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "PE",
+      "component_role": "PE接地排",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：标准5孔",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "标准5孔",
+        "quantity_per_cabinet": 1,
+        "unit": "件"
+      },
+      "shown_model": "标准5孔",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "MATCHED",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-ee0554bd895fae83"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "PE PE接地排 标准5孔 ×1",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                573,
+                589
+              ]
+            ],
+            "source_start": 573,
+            "source_end": 589
+          }
+        ],
+        "protocol": [
+          {
+            "text": "6 PE接地排 标准5孔 1 件",
+            "page_index": null,
+            "chunk_id": "PROTOCOL-001",
+            "document_hash": "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 2100,
+            "source_spans": [
+              [
+                1189,
+                1205
+              ]
+            ],
+            "source_start": 1189,
+            "source_end": 1205
+          }
+        ]
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "PE",
+      "model_display": "标准5孔"
+    },
+    {
+      "request_id": "REQ-011",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "F",
+      "component_role": "膨胀螺栓",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：304 M8×80",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "model": "304 M8×80",
+        "quantity_per_cabinet": 4,
+        "unit": "个"
+      },
+      "shown_model": "304 M8×80",
+      "quantity_per_cabinet": 4,
+      "cabinet_quantity": 1,
+      "project_quantity": 4,
+      "quantity": 4,
+      "unit": "个",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-edb7f5d459f446cd"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "F 膨胀螺栓 304 M8×80 ×4",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                590,
+                609
+              ]
+            ],
+            "source_start": 590,
+            "source_end": 609
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "F",
+      "model_display": "304 M8×80"
+    },
+    {
+      "request_id": "REQ-012",
+      "scheme_group_id": "D-c6a07d46a3f53615",
+      "circuit_id": "",
+      "symbol": "BOX",
+      "component_role": "成套柜体",
+      "requirement_summary": "方案组：D-c6a07d46a3f53615；文件指定型号：550×700×150mm；材质：201不锈钢；板厚（mm）：0.8；protection_level：IP54；颜色：RAL7035；柜体电缆进出线：底部进出线",
+      "requirements": {
+        "rated_voltage_v": null,
+        "rated_current_min_a": null,
+        "pole_count": "",
+        "breaking_capacity_min_ka": null,
+        "continuous_operating_voltage_v": null,
+        "leakage_required": null,
+        "leakage_current_ma": null,
+        "installation_mode": "",
+        "operation_mode": "",
+        "control_voltage": "",
+        "required_accessories": [],
+        "brand_constraints": [],
+        "material": "201不锈钢",
+        "thickness_mm": 0.8,
+        "protection_level": "IP54",
+        "color": "RAL7035",
+        "model": "550×700×150mm",
+        "quantity_per_cabinet": 1,
+        "unit": "套",
+        "cabinet_cable_entry_exit": "底部进出线"
+      },
+      "shown_model": "550×700×150mm",
+      "quantity_per_cabinet": 1,
+      "cabinet_quantity": 1,
+      "project_quantity": 1,
+      "quantity": 1,
+      "unit": "台",
+      "recommended": {},
+      "alternatives": [],
+      "match_status": "NOT_RETRIEVED",
+      "mismatch_or_missing": [
+        "本次检索未找到同时满足产品类别和关键规格的候选"
+      ],
+      "selection_reason": "没有通过确定性规则校验的候选，系统未写入物料编码。",
+      "warnings": [
+        "未召回不等于整个产品库不存在；请调整知识库分段/检索词或补充产品数据"
+      ],
+      "source_evidence": [],
+      "upstream_mapping_status": "DRAWING_ONLY",
+      "upstream_missing_parameters": [],
+      "matched_protocol_rule_ids": [
+        "R-9212d64b26d5c607"
+      ],
+      "human_confirmation": "待确认",
+      "final_material_code": "",
+      "confirmation_note": "",
+      "quantity_basis": "PROJECT",
+      "project_cabinet_quantity": 1,
+      "ambiguity_reasons": [],
+      "document_evidence": {
+        "drawing": [
+          {
+            "page_index": null,
+            "text": "BOX 成套柜体 550×700×150mm ×1",
+            "location": "03 / 物料清单及数量",
+            "chunk_id": "DRAWING-001",
+            "document_hash": "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+            "source_verified": true,
+            "chunk_start": 0,
+            "chunk_end": 1213,
+            "source_spans": [
+              [
+                610,
+                635
+              ]
+            ],
+            "source_start": 610,
+            "source_end": 635
+          }
+        ],
+        "protocol": []
+      },
+      "parameter_facts": [],
+      "selection_decision": "NO_VERIFIED_CANDIDATE",
+      "position_display": "BOX",
+      "model_display": "550×700×150mm"
+    }
+  ],
+  "human_review_required": true,
+  "pricing_allowed": false,
+  "next_action": "工程师填写确认单并提交；确认通过后形成正式BOM，再访问价格库。",
+  "global_warnings": [
+    "正式采购前必须人工核验产品有效状态、完整规格和项目适用性。"
+  ],
+  "project_contexts": [
+    {
+      "cabinet_cable_entry_exit": "底部进出线"
+    }
+  ],
+  "workflow_version": "V17.3",
+  "bom_fingerprint": "0562e05a7a28039157166eb14556d97ec732c364c18a819523975809e0b9285c",
+  "input_source_hashes": [
+    "22301b4cf110d5a54097676aa8f09fd0c89f4e08d82a51faa29e74aba586fff2",
+    "444f0d379e331f6062c2d4e4c4fb6ff734785220cce6b63f21de9e6b9d543924"
+  ]
+}
