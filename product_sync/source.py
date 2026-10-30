@@ -79,23 +79,47 @@ def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000):
         CREATE INDEX type2_code ON type2(code);
     ''')
     stats = {}
+
+    def saved_rows(kind, page):
+        payload = fetch(kind, page)
+        raw_folder = folder / 'raw' / ('type' + str(kind))
+        raw_folder.mkdir(parents=True, exist_ok=True)
+        with gzip.open(raw_folder / f'page-{page:06d}.json.gz', 'wb') as output:
+            output.write(canonical(payload).encode())
+        if not isinstance(payload, dict) or payload.get('status') is not True or not isinstance(payload.get('data'), list):
+            raise SyncError('SOURCE_BUSINESS_OR_RESPONSE_ERROR')
+        rows = payload['data']
+        if len(rows) > page_size:
+            raise SyncError('SOURCE_IGNORED_PAGE_SIZE')
+        return rows
+
     try:
         for kind in (1,2):
             count=0; pages=0; previous_hashes=set();resolved=0
+            previous_page_rows = 0
+            termination = {}
             for page in range(1,max_pages+1):
-                payload=fetch(kind,page)
-                raw=canonical(payload).encode()
-                raw_folder=folder/'raw'/('type'+str(kind))
-                raw_folder.mkdir(parents=True,exist_ok=True)
-                with gzip.open(raw_folder/f'page-{page:06d}.json.gz','wb') as output:
-                    output.write(raw)
-                if not isinstance(payload,dict) or payload.get('status') is not True or not isinstance(payload.get('data'),list):
-                    raise SyncError('SOURCE_BUSINESS_OR_RESPONSE_ERROR')
-                rows=payload['data']
+                rows = saved_rows(kind, page)
                 if not rows:
+                    termination = {'format': 'empty_array', 'page': page}
                     break
-                if len(rows)>page_size:
-                    raise SyncError('SOURCE_IGNORED_PAGE_SIZE')
+                if rows == [{}]:
+                    # Some source responses use a single empty object after the final
+                    # short page. Never skip malformed products or accept this marker
+                    # on page 1 / after a full page. Save and check one further page.
+                    if not 0 < previous_page_rows < page_size:
+                        raise SyncError('SOURCE_EMPTY_OBJECT_END_MARKER_WITHOUT_SHORT_PAGE')
+                    if page >= max_pages:
+                        raise SyncError('SOURCE_MAX_PAGES_REACHED')
+                    following = saved_rows(kind, page + 1)
+                    if following not in ([], [{}]):
+                        raise SyncError('SOURCE_DATA_AFTER_EMPTY_OBJECT_END_MARKER')
+                    termination = {'format': 'empty_object_after_short_page', 'page': page,
+                                   'previous_page_rows': previous_page_rows,
+                                   'confirmation_page': page + 1,
+                                   'confirmation_format': 'empty_array' if not following else 'empty_object'}
+                    print(f'fetch type={kind} end_page={page} empty_object_marker confirmed_page={page + 1}', flush=True)
+                    break
                 page_rows=[]
                 for row in rows:
                     if not isinstance(row,dict):raise SyncError('SOURCE_ROW_NOT_OBJECT')
@@ -129,11 +153,13 @@ def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000):
                 previous_hashes.add(page_hash)
                 connection.commit()
                 pages+=1;count+=len(rows)
+                previous_page_rows = len(rows)
                 print(f'fetch type={kind} page={page} rows={len(rows)} total={count}',flush=True)
                 # Continue to an empty page even after a short page, rather than assuming completeness.
             else:
                 raise SyncError('SOURCE_MAX_PAGES_REACHED')
-            stats['type'+str(kind)]={'pages':pages,'rows':count,'duplicate_versions_resolved':resolved}
+            stats['type'+str(kind)]={'pages':pages,'rows':count,'duplicate_versions_resolved':resolved,
+                                     'termination': termination}
         stats['unique_products']=connection.execute('SELECT count(*) FROM type1').fetchone()[0]
         stats['type2_only_codes']=connection.execute('SELECT count(DISTINCT code) FROM type2 WHERE code NOT IN (SELECT code FROM type1)').fetchone()[0]
         if not stats['unique_products']:raise SyncError('EMPTY_PRODUCT_SNAPSHOT')

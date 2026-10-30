@@ -8,8 +8,10 @@ import gzip
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import time
+import unicodedata
 import uuid
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -25,6 +27,61 @@ OWNED_FIELDS=CONTENT_FIELDS+('specification_text','last_update_date','provenance
 GUARDED_FIELDS=OWNED_FIELDS+('manual_override',)
 AUTO_FLAGS={'MISSING_DESCRIPTION','MISSING_CATEGORY','MISSING_SPECIFICATIONS','UNKNOWN_SOURCE_STATUS',
             'DUPLICATE_STANDARD_SPEC','TYPE1_TYPE2_ATTRIBUTE_CONFLICT','DUPLICATE_TYPE2_ATTRIBUTE'}
+
+# Compare only these explicit code AND label combinations. Unknown combinations
+# remain literal; a matching code alone never proves engineering equivalence.
+ACCESSORY_LABELS={
+    '00':('无附件','无'),
+    '08':('报警触头',),
+    '10':('分励线圈',),
+    '18':('分励脱扣器+报警触头','分励+报警'),
+    '20':('辅助触头',),
+    '28':('辅助报警触头','辅助+报警'),
+    '30':('欠压线圈',),
+    '38':('欠压脱扣器+报警触头','欠压+报警'),
+    '40':('分励脱扣器+辅助触头','分励+辅助'),
+    '48':('分励脱扣器+辅助报警触头','分励+辅报'),
+    '50':('分励脱扣器+欠压脱扣器','分励+欠压'),
+    '60':('双组辅助触头','双组辅助'),
+    '68':('辅助触头+辅助报警触头','辅助+辅报'),
+    '70':('欠压脱扣器+辅助触头','欠压+辅助'),
+    '78':('欠压脱扣器+辅助报警触头','欠压+辅报'),
+}
+
+
+def accessory_comparison_key(value):
+    """Return a comparison key without editing any source or specification text."""
+    if not isinstance(value,str):return ('raw',value)
+    text=re.sub(r'\s+','',unicodedata.normalize('NFKC',value))
+    if text in ACCESSORY_LABELS['00']:
+        return ('accessory','00')
+    prefix=re.fullmatch(r'([0-9]{2})([^0-9]+)',text)
+    suffix=re.fullmatch(r'([^0-9]+)\(([0-9]{2})\)',text)
+    if prefix:code,label=prefix.groups()
+    elif suffix:label,code=suffix.groups()
+    else:return ('raw',value)
+    if label in ACCESSORY_LABELS.get(code,()):return ('accessory',code)
+    return ('raw',value)
+
+
+def attribute_comparison_values(attributes):
+    by_name={}
+    for attr in attributes:
+        key=ALIASES.get(attr['name'],attr['name'])
+        value=accessory_comparison_key(attr['value']) if key=='accessory_code' else ('raw',attr['value'])
+        by_name.setdefault(key,set()).add(value)
+    return by_name
+
+
+def attribute_conflict_flags(attributes):
+    groups={source:attribute_comparison_values([a for a in attributes if a.get('source')==source])
+            for source in ('type1','type2')}
+    first,second=groups['type1'],groups['type2']
+    flags=[]
+    if any(first[key]!=second[key] for key in first.keys() & second.keys()):
+        flags.append('TYPE1_TYPE2_ATTRIBUTE_CONFLICT')
+    if any(len(values)>1 for values in second.values()):flags.append('DUPLICATE_TYPE2_ATTRIBUTE')
+    return flags
 
 
 def now():return datetime.now(timezone.utc).isoformat(timespec='seconds')
@@ -77,14 +134,7 @@ def clean_product(raw, attributes):
     # Do not treat a change in page/attribute order as a product update.
     attrs2.sort(key=lambda a:(a['name'],a['value'],a['attr_id'],a['sa_id']))
     standards,flags=add_standard_specs(attrs1+attrs2,issues,code)
-    for group in (attrs1,attrs2):
-        by_name={}
-        for attr in group:by_name.setdefault(ALIASES.get(attr['name'],attr['name']),set()).add(attr['value'])
-        if group is attrs1:type1_values=by_name
-        else:type2_values=by_name
-    if any(type1_values[k]!=type2_values[k] for k in type1_values.keys() & type2_values.keys()):
-        flags.append('TYPE1_TYPE2_ATTRIBUTE_CONFLICT')
-    if any(len(values)>1 for values in type2_values.values()):flags.append('DUPLICATE_TYPE2_ATTRIBUTE')
+    flags.extend(attribute_conflict_flags(attrs1+attrs2))
     for source,key in (('ITEM_DESC','MISSING_DESCRIPTION'),('CATEGORY_NAME','MISSING_CATEGORY'),('SPEC_STRING','MISSING_SPECIFICATIONS')):
         if not row.get(source):flags.append(key)
     if row.get('STATUS') not in ('有效','无效'):flags.append('UNKNOWN_SOURCE_STATUS')
@@ -101,10 +151,23 @@ def clean_product(raw, attributes):
 
 def signature(product):
     value=deepcopy({key:product.get(key) for key in CONTENT_FIELDS})
-    value['source_attributes']=sorted(set(canonical({key:attr.get(key,'') for key in ('name','value','source')})
-                                          for attr in product['source_attributes']))
+    attributes=[]
+    for attr in product['source_attributes']:
+        item={key:attr.get(key,'') for key in ('name','value','source')}
+        if ALIASES.get(item['name'])=='accessory_code':
+            comparison=accessory_comparison_key(item['value'])
+            if comparison[0]=='accessory':item.update(name='accessory_code',value=comparison)
+        attributes.append(canonical(item))
+    value['source_attributes']=sorted(set(attributes))
     for key,spec in value['standard_specs'].items():
-        if isinstance(spec,list):value['standard_specs'][key]=sorted(spec,key=canonical)
+        if key=='accessory_code':
+            values=spec if isinstance(spec,list) else [spec]
+            compared=[]
+            for item in values:
+                comparison=accessory_comparison_key(item.get('value_text',''))
+                compared.append(canonical(comparison if comparison[0]=='accessory' else ('raw',item)))
+            value['standard_specs'][key]=sorted(set(compared))
+        elif isinstance(spec,list):value['standard_specs'][key]=sorted(spec,key=canonical)
     value['quality_flags']=sorted(value['quality_flags'])
     return digest(value)
 
