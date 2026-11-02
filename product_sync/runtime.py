@@ -9,7 +9,7 @@ import sqlite3
 
 from product_sync.source import SyncError
 
-VERSION='1.1.0'
+VERSION='1.2.0'
 
 
 def error_hint(code):
@@ -27,6 +27,7 @@ def error_hint(code):
         'REUSE_SNAPSHOT_PREVIEW_ONLY':'历史快照仅用于只读预览，正式写入必须重新拉取全量源数据。',
         'INSUFFICIENT_FREE_DISK_NO_PRODUCT_WRITES':'状态卷空闲空间低于MIN_FREE_DISK_GB；检查磁盘并归档旧运行，尚未开始产品写入。',
         'ANOTHER_SYNC_IS_RUNNING':'同一状态目录已有同步任务运行；不要同时启用另一份调度器。',
+        'SCHEDULE_WINDOW_CLOSED':'已到夜间运行窗口末尾，停止后续源请求和写入批次；调度器保留到期状态，下一夜重试。',
     }
     return hints.get(code,'保留本次报告及运行目录，按error代码排查；日志不输出密钥或数据库URI。')
 

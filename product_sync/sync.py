@@ -99,9 +99,9 @@ def atomic_json(path, value):
 
 
 @contextmanager
-def run_lock(state):
+def run_lock(state, filename='sync.lock'):
     """OS releases this lock on process exit/crash. All workers must share this state directory."""
-    with (state/'sync.lock').open('a+b') as lock:
+    with (state/filename).open('a+b') as lock:
         lock.seek(0);lock.write(b'0');lock.flush();lock.seek(0)
         if os.name=='nt':
             import msvcrt
@@ -213,11 +213,12 @@ def decide(old, candidate, type2_version, run_id):
     return action,candidate
 
 
-def create_plan(collection, stage, folder, run_id, impact=None):
+def create_plan(collection, stage, folder, run_id, impact=None, guard=None):
     counts=Counter();path=folder/'changes.jsonl.gz'
     with gzip.open(path,'wt',encoding='utf-8') as plan, (folder/'issues.jsonl').open('w',encoding='utf-8') as issues:
         cursor=stage.execute('SELECT code,body FROM type1 ORDER BY code')
         while True:
+            if guard:guard()
             batch=cursor.fetchmany(500)
             if not batch:break
             codes=[row[0] for row in batch]
@@ -257,11 +258,12 @@ def create_plan(collection, stage, folder, run_id, impact=None):
     return path,dict(counts)
 
 
-def apply_plan(collection, path, progress):
+def apply_plan(collection, path, progress, guard=None):
     operations=[];written=0
     def flush():
         nonlocal operations,written
         if not operations:return
+        if guard:guard()
         result=collection.bulk_write(operations,ordered=True)
         if result.matched_count+result.inserted_count!=len(operations):
             raise SyncError('CONCURRENT_PRODUCT_CHANGE_PARTIAL_APPLY_POSSIBLE')
@@ -281,10 +283,11 @@ def apply_plan(collection, path, progress):
     return written
 
 
-def verify_plan(collection,path):
+def verify_plan(collection,path,guard=None):
     verified=0;batch=[]
     def verify():
         nonlocal verified,batch
+        if guard:guard()
         rows={d['material_code']:d for d in collection.find({'material_code':{'$in':[e['material_code'] for e in batch]}})}
         for entry in batch:
             doc=rows.get(entry['material_code'])
@@ -318,8 +321,10 @@ def execute(args):
             # A quick check must not replace the latest actual preview/apply report.
             atomic_json(state/('latest_check.json' if check else 'latest.json'),report)
         client=None;stage=None
+        guard=getattr(args,'window_guard',None)
         try:
             progress()
+            if guard:guard()
             if reuse and (args.apply or check):raise SyncError('REUSE_SNAPSHOT_PREVIEW_ONLY')
             key=os.environ.get('PRODUCT_API_KEY','').strip();uri=os.environ.get('SYNC_MONGODB_URI','').strip()
             if not uri or (not reuse and (not key or key=='CHANGE_THIS_SOURCE_API_KEY')):
@@ -352,6 +357,7 @@ def execute(args):
             minimum_free=float(os.environ.get('MIN_FREE_DISK_GB','0'))
             if not math.isfinite(minimum_free) or minimum_free<0:raise SyncError('MIN_FREE_DISK_GB_MUST_BE_NONNEGATIVE')
             def fetch(kind,page):
+                if guard:guard()
                 if shutil.disk_usage(state).free<minimum_free*1024**3:raise SyncError('INSUFFICIENT_FREE_DISK_NO_PRODUCT_WRITES')
                 time.sleep(interval)
                 try:return request_page(url,key,date_from,kind,page,page_size)
@@ -388,7 +394,7 @@ def execute(args):
             if snapshot['type2']['rows']<baseline_attrs*coverage:
                 raise SyncError('ATTRIBUTE_SNAPSHOT_BELOW_EXPECTED_BASELINE_NO_WRITES')
             impact={'active_to_pending_review':0,'source_became_invalid':0,'manual_products_preserved':0}
-            plan,counts=create_plan(products,stage,folder,run_id,impact)
+            plan,counts=create_plan(products,stage,folder,run_id,impact,guard)
             source_codes={row[0] for row in stage.execute('SELECT code FROM type1')}
             counts['not_returned_by_source']=0
             with (folder/'not_returned_by_source.jsonl').open('w',encoding='utf-8') as missing:
@@ -407,14 +413,15 @@ def execute(args):
                 return 0
             if ratio>change_limit:
                 raise SyncError('CHANGE_RATIO_REQUIRES_REVIEW_NO_WRITES')
+            if guard:guard()
             # A unique index prevents two product identities from sharing one material code.
             indexes=list(products.list_indexes())
             if not any(list(i['key'].items())==[('material_code',1)] and i.get('unique') for i in indexes):
                 products.create_index('material_code',unique=True,name='material_code_unique_sync')
             progress(phase='applying',applied_operations=0,products_write_started=True)
-            written=apply_plan(products,plan,lambda count:progress(applied_operations=count))
+            written=apply_plan(products,plan,lambda count:progress(applied_operations=count),guard)
             progress(phase='verifying',applied_operations=written)
-            verified=verify_plan(products,plan)
+            verified=verify_plan(products,plan,guard)
             progress(phase='complete',result='success',verified_operations=verified,finished_at=now())
             db.product_sync_runs.insert_one(deepcopy(report))
             atomic_json(state/'last_success.json',report)
@@ -427,6 +434,7 @@ def execute(args):
             print('可能有分批产品写入；保留运行目录并核对报告。' if report['products_write_started'] else '本次尚未开始产品写入。',flush=True)
             return 1
         finally:
+            if hasattr(args,'capture_report'):args.capture_report.update(deepcopy(report))
             if stage is not None:stage.close()
             if client is not None:client.close()
             print('Report:',folder/'report.json',flush=True)
@@ -453,8 +461,12 @@ def main():
             success=json.loads((Path(args.state_dir)/'last_success.json').read_text(encoding='utf-8-sig'))
             age=max(0,(datetime.now(timezone.utc)-stamp(success['finished_at'])).total_seconds()/3600)
             output['last_success']={'run_id':success['run_id'],'finished_at':success['finished_at'],
-                                    'age_hours':round(age,1),'older_than_36_hours':age>36}
+                                    'age_hours':round(age,1)}
         except (OSError,ValueError,KeyError,TypeError):pass
+        try:
+            config=json.loads((Path(args.state_dir)/'schedule.json').read_text(encoding='utf-8-sig'))
+            output['schedule']={k:config.get(k) for k in ('period','next_due','start_hour','end_hour','timezone','last_result')}
+        except (OSError,ValueError):output['schedule']=None
         print(json.dumps(output,ensure_ascii=False,indent=2));return 0
     try:return execute(args)
     except SyncError as exc:

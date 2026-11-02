@@ -1,11 +1,11 @@
 {
   "date": "2026-11-02",
   "api_version": "1.3.0",
-  "sync_version": "1.1.0",
+  "sync_version": "1.2.0",
   "unit_tests": {
     "api_and_product_contract": 19,
-    "sync": 54,
-    "total": 73
+    "sync": 68,
+    "total": 87
   },
   "isolated_mongodb_checks": {
     "api": {
@@ -28,7 +28,9 @@
       "manual_fields_preserved": true,
       "fetch_failure_no_writes": true,
       "concurrent_override_guard": true,
-      "prices_unchanged": true
+      "prices_unchanged": true,
+      "monthly_scheduler_dispatch": true,
+      "not_due_and_daytime_no_source_calls": true
     },
     "permissions": {
       "ok": true,
@@ -49,6 +51,7 @@
   },
   "checks": {
     "compose_config": true,
+    "systemd_unit_syntax": true,
     "shell_syntax": true,
     "git_diff_check": true,
     "local_status_without_network": true,
@@ -57,7 +60,12 @@
     "real_source_endpoint_removed": true
   },
   "scope": {
-    "user_windows_preview_still_awaiting_report": true,
+    "user_windows_preview_still_awaiting_report": false,
+    "windows_preview_verified_run_id": "20261102T005718Z_274bcaa8",
+    "windows_plan_verified": true,
+    "monthly_default": true,
+    "night_window_enforced": true,
+    "scheduled_clock_tests_use_controlled_dates": true,
     "user_database_modified": false,
     "real_source_api_called": false,
     "user_linux_deployed": false,
@@ -147,8 +155,8 @@
       "sha256": "2a5747a57e51528ef9ecebff93257dfa4ded84d91071c5cb8d13f22760030c39"
     },
     "product_sync/README.md": {
-      "bytes": 18311,
-      "sha256": "37340060d54e80101ff0c6cf418772d321029aa0398a6d0e5eb3dcd1b50d1265"
+      "bytes": 17518,
+      "sha256": "7cdf3e5f67b31433a573699f5dbe1f3d7c38a9ace49d3a2dff7fc8cbed01f5d4"
     },
     "product_sync/cleaning.py": {
       "bytes": 4604,
@@ -159,12 +167,12 @@
       "sha256": "eef079824addf97817dcd1fdada31baab9ee64c9b0ca2eff22d1e610b65f59b5"
     },
     "product_sync/deploy/match-agent-product-sync.service": {
-      "bytes": 527,
-      "sha256": "84894fd5253badc64150907ab6262647fc9db8d87d703e94b4557c7da3cc079b"
+      "bytes": 672,
+      "sha256": "f4dc1d2a57fe408701287854ee95d2427731306e101018205fc6fb377445ac92"
     },
     "product_sync/deploy/match-agent-product-sync.timer": {
-      "bytes": 209,
-      "sha256": "fa6ab9775e0c2689cb5695b6d7c3688f1ee4bdabe36ee797ebc488ccae9a3bd3"
+      "bytes": 250,
+      "sha256": "482f7d5efd3a520e89668dab3515adb15d356335440d94dcbf4c6726cd92d0df"
     },
     "product_sync/diagnose_snapshot.py": {
       "bytes": 5743,
@@ -175,20 +183,24 @@
       "sha256": "694cfdb56b3eb08f1e4d3c2abbbf965a334dfb9560f0956b28c1fe6f9bdb3c55"
     },
     "product_sync/runtime.py": {
-      "bytes": 5217,
-      "sha256": "54a2de7836f50dfb0cd1fde485e95459b166d48dc80a67c1508f5c305dd24c8a"
+      "bytes": 5374,
+      "sha256": "af22d29150a7d845b4df0a732454b151bf1e2e883bde76593b9e1221727b6f47"
+    },
+    "product_sync/scheduled.py": {
+      "bytes": 8041,
+      "sha256": "fdde071e0d12cbe2d78e21eb9824c18535e150dc1a28a54b188fd407dc797908"
     },
     "product_sync/source.py": {
       "bytes": 9026,
       "sha256": "41c3e75148763be6f01a7899c59dd3fe847d4910878b0d2e909eb8c78c9cf24b"
     },
     "product_sync/sync.py": {
-      "bytes": 27344,
-      "sha256": "51a3948ac8426b836c2c98a7f1f07cac56421f6f38e6e939926ce8246cd77f47"
+      "bytes": 28000,
+      "sha256": "8261cfb363386295db47dbcf51c6b6ccdb05902400f0cd03ab1831e421277729"
     },
     "product_sync/tests/integration_mongo.py": {
-      "bytes": 7463,
-      "sha256": "d0ecb52b85f8bb7f95d2d5e4281ae2960a8ea5acfa9bcb5490c4a69b73055ba3"
+      "bytes": 8772,
+      "sha256": "d6836cdba9c9377e85ac8271a02201fed6e3051464389307aadf396c0491de4a"
     },
     "product_sync/tests/integration_permissions.py": {
       "bytes": 4234,
@@ -214,6 +226,10 @@
       "bytes": 8004,
       "sha256": "77169f7b963280a74f95708a5f68473edafd85a5e32dab39626e3f85f4d5e910"
     },
+    "product_sync/tests/test_scheduled.py": {
+      "bytes": 7209,
+      "sha256": "3d5b1e4ca927589471080b2b21c024ab9bb22bb2d0536d5eca603a2c5362ac35"
+    },
     "product_sync/tests/test_source.py": {
       "bytes": 7996,
       "sha256": "99a5184998bccb5e70316ade3822c46330b85f2315b0bb961148868a4c634d8c"
@@ -223,12 +239,12 @@
       "sha256": "6cc79bc6ed5f77335633030f10e18396bf5ca3f56457ed27777bc51dc762e002"
     },
     "deploy/install-timer.sh": {
-      "bytes": 1924,
-      "sha256": "baa2eb226b070462f8ad9c2b316cec7557ce24c9ae41bac8280e3fffe49f4be3"
+      "bytes": 3703,
+      "sha256": "dfca4715a2d0a25b6dcdb84e46627756ebcf7b1363890af1e3e215a448f4341a"
     },
     "deploy/services.sh": {
-      "bytes": 1575,
-      "sha256": "2cfe2e801a315fa8cf0cb2b3a0c2665c11bab1b7e5271ce46407be1022a26d70"
+      "bytes": 1689,
+      "sha256": "83fd62ca725dbe845bf3903e1e6c68f670e9a38aaaaea7ef3f67f059c2fcd0aa"
     },
     ".dockerignore": {
       "bytes": 300,
@@ -239,8 +255,8 @@
       "sha256": "3f1bc9fc913063782e826f46cbc3c79539f892682d166ce58f2d85fc8f182043"
     },
     "services_runtime_guide.md": {
-      "bytes": 12103,
-      "sha256": "c64ed64e82319c1773706dfa62545603af56c543564b938a480ff2fc6fed7be1"
+      "bytes": 14836,
+      "sha256": "272bc7576138eea7c3173698afb7dadf54e13c98fa4a5c296fda80751d9d93d4"
     },
     "start_sync.ps1": {
       "bytes": 1127,

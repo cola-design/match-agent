@@ -15,6 +15,8 @@ sys.path.insert(0,str(Path(__file__).parents[2]))
 from pymongo import MongoClient
 from product_sync.sync import clean_product, execute, apply_plan, create_plan
 from product_sync.source import stage_snapshot, SyncError
+from product_sync.scheduled import configure,run_scheduled,BEIJING
+from datetime import datetime
 
 
 def raw(code,description='TGB1N-125H 4P C100',date='2026-10-20T00:00:00'):
@@ -124,10 +126,28 @@ def main():
             else:raise AssertionError('Concurrent manual override was overwritten')
             assert db.products.find_one({'material_code':'001'})['description']==raw('001')['ITEM_DESC']
             stage.close()
+        # Real source HTTP and Mongo writes are dispatched only on a due night.
+        bad_response=False
+        with tempfile.TemporaryDirectory() as folder:
+            configure(folder,current=datetime(2026,11,2,12,tzinfo=BEIJING))
+            request_count=len(requests)
+            assert run_scheduled(folder,lambda:datetime(2026,11,3,2,tzinfo=BEIJING))==0
+            assert len(requests)==request_count
+            rows[1]=raw('002','MONTHLY MODEL REVISION')
+            assert run_scheduled(folder,lambda:datetime(2026,12,1,2,tzinfo=BEIJING))==0
+            assert len(requests)>request_count
+            assert db.products.find_one({'material_code':'002'})['description']=='MONTHLY MODEL REVISION'
+            schedule=json.loads((Path(folder)/'schedule.json').read_text())
+            assert schedule['last_result']=='success' and schedule['next_due']=='2027-01-01'
+            request_count=len(requests)
+            assert run_scheduled(folder,lambda:datetime(2026,12,2,10,tzinfo=BEIJING))==0
+            assert len(requests)==request_count
+            assert list(db.prices.find({}))==prices
         print(json.dumps({'ok':True,'mongo_version':client.server_info()['version'],
                           'preview_no_writes':True,'mixed_snapshot_diff':True,'repeat_zero_writes':True,
                           'missing_products_preserved':True,'manual_fields_preserved':True,
-                          'fetch_failure_no_writes':True,'concurrent_override_guard':True,'prices_unchanged':True}))
+                          'fetch_failure_no_writes':True,'concurrent_override_guard':True,'prices_unchanged':True,
+                          'monthly_scheduler_dispatch':True,'not_due_and_daytime_no_source_calls':True}))
     finally:
         server.shutdown();server.server_close();client.close()
 

@@ -1,4 +1,4 @@
-> **2026-11-02 / 同步 1.1.0：** 先让Windows电脑当前的全量预览结束，核对原目录 `sync_state/latest.json`。不要在取数中覆盖代码或启动第二次运行。新版增加 `runtime.py` 和依赖，使用完整增强包；不要仅替换 `sync.py`。
+> **2026-11-02 / 同步 1.2.0：** Windows电脑11月2日的只读预览及变更计划已验收，尚待首次正式写入/复核及服务器部署验收。后续按用户确定的每月1日北京时间02:00自动更新，运行窗口02:00—06:00。新版增加 `runtime.py` 和依赖，使用完整增强包；不要仅替换 `sync.py`。
 >
 > 当前与后续Linux运行步骤见 [服务运行与验收说明](../services_runtime_guide.md)。新增 `--check`、`--status`、`--reuse-snapshot RUN_ID`，支持实时拉取进度、退审影响统计和错误提示；各模块自动读取本地 `.env`。历史快照复核只读，正式写入仍须完整新拉取。
 
@@ -23,7 +23,7 @@ Dify → 只读查询API → MongoDB中当前可发布产品和有效价格
 
 第一版每次使用已确认的全量起始日期，拉完整个范围。即使接口返回新旧混合，也通过内容比较筛出变化；不把最后一次运行日期或最大的更新时间当作唯一筛选条件。它是“全量拉取、增量写入”，不是声称接口只返回增量。
 
-默认建议每天北京时间02:00运行一次。拉取频率、分页请求间隔需根据接口方限额及现场耗时调整。现有数据约117页产品、885页属性，实际页数随数据变化，不写死。每种类型继续拉到明确空页，分页失败不开始更新。
+用户已选择每月1日北京时间02:00自动运行，运行窗口02:00—06:00；也支持严格每15天一次。未到期的夜间检查只读本地计划，不连接产品源或MongoDB。拉取频率、分页请求间隔需根据接口方限额及现场耗时调整。现有数据约117页产品、885页属性，实际页数随数据变化，不写死。每种类型继续拉到明确空页，分页失败不开始更新。
 
 ## 2. 如何识别与处理变更
 
@@ -180,37 +180,16 @@ docker compose run --rm sync --apply
 
 新建唯一物料编码索引可能被已有重复记录、既有索引定义或权限不足阻断，此时停止并处理原因，脚本不会删除旧索引。首次正式运行前应做好数据库备份。
 
-## 6. 启用每天02:00的定时任务
+## 6. 首次正式运行验收后，启用月度夜间自动任务
 
-完成首次正式运行并核对结果后，才安装systemd模板。先执行 `command -v docker`；模板ExecStart使用 `/usr/bin/docker`，如果实际路径不同，修改模板中的路径。确认服务器使用支持Docker Compose的docker命令。
-
-模板默认工作目录 `/opt/match-agent-sync/product_sync`，如果换目录，需要同时改service。
+在完整增强包根目录执行一次：
 
 ```bash
-sudo cp deploy/match-agent-product-sync.service /etc/systemd/system/
-sudo cp deploy/match-agent-product-sync.timer /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable --now match-agent-product-sync.timer
-systemctl list-timers match-agent-product-sync.timer
+sudo sh deploy/install-timer.sh --period monthly --month-day 1 --start-hour 2 --end-hour 6
+sh deploy/services.sh schedule-status
 ```
 
-时间表达式明确使用Asia/Shanghai，不依赖服务器当前时区。Persistent=true表示错过计划时在恢复后补跑一次。已运行的同一systemd服务不会被重复启动；同一state卷的手动任务也由进程锁保护。这里不支持跨服务器同时写同一产品库；多机运行需另加分布式锁或单一调度器。
-
-查看结果：
-
-```bash
-systemctl status match-agent-product-sync.service
-journalctl -u match-agent-product-sync.service -n 100 --no-pager
-docker compose run --rm --entrypoint python sync -c 'from pathlib import Path; print(Path("/state/latest.json").read_text())'
-```
-
-取出最后一次报告到当前目录，便于上传核对：
-
-```bash
-docker compose run --rm --entrypoint cat sync /state/latest.json > sync_latest_report.json
-```
-
-停止后续定时运行：`sudo systemctl disable --now match-agent-product-sync.timer`。这不会自动终止已开始的任务。不要在任务运行时执行Docker卷删除操作。
+以后每月1日自动执行完整同步，无需人工重复运行。systemd每日02:00只检查本地到期计划，未到期不访问源接口或数据库。错过执行时间或失败，只在后续夜间重试，不在白天开机补跑。源码及部署细节以 [服务运行与验收说明](../services_runtime_guide.md) 第7节为准；不要继续使用旧包每日全量更新的timer。
 
 ## 7. 可追溯性、故障与审核
 
@@ -237,6 +216,6 @@ docker compose run --rm --entrypoint cat sync /state/latest.json > sync_latest_r
 
 另用原始上传product-data.rar完成全量离线暂存验证：117页、116632条产品；885页、884476条属性。此验证针对原文读取、分页、编码与暂存，不等于已在现场完成全量更新。
 
-尚未拿正式密钥在用户服务器上验证，也没有给真实数据源发请求。上线还需确认：接口的全量起点、分页终止行为、稳定排序/快照能力、type2版本语义、限流及实际网络权限。此接口目前没有已知快照token或可靠删除事件；源端翻页期间发生变更时，不能保证得到事务一致快照。重复页/冲突检测和每日全量对账可以降低遗漏风险，不能替代接口方的稳定快照承诺。
+用户电脑的11月2日全量预览及计划已验收；代码作者未持正式密钥在用户服务器调用真实数据源。服务器上线还需验证全量起点、网络与权限，确认稳定排序/快照能力、type2版本语义及限流。此接口目前没有已知快照token或可靠删除事件；源端翻页期间发生变更时，不能保证得到事务一致快照。重复页/冲突检测和每次完整拉取的对账可以降低遗漏风险，不能替代接口方的稳定快照承诺。
 
 后续若启用真正的日期增量请求，应先确认dateFrom对type1/type2的过滤语义，再增加回看窗口、仅在完整成功后推进的游标和周期性全量对账；不能直接把当前日期存起来当作后续唯一边界。
