@@ -1,3 +1,7 @@
+> **2026-11-02 / API 1.3.0：** 当前先完成Windows电脑正在运行的同步预览验收。新版完整包、配置持久化、健康检查、运行状态与后续Linux部署步骤，优先阅读 [服务运行与验收说明](../services_runtime_guide.md)。本版本尚未在用户服务器启用。
+>
+> 新增 `/ready`（数据库实际读权限）和 `/v1/status`（产品状态统计），厂家缺省显示天正电气；现有查询路径保持。Docker健康检查已改用带密钥的 `/ready`，不再仅判断 `/live`。
+
 # Dify 同服务器部署 MongoDB API（Linux + Docker Compose）
 
 此服务是独立容器，不是 Dify Python 沙箱的一部分。Dify 调 HTTP API，API 使用只读账号查询 MongoDB。API接口的数据操作均为读取。
@@ -25,9 +29,9 @@ docker ps --format 'table {{.Names}}\t{{.Image}}'
 ```bash
 mkdir -p ~/match-agent-api
 cd ~/match-agent-api
-curl -fL 'https://raw.githubusercontent.com/cola-design/match-agent/main/mongodb_api_server_bundle.zip' -o api.zip
+curl -fL 'https://raw.githubusercontent.com/cola-design/match-agent/feat/service-operations-20261102/services_runtime_20261102.zip' -o api.zip
 unzip api.zip
-cd mongodb_api
+cd match_agent_services_20261102/mongodb_api
 ```
 
 如果服务器无法访问 GitHub，可在电脑下载 ZIP 后，通过 SSH 文件传输上传、解压到服务器。
@@ -87,7 +91,7 @@ docker compose logs --tail=50 match-agent-mongo-api
 
 `restart: unless-stopped` 让容器在进程退出或服务器重启后恢复，前提是 Docker 随系统启动；人工停止的容器不会自行重新启动。
 
-`healthy` 只表示 `/live` 返回正常，数据库认证须完成下一步。Docker 仅标记 unhealthy 时不会自动重启仍在运行的进程。
+新版 `healthy` 表示 `/ready` 的数据库ping与products/prices读取已通过；仍须核对Dify端实际访问。Docker 仅标记 unhealthy 时不会自动重启仍在运行的进程。
 
 ## 6. 验证 API 真正连接数据库
 

@@ -1,0 +1,10 @@
+**/.env
+**/.env.*
+!**/.env.example
+**/__pycache__/
+**/.venv/
+**/sync_state/
+**/logs/
+*.clixml
+*.pem
+*.key

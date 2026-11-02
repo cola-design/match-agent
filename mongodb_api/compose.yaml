@@ -28,9 +28,9 @@ services:
         - CMD
         - python
         - -c
-        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/live', timeout=3).close()"
+        - "import os,urllib.request; r=urllib.request.Request('http://127.0.0.1:8000/ready',headers={'X-API-Key':os.environ['MONGODB_API_KEY']}); urllib.request.urlopen(r,timeout=12).close()"
       interval: 30s
-      timeout: 5s
+      timeout: 15s
       retries: 3
       start_period: 15s
     logging:

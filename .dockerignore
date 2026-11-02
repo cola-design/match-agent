@@ -9,3 +9,7 @@ product_sync/.env.*
 product_sync/tests/
 product_sync/__pycache__/
 product_sync/sync_state/
+product_sync/.venv/
+product_sync/*.log
+product_sync/*.zip
+product_sync/**/*.sqlite

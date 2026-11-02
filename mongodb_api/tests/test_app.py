@@ -29,11 +29,19 @@ class Collection:
     def __init__(self):
         self.rows = []
         self.query = None
+        self.group_rows = []
+        self.read_failure = False
+    def find_one(self, query, projection, **kwargs):
+        if self.read_failure:
+            raise ServerSelectionTimeoutError('private connection details')
+        return self.rows[0] if self.rows else None
     def find(self, query, projection):
         self.query = query
         return Cursor(self.rows)
     def aggregate(self, pipeline, **kwargs):
         self.pipeline = pipeline
+        if '$group' in pipeline[0]:
+            return Cursor(self.group_rows)
         self.query = pipeline[0]['$match']
         return Cursor(self.rows)
 
@@ -148,6 +156,39 @@ class APITest(unittest.TestCase):
         response = self.client.get('/health', headers=self.headers)
         self.assertEqual(response.status_code, 503)
         self.assertNotIn('connection details', response.text)
+
+    def test_ready_requires_both_collection_read_permissions(self):
+        self.assertEqual(self.client.get('/ready').status_code,401)
+        self.assertEqual(self.client.get('/ready',headers=self.headers).json()['api_version'],'1.3.0')
+        self.db.collections['prices'].read_failure=True
+        response=self.client.get('/ready',headers=self.headers)
+        self.assertEqual(response.status_code,503)
+        self.assertNotIn('private',response.text)
+
+    def test_status_distinguishes_available_and_pending_products(self):
+        self.db.collections['products'].group_rows=[
+            {'_id':{'data_status':'ACTIVE','source_status':'有效'},'count':10},
+            {'_id':{'data_status':'ACTIVE','source_status':'无效'},'count':2},
+            {'_id':{'data_status':'PENDING_REVIEW','source_status':'有效'},'count':3},
+        ]
+        self.assertEqual(self.client.get('/v1/status').status_code,401)
+        out=self.client.get('/v1/status',headers=self.headers).json()
+        self.assertEqual(out['products'],{'total':15,'available':10,'pending_review':3,'other':2})
+        self.assertEqual(out['manufacturer'],'天正电气')
+        self.assertFalse(out['automatic_price_updates'])
+
+    def test_product_manufacturer_display_default_does_not_write(self):
+        record={'material_code':'001','category':{},'standard_specs':{},'source_attributes':[],'quality_flags':[]}
+        self.db.collections['products'].rows=[record]
+        out=self.client.get('/v1/products/001',headers=self.headers).json()[0]
+        self.assertEqual(out['manufacturer'],'天正电气')
+        self.assertNotIn('manufacturer',record)
+        record['manufacturer']='人工维护值'
+        self.assertEqual(self.client.get('/v1/products/001',headers=self.headers).json()[0]['manufacturer'],'人工维护值')
+
+    def test_duplicate_active_product_code_blocks_instead_of_selecting_first(self):
+        self.db.collections['products'].rows=[{'material_code':'001'},{'material_code':'001'}]
+        self.assertEqual(self.client.get('/v1/products/001',headers=self.headers).status_code,409)
 
 if __name__ == '__main__':
     unittest.main()

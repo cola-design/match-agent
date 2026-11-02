@@ -6,25 +6,87 @@ from copy import deepcopy
 from datetime import date, datetime, timedelta, timezone
 import gzip
 import json
+import math
 import os
 from pathlib import Path
+import re
+import shutil
 import sys
 import time
+import unicodedata
 import uuid
+from urllib.parse import urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from bson import json_util
 from pymongo import MongoClient, InsertOne, UpdateOne
+from dotenv import load_dotenv
 from mongodb_api.product_contract import normalize_product
 from product_sync.cleaning import clean_text, parse_spec_string, add_standard_specs, category, ALIASES
 from product_sync.source import SyncError, canonical, digest, request_page, stage_snapshot, source_stamp
+from product_sync.runtime import VERSION, error_hint, file_hash, reuse_snapshot, report_summary
 
 CONTENT_FIELDS=('item_id','description','category','standard_specs','source_attributes','source_status','quality_flags')
 OWNED_FIELDS=CONTENT_FIELDS+('specification_text','last_update_date','provenance','data_status','publication_basis','sync_meta')
 GUARDED_FIELDS=OWNED_FIELDS+('manual_override',)
 AUTO_FLAGS={'MISSING_DESCRIPTION','MISSING_CATEGORY','MISSING_SPECIFICATIONS','UNKNOWN_SOURCE_STATUS',
             'DUPLICATE_STANDARD_SPEC','TYPE1_TYPE2_ATTRIBUTE_CONFLICT','DUPLICATE_TYPE2_ATTRIBUTE'}
+
+# Compare only these explicit code AND label combinations. Unknown combinations
+# remain literal; a matching code alone never proves engineering equivalence.
+ACCESSORY_LABELS={
+    '00':('无附件','无'),
+    '08':('报警触头',),
+    '10':('分励线圈',),
+    '18':('分励脱扣器+报警触头','分励+报警'),
+    '20':('辅助触头',),
+    '28':('辅助报警触头','辅助+报警'),
+    '30':('欠压线圈',),
+    '38':('欠压脱扣器+报警触头','欠压+报警'),
+    '40':('分励脱扣器+辅助触头','分励+辅助'),
+    '48':('分励脱扣器+辅助报警触头','分励+辅报'),
+    '50':('分励脱扣器+欠压脱扣器','分励+欠压'),
+    '60':('双组辅助触头','双组辅助'),
+    '68':('辅助触头+辅助报警触头','辅助+辅报'),
+    '70':('欠压脱扣器+辅助触头','欠压+辅助'),
+    '78':('欠压脱扣器+辅助报警触头','欠压+辅报'),
+}
+
+
+def accessory_comparison_key(value):
+    """Return a comparison key without editing any source or specification text."""
+    if not isinstance(value,str):return ('raw',value)
+    text=re.sub(r'\s+','',unicodedata.normalize('NFKC',value))
+    if text in ACCESSORY_LABELS['00']:
+        return ('accessory','00')
+    prefix=re.fullmatch(r'([0-9]{2})([^0-9]+)',text)
+    suffix=re.fullmatch(r'([^0-9]+)\(([0-9]{2})\)',text)
+    if prefix:code,label=prefix.groups()
+    elif suffix:label,code=suffix.groups()
+    else:return ('raw',value)
+    if label in ACCESSORY_LABELS.get(code,()):return ('accessory',code)
+    return ('raw',value)
+
+
+def attribute_comparison_values(attributes):
+    by_name={}
+    for attr in attributes:
+        key=ALIASES.get(attr['name'],attr['name'])
+        value=accessory_comparison_key(attr['value']) if key=='accessory_code' else ('raw',attr['value'])
+        by_name.setdefault(key,set()).add(value)
+    return by_name
+
+
+def attribute_conflict_flags(attributes):
+    groups={source:attribute_comparison_values([a for a in attributes if a.get('source')==source])
+            for source in ('type1','type2')}
+    first,second=groups['type1'],groups['type2']
+    flags=[]
+    if any(first[key]!=second[key] for key in first.keys() & second.keys()):
+        flags.append('TYPE1_TYPE2_ATTRIBUTE_CONFLICT')
+    if any(len(values)>1 for values in second.values()):flags.append('DUPLICATE_TYPE2_ATTRIBUTE')
+    return flags
 
 
 def now():return datetime.now(timezone.utc).isoformat(timespec='seconds')
@@ -37,9 +99,9 @@ def atomic_json(path, value):
 
 
 @contextmanager
-def run_lock(state):
+def run_lock(state, filename='sync.lock'):
     """OS releases this lock on process exit/crash. All workers must share this state directory."""
-    with (state/'sync.lock').open('a+b') as lock:
+    with (state/filename).open('a+b') as lock:
         lock.seek(0);lock.write(b'0');lock.flush();lock.seek(0)
         if os.name=='nt':
             import msvcrt
@@ -77,14 +139,7 @@ def clean_product(raw, attributes):
     # Do not treat a change in page/attribute order as a product update.
     attrs2.sort(key=lambda a:(a['name'],a['value'],a['attr_id'],a['sa_id']))
     standards,flags=add_standard_specs(attrs1+attrs2,issues,code)
-    for group in (attrs1,attrs2):
-        by_name={}
-        for attr in group:by_name.setdefault(ALIASES.get(attr['name'],attr['name']),set()).add(attr['value'])
-        if group is attrs1:type1_values=by_name
-        else:type2_values=by_name
-    if any(type1_values[k]!=type2_values[k] for k in type1_values.keys() & type2_values.keys()):
-        flags.append('TYPE1_TYPE2_ATTRIBUTE_CONFLICT')
-    if any(len(values)>1 for values in type2_values.values()):flags.append('DUPLICATE_TYPE2_ATTRIBUTE')
+    flags.extend(attribute_conflict_flags(attrs1+attrs2))
     for source,key in (('ITEM_DESC','MISSING_DESCRIPTION'),('CATEGORY_NAME','MISSING_CATEGORY'),('SPEC_STRING','MISSING_SPECIFICATIONS')):
         if not row.get(source):flags.append(key)
     if row.get('STATUS') not in ('有效','无效'):flags.append('UNKNOWN_SOURCE_STATUS')
@@ -101,10 +156,23 @@ def clean_product(raw, attributes):
 
 def signature(product):
     value=deepcopy({key:product.get(key) for key in CONTENT_FIELDS})
-    value['source_attributes']=sorted(set(canonical({key:attr.get(key,'') for key in ('name','value','source')})
-                                          for attr in product['source_attributes']))
+    attributes=[]
+    for attr in product['source_attributes']:
+        item={key:attr.get(key,'') for key in ('name','value','source')}
+        if ALIASES.get(item['name'])=='accessory_code':
+            comparison=accessory_comparison_key(item['value'])
+            if comparison[0]=='accessory':item.update(name='accessory_code',value=comparison)
+        attributes.append(canonical(item))
+    value['source_attributes']=sorted(set(attributes))
     for key,spec in value['standard_specs'].items():
-        if isinstance(spec,list):value['standard_specs'][key]=sorted(spec,key=canonical)
+        if key=='accessory_code':
+            values=spec if isinstance(spec,list) else [spec]
+            compared=[]
+            for item in values:
+                comparison=accessory_comparison_key(item.get('value_text',''))
+                compared.append(canonical(comparison if comparison[0]=='accessory' else ('raw',item)))
+            value['standard_specs'][key]=sorted(set(compared))
+        elif isinstance(spec,list):value['standard_specs'][key]=sorted(spec,key=canonical)
     value['quality_flags']=sorted(value['quality_flags'])
     return digest(value)
 
@@ -145,11 +213,12 @@ def decide(old, candidate, type2_version, run_id):
     return action,candidate
 
 
-def create_plan(collection, stage, folder, run_id):
+def create_plan(collection, stage, folder, run_id, impact=None, guard=None):
     counts=Counter();path=folder/'changes.jsonl.gz'
     with gzip.open(path,'wt',encoding='utf-8') as plan, (folder/'issues.jsonl').open('w',encoding='utf-8') as issues:
         cursor=stage.execute('SELECT code,body FROM type1 ORDER BY code')
         while True:
+            if guard:guard()
             batch=cursor.fetchmany(500)
             if not batch:break
             codes=[row[0] for row in batch]
@@ -163,6 +232,16 @@ def create_plan(collection, stage, folder, run_id):
                 old=existing.get(code)
                 action,after=decide(old,candidate,version,run_id)
                 counts[action]+=1
+                if impact is not None:
+                    if action in ('manual_override','manual_attributes_require_review'):
+                        impact['manual_products_preserved']=impact.get('manual_products_preserved',0)+1
+                    if after is not None:
+                        if old and old.get('data_status')=='ACTIVE' and after.get('data_status')=='PENDING_REVIEW':
+                            impact['active_to_pending_review']=impact.get('active_to_pending_review',0)+1
+                        if old and old.get('source_status')=='有效' and after.get('source_status')=='无效':
+                            impact['source_became_invalid']=impact.get('source_became_invalid',0)+1
+                        quality=impact.setdefault('planned_quality_flags',{})
+                        for flag in candidate['quality_flags']:quality[flag]=quality.get(flag,0)+1
                 if after is None:
                     if action!='unchanged':issues.write(canonical({'material_code':code,'issue':action})+'\n')
                     continue
@@ -179,11 +258,12 @@ def create_plan(collection, stage, folder, run_id):
     return path,dict(counts)
 
 
-def apply_plan(collection, path, progress):
+def apply_plan(collection, path, progress, guard=None):
     operations=[];written=0
     def flush():
         nonlocal operations,written
         if not operations:return
+        if guard:guard()
         result=collection.bulk_write(operations,ordered=True)
         if result.matched_count+result.inserted_count!=len(operations):
             raise SyncError('CONCURRENT_PRODUCT_CHANGE_PARTIAL_APPLY_POSSIBLE')
@@ -203,10 +283,11 @@ def apply_plan(collection, path, progress):
     return written
 
 
-def verify_plan(collection,path):
+def verify_plan(collection,path,guard=None):
     verified=0;batch=[]
     def verify():
         nonlocal verified,batch
+        if guard:guard()
         rows={d['material_code']:d for d in collection.find({'material_code':{'$in':[e['material_code'] for e in batch]}})}
         for entry in batch:
             doc=rows.get(entry['material_code'])
@@ -227,15 +308,30 @@ def execute(args):
     with run_lock(state):
         run_id=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid.uuid4().hex[:8]
         folder=state/run_id;folder.mkdir(mode=0o700)
-        report={'run_id':run_id,'mode':'apply' if args.apply else 'preview','phase':'starting','started_at':now(),
-                'prices_touched':False,'source_missing_policy':'never_delete','checkpoint_advanced':False}
+        check=getattr(args,'check',False);reuse=getattr(args,'reuse_snapshot',None)
+        started=time.monotonic()
+        report={'run_id':run_id,'service_version':VERSION,'mode':'check' if check else 'apply' if args.apply else 'preview',
+                'phase':'starting','started_at':now(),
+                'started_at_beijing':datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
+                'products_write_started':False,'prices_touched':False,
+                'source_missing_policy':'never_delete','checkpoint_advanced':False}
         def progress(**fields):
-            report.update(fields);atomic_json(folder/'report.json',report)
-            atomic_json(state/'latest.json',report)
+            report.update(fields,updated_at=now(),elapsed_seconds=round(time.monotonic()-started,1))
+            atomic_json(folder/'report.json',report)
+            # A quick check must not replace the latest actual preview/apply report.
+            atomic_json(state/('latest_check.json' if check else 'latest.json'),report)
         client=None;stage=None
+        guard=getattr(args,'window_guard',None)
         try:
-            key=os.environ.get('PRODUCT_API_KEY','');uri=os.environ.get('SYNC_MONGODB_URI','')
-            if not key or not uri:raise SyncError('SET_PRODUCT_API_KEY_AND_SYNC_MONGODB_URI')
+            progress()
+            if guard:guard()
+            if reuse and (args.apply or check):raise SyncError('REUSE_SNAPSHOT_PREVIEW_ONLY')
+            key=os.environ.get('PRODUCT_API_KEY','').strip();uri=os.environ.get('SYNC_MONGODB_URI','').strip()
+            if not uri or (not reuse and (not key or key=='CHANGE_THIS_SOURCE_API_KEY')):
+                raise SyncError('SET_PRODUCT_API_KEY_AND_SYNC_MONGODB_URI')
+            url=os.environ.get('PRODUCT_API_URL','').strip()
+            if not reuse and (not url or urlsplit(url).hostname=='source.example.invalid'):
+                raise SyncError('SET_PRODUCT_API_URL')
             date_from=os.environ.get('SOURCE_DATE_FROM','')
             try:date.fromisoformat(date_from)
             except ValueError:raise SyncError('SET_CONFIRMED_FULL_SOURCE_DATE_FROM') from None
@@ -251,25 +347,54 @@ def execute(args):
                 {'$unwind':'$source_attributes'},{'$match':{'source_attributes.source':'type2'}},{'$count':'rows'}]))
             baseline_attrs=attr_counts[0]['rows'] if attr_counts else 0
             progress(phase='fetching',baseline_products=baseline,baseline_type2_attributes=baseline_attrs,date_from=date_from)
-            url=os.environ.get('PRODUCT_API_URL','http://api2.tengen.com.cn/env-101/otherportal/otherproject/ai/getProductSpec')
             page_size=int(os.environ.get('SOURCE_PAGE_SIZE','1000'))
             if not 1<=page_size<=1000:raise SyncError('PAGE_SIZE_MUST_BE_1_TO_1000')
             interval=float(os.environ.get('SOURCE_REQUEST_INTERVAL_SECONDS','0.2'))
-            if interval<0:raise SyncError('SOURCE_REQUEST_INTERVAL_MUST_BE_NONNEGATIVE')
+            if not math.isfinite(interval) or interval<0:raise SyncError('SOURCE_REQUEST_INTERVAL_MUST_BE_NONNEGATIVE')
             coverage=float(os.environ.get('MIN_COVERAGE_RATIO','0.9'))
             change_limit=float(os.environ.get('MAX_CHANGE_RATIO','0.2'))
             if not 0<=coverage<=1 or not 0<=change_limit<=1:raise SyncError('RATIOS_MUST_BE_0_TO_1')
+            minimum_free=float(os.environ.get('MIN_FREE_DISK_GB','0'))
+            if not math.isfinite(minimum_free) or minimum_free<0:raise SyncError('MIN_FREE_DISK_GB_MUST_BE_NONNEGATIVE')
             def fetch(kind,page):
+                if guard:guard()
+                if shutil.disk_usage(state).free<minimum_free*1024**3:raise SyncError('INSUFFICIENT_FREE_DISK_NO_PRODUCT_WRITES')
                 time.sleep(interval)
-                return request_page(url,key,date_from,kind,page,page_size)
-            stage,snapshot=stage_snapshot(folder,fetch,page_size)
-            progress(phase='planning',snapshot=snapshot)
+                try:return request_page(url,key,date_from,kind,page,page_size)
+                except SyncError:
+                    progress(source_failure={'type':kind,'page':page,'host':urlsplit(url).hostname})
+                    raise
+            if check:
+                progress(phase='checking_source',source_host=urlsplit(url).hostname)
+                for kind in (1,2):
+                    payload=fetch(kind,1)
+                    if not isinstance(payload,dict) or payload.get('status') is not True or not isinstance(payload.get('data'),list):
+                        raise SyncError('SOURCE_BUSINESS_OR_RESPONSE_ERROR')
+                    if kind==1 and not payload['data']:raise SyncError('EMPTY_PRODUCT_SNAPSHOT')
+                    for row in payload['data']:
+                        if not isinstance(row,dict) or not isinstance(row.get('ITEM_NUM'),str) or not row['ITEM_NUM'].strip():
+                            raise SyncError('SOURCE_MATERIAL_CODE_NOT_NONEMPTY_STRING')
+                    progress(**{'type'+str(kind)+'_first_page_rows':len(payload['data'])})
+                progress(phase='check_complete',result='check_passed',finished_at=now(),
+                         scope='database read and source first-page checks only; write privileges and full snapshot not verified')
+                print('检查通过：数据库读取及源接口两类首屏可访问；尚未检查全量数据或验证写入权限。',flush=True)
+                return 0
+            if reuse:
+                progress(phase='reusing_snapshot')
+                stage,snapshot,details=reuse_snapshot(state,reuse,folder,date_from)
+                progress(**details)
+            else:
+                stage,snapshot=stage_snapshot(folder,fetch,page_size,on_progress=lambda item:progress(fetch_progress=item))
+                progress(snapshot_sha256=file_hash(folder/'stage.sqlite'),snapshot_fetched_at=now(),
+                         staged_type2_rows=stage.execute('SELECT count(*) FROM type2').fetchone()[0])
+            progress(phase='planning',snapshot=snapshot,source_host=urlsplit(url).hostname)
             minimum=int(os.environ.get('MIN_SOURCE_PRODUCTS','1'))
             if snapshot['unique_products']<max(minimum,baseline*coverage):
                 raise SyncError('SOURCE_COUNT_BELOW_EXPECTED_BASELINE_NO_WRITES')
             if snapshot['type2']['rows']<baseline_attrs*coverage:
                 raise SyncError('ATTRIBUTE_SNAPSHOT_BELOW_EXPECTED_BASELINE_NO_WRITES')
-            plan,counts=create_plan(products,stage,folder,run_id)
+            impact={'active_to_pending_review':0,'source_became_invalid':0,'manual_products_preserved':0}
+            plan,counts=create_plan(products,stage,folder,run_id,impact,guard)
             source_codes={row[0] for row in stage.execute('SELECT code FROM type1')}
             counts['not_returned_by_source']=0
             with (folder/'not_returned_by_source.jsonl').open('w',encoding='utf-8') as missing:
@@ -277,41 +402,73 @@ def execute(args):
                     if doc.get('material_code') not in source_codes:
                         counts['not_returned_by_source']+=1
                         missing.write(canonical({'material_code':doc.get('material_code'),'action':'preserved'})+'\n')
-            progress(phase='preview_complete',counts=counts,plan_file=plan.name,
+            progress(phase='preview_complete',counts=counts,impact=impact,plan_file=plan.name,
+                     planned_operations=counts.get('new',0)+counts.get('changed',0)+counts.get('metadata_only',0),
                      source_missing_policy='never_delete; compare unique source count with baseline')
             ratio=(counts.get('new',0)+counts.get('changed',0))/max(1,baseline)
+            progress(change_ratio=ratio)
+            print('计划：'+json.dumps(counts,ensure_ascii=False)+'；预计ACTIVE退审='+str(impact['active_to_pending_review']),flush=True)
             if not args.apply:
                 progress(phase='preview_complete',result='preview_only',change_ratio=ratio,finished_at=now())
                 return 0
             if ratio>change_limit:
                 raise SyncError('CHANGE_RATIO_REQUIRES_REVIEW_NO_WRITES')
+            if guard:guard()
             # A unique index prevents two product identities from sharing one material code.
             indexes=list(products.list_indexes())
             if not any(list(i['key'].items())==[('material_code',1)] and i.get('unique') for i in indexes):
                 products.create_index('material_code',unique=True,name='material_code_unique_sync')
-            progress(phase='applying',applied_operations=0)
-            written=apply_plan(products,plan,lambda count:progress(applied_operations=count))
+            progress(phase='applying',applied_operations=0,products_write_started=True)
+            written=apply_plan(products,plan,lambda count:progress(applied_operations=count),guard)
             progress(phase='verifying',applied_operations=written)
-            verified=verify_plan(products,plan)
+            verified=verify_plan(products,plan,guard)
             progress(phase='complete',result='success',verified_operations=verified,finished_at=now())
             db.product_sync_runs.insert_one(deepcopy(report))
+            atomic_json(state/'last_success.json',report)
             return 0
         except Exception as exc:
-            progress(phase='failed',result='failed',error=str(exc) if isinstance(exc,SyncError) else type(exc).__name__,finished_at=now())
+            code=str(exc) if isinstance(exc,SyncError) else type(exc).__name__
+            progress(failed_phase=report['phase'],phase='failed',result='failed',error=code,error_hint=error_hint(code),finished_at=now())
             print('Sync stopped:',report['error'],flush=True)
-            print('If applying began, partial writes may exist; retain this run folder. Rerun is idempotent.',flush=True)
+            print(report['error_hint'],flush=True)
+            print('可能有分批产品写入；保留运行目录并核对报告。' if report['products_write_started'] else '本次尚未开始产品写入。',flush=True)
             return 1
         finally:
+            if hasattr(args,'capture_report'):args.capture_report.update(deepcopy(report))
             if stage is not None:stage.close()
             if client is not None:client.close()
             print('Report:',folder/'report.json',flush=True)
 
 
 def main():
+    load_dotenv(Path(__file__).with_name('.env'),override=False,encoding='utf-8-sig')
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--apply',action='store_true',help='Write changes after the full snapshot and diff plan are complete')
+    mode=parser.add_mutually_exclusive_group()
+    mode.add_argument('--apply',action='store_true',help='Fresh full snapshot, guarded product writes, then verification')
+    mode.add_argument('--check',action='store_true',help='Read-only DB and source first-page connectivity check')
+    mode.add_argument('--reuse-snapshot',metavar='RUN_ID',help='Preview a completed local source snapshot against the current DB; never apply')
+    mode.add_argument('--status',action='store_true',help='Read latest.json locally without network requests')
     parser.add_argument('--state-dir',default=os.environ.get('SYNC_STATE_DIR','sync_state'))
-    try:return execute(parser.parse_args())
+    args=parser.parse_args()
+    if args.status:
+        try:report=json.loads((Path(args.state_dir)/'latest.json').read_text(encoding='utf-8-sig'))
+        except (OSError,ValueError):
+            print('尚无可读取的同步报告；确认状态目录和运行记录。',flush=True);return 1
+        output=report_summary(report)
+        output['disk_free_gb']=round(shutil.disk_usage(Path(args.state_dir)).free/1024**3,2)
+        output['last_success']=None
+        try:
+            success=json.loads((Path(args.state_dir)/'last_success.json').read_text(encoding='utf-8-sig'))
+            age=max(0,(datetime.now(timezone.utc)-stamp(success['finished_at'])).total_seconds()/3600)
+            output['last_success']={'run_id':success['run_id'],'finished_at':success['finished_at'],
+                                    'age_hours':round(age,1)}
+        except (OSError,ValueError,KeyError,TypeError):pass
+        try:
+            config=json.loads((Path(args.state_dir)/'schedule.json').read_text(encoding='utf-8-sig'))
+            output['schedule']={k:config.get(k) for k in ('period','next_due','start_hour','end_hour','timezone','last_result')}
+        except (OSError,ValueError):output['schedule']=None
+        print(json.dumps(output,ensure_ascii=False,indent=2));return 0
+    try:return execute(args)
     except SyncError as exc:
         print(str(exc),flush=True)
         return 2

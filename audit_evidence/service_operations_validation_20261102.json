@@ -1,0 +1,266 @@
+{
+  "date": "2026-11-02",
+  "api_version": "1.3.0",
+  "sync_version": "1.2.0",
+  "unit_tests": {
+    "api_and_product_contract": 19,
+    "sync": 68,
+    "total": 87
+  },
+  "isolated_mongodb_checks": {
+    "api": {
+      "ok": true,
+      "mongo_version": "7.0.45",
+      "fixture_products": 53,
+      "core_search_cases": 8,
+      "ranking_before_limit": true,
+      "preview_no_writes": true,
+      "apply_and_rollback": true,
+      "prices_unchanged": true
+    },
+    "sync": {
+      "ok": true,
+      "mongo_version": "7.0.45",
+      "preview_no_writes": true,
+      "mixed_snapshot_diff": true,
+      "repeat_zero_writes": true,
+      "missing_products_preserved": true,
+      "manual_fields_preserved": true,
+      "fetch_failure_no_writes": true,
+      "concurrent_override_guard": true,
+      "prices_unchanged": true,
+      "monthly_scheduler_dispatch": true,
+      "not_due_and_daytime_no_source_calls": true
+    },
+    "permissions": {
+      "ok": true,
+      "mongo_version": "7.0.45",
+      "authentication_enabled": true,
+      "reader_cannot_write": true,
+      "sync_cannot_write_prices": true,
+      "sync_guarded_apply_verified": true,
+      "manufacturer_and_manual_note_preserved": true
+    }
+  },
+  "dify_compatibility": {
+    "ok": true,
+    "workflow": "V18.2.1",
+    "product_validator_node": "2000000000022",
+    "fixture_records": 8,
+    "manufacturer_extra_field_accepted": true
+  },
+  "checks": {
+    "compose_config": true,
+    "systemd_unit_syntax": true,
+    "shell_syntax": true,
+    "git_diff_check": true,
+    "local_status_without_network": true,
+    "utf8_bom_config": true,
+    "docker_builds": true,
+    "real_source_endpoint_removed": true
+  },
+  "scope": {
+    "user_windows_preview_still_awaiting_report": false,
+    "windows_preview_verified_run_id": "20261102T005718Z_274bcaa8",
+    "windows_plan_verified": true,
+    "monthly_default": true,
+    "night_window_enforced": true,
+    "scheduled_clock_tests_use_controlled_dates": true,
+    "user_database_modified": false,
+    "real_source_api_called": false,
+    "user_linux_deployed": false,
+    "timer_enabled_on_user_server": false,
+    "powershell_launcher_executed_on_windows": false,
+    "systemd_installer_executed": false
+  },
+  "files": {
+    "mongodb_api/.dockerignore": {
+      "bytes": 95,
+      "sha256": "d3b8fa2c017d66bbd6d93a260c170cf208a00ea10ef49c23f489feecc096ba97"
+    },
+    "mongodb_api/.env.example": {
+      "bytes": 351,
+      "sha256": "e1441c494142a0ea42f5dff1aee6fee279816323903722da64059d1bbc82a798"
+    },
+    "mongodb_api/.gitignore": {
+      "bytes": 56,
+      "sha256": "a9de7b72f25d3e69332d815e8d44888818868d5754650e47a747fec20a47745a"
+    },
+    "mongodb_api/Dockerfile": {
+      "bytes": 561,
+      "sha256": "fab34461b45579ac58d4a8ce983adc1cdc13785006ba4e87bb36cec6a64e6fc5"
+    },
+    "mongodb_api/README.md": {
+      "bytes": 7677,
+      "sha256": "050030bf6026eea4ea4e650c9531858fcec11aa4370f46cd553c7ed5e54b3103"
+    },
+    "mongodb_api/app.py": {
+      "bytes": 10310,
+      "sha256": "caa902e7f0509654b59bf6b8487bcaaa81b7ccbcddd92349faff581202eafbb2"
+    },
+    "mongodb_api/compose.yaml": {
+      "bytes": 1260,
+      "sha256": "5907766f68b4e6abcbcaf4649c3c2f8ce0c46b5af89f74ab10bb9d65aefbe81b"
+    },
+    "mongodb_api/openapi.yaml": {
+      "bytes": 2300,
+      "sha256": "8d3e4c9d5a5437d9dd8bedc57bd8c831fa392908440a07decfd281b5f3a41411"
+    },
+    "mongodb_api/product_contract.py": {
+      "bytes": 3606,
+      "sha256": "6aa9d8193464a6aa84d61081fc10bd6144aec2adddd421481d686ea0ca4920b4"
+    },
+    "mongodb_api/repair_products.py": {
+      "bytes": 9417,
+      "sha256": "3fac35e9dc50db99d0fd15adad55a34ebd711158bce6b8aec191ad1766b6071f"
+    },
+    "mongodb_api/requirements.txt": {
+      "bytes": 80,
+      "sha256": "1565b34b1bcc3d1c94ee07c38fa47fa8cac462a144ebd1d2c3c0dbe3d0827999"
+    },
+    "mongodb_api/tests/fixtures/core_products.json": {
+      "bytes": 19395,
+      "sha256": "ac158857746f94f7502e0bdea97082d55034d6bdf897ea9c07473d7b2a99e9b0"
+    },
+    "mongodb_api/tests/integration_mongo.py": {
+      "bytes": 6311,
+      "sha256": "c9a05f88eceb706bdaff751513414fd2eb82d7a0768c4bd70f5784f31b97e14f"
+    },
+    "mongodb_api/tests/run_docker_check.py": {
+      "bytes": 1482,
+      "sha256": "7e8c25fcdbfaca2aa1aecf172d07b73f2b25fcb11480966c76cd4b8ee98a7313"
+    },
+    "mongodb_api/tests/test_app.py": {
+      "bytes": 9497,
+      "sha256": "a8f998d7cfefea750a78254f78142d2facf3f05c3b906af2d7d25452291ac302"
+    },
+    "mongodb_api/tests/test_repair.py": {
+      "bytes": 4555,
+      "sha256": "48592d75e221e59a10e262e9a79cd47aedf4fe1fb95b6562bfe321a9f4210bc4"
+    },
+    "mongodb_api/产品字段修复步骤.md": {
+      "bytes": 7893,
+      "sha256": "721e520a87b9c0aded3f136f228e341157a0a52fa492d4f28813448299dca720"
+    },
+    "product_sync/.env.example": {
+      "bytes": 829,
+      "sha256": "c6eb74c1d11e97f4469838e67435e929265fc67dff102ef2ecb1bd746476b512"
+    },
+    "product_sync/.gitignore": {
+      "bytes": 57,
+      "sha256": "9929e1bef4d103c67db9de796bbad8ca71d70c81230ffb13bf4b2d4c00807267"
+    },
+    "product_sync/Dockerfile": {
+      "bytes": 743,
+      "sha256": "2a5747a57e51528ef9ecebff93257dfa4ded84d91071c5cb8d13f22760030c39"
+    },
+    "product_sync/README.md": {
+      "bytes": 17518,
+      "sha256": "7cdf3e5f67b31433a573699f5dbe1f3d7c38a9ace49d3a2dff7fc8cbed01f5d4"
+    },
+    "product_sync/cleaning.py": {
+      "bytes": 4604,
+      "sha256": "92275a13a09db472f783fb3a8ac25223f50829200179e0ac356a33ba98b60687"
+    },
+    "product_sync/compose.yaml": {
+      "bytes": 445,
+      "sha256": "eef079824addf97817dcd1fdada31baab9ee64c9b0ca2eff22d1e610b65f59b5"
+    },
+    "product_sync/deploy/match-agent-product-sync.service": {
+      "bytes": 672,
+      "sha256": "f4dc1d2a57fe408701287854ee95d2427731306e101018205fc6fb377445ac92"
+    },
+    "product_sync/deploy/match-agent-product-sync.timer": {
+      "bytes": 250,
+      "sha256": "482f7d5efd3a520e89668dab3515adb15d356335440d94dcbf4c6726cd92d0df"
+    },
+    "product_sync/diagnose_snapshot.py": {
+      "bytes": 5743,
+      "sha256": "421b71d825489f99dca40adf23830c921c126e47614b6a19b8a62a955ab026d6"
+    },
+    "product_sync/requirements.txt": {
+      "bytes": 37,
+      "sha256": "694cfdb56b3eb08f1e4d3c2abbbf965a334dfb9560f0956b28c1fe6f9bdb3c55"
+    },
+    "product_sync/runtime.py": {
+      "bytes": 5374,
+      "sha256": "af22d29150a7d845b4df0a732454b151bf1e2e883bde76593b9e1221727b6f47"
+    },
+    "product_sync/scheduled.py": {
+      "bytes": 8041,
+      "sha256": "fdde071e0d12cbe2d78e21eb9824c18535e150dc1a28a54b188fd407dc797908"
+    },
+    "product_sync/source.py": {
+      "bytes": 9026,
+      "sha256": "41c3e75148763be6f01a7899c59dd3fe847d4910878b0d2e909eb8c78c9cf24b"
+    },
+    "product_sync/sync.py": {
+      "bytes": 28000,
+      "sha256": "8261cfb363386295db47dbcf51c6b6ccdb05902400f0cd03ab1831e421277729"
+    },
+    "product_sync/tests/integration_mongo.py": {
+      "bytes": 8772,
+      "sha256": "d6836cdba9c9377e85ac8271a02201fed6e3051464389307aadf396c0491de4a"
+    },
+    "product_sync/tests/integration_permissions.py": {
+      "bytes": 4234,
+      "sha256": "f70e85304499230bd74ee483eae140fe83a257b8f7fb6a6f59b246f361939e23"
+    },
+    "product_sync/tests/run_docker_check.py": {
+      "bytes": 1604,
+      "sha256": "c768c56a6ef99d6fb4c65b8b23e36a9b993f8b3b01c48b5c23158094110d6cd4"
+    },
+    "product_sync/tests/run_permissions_check.py": {
+      "bytes": 1391,
+      "sha256": "daf847a9c78033cd5db5f6e51758a548f70477c807010cd166bfb5d494bdc91b"
+    },
+    "product_sync/tests/test_accessory_comparison.py": {
+      "bytes": 7021,
+      "sha256": "bbed173ac5bef1557736a1c04d8a2a0e7c1519ec10c4b03b0c27b6d8688a972b"
+    },
+    "product_sync/tests/test_diagnose_snapshot.py": {
+      "bytes": 3712,
+      "sha256": "fc59ea8ed373da40d98cf31487a9cb8165377445b190f6c75224852dd94c1071"
+    },
+    "product_sync/tests/test_operations.py": {
+      "bytes": 8004,
+      "sha256": "77169f7b963280a74f95708a5f68473edafd85a5e32dab39626e3f85f4d5e910"
+    },
+    "product_sync/tests/test_scheduled.py": {
+      "bytes": 7209,
+      "sha256": "3d5b1e4ca927589471080b2b21c024ab9bb22bb2d0536d5eca603a2c5362ac35"
+    },
+    "product_sync/tests/test_source.py": {
+      "bytes": 7996,
+      "sha256": "99a5184998bccb5e70316ade3822c46330b85f2315b0bb961148868a4c634d8c"
+    },
+    "product_sync/tests/test_sync.py": {
+      "bytes": 9436,
+      "sha256": "6cc79bc6ed5f77335633030f10e18396bf5ca3f56457ed27777bc51dc762e002"
+    },
+    "deploy/install-timer.sh": {
+      "bytes": 3703,
+      "sha256": "dfca4715a2d0a25b6dcdb84e46627756ebcf7b1363890af1e3e215a448f4341a"
+    },
+    "deploy/services.sh": {
+      "bytes": 1689,
+      "sha256": "83fd62ca725dbe845bf3903e1e6c68f670e9a38aaaaea7ef3f67f059c2fcd0aa"
+    },
+    ".dockerignore": {
+      "bytes": 300,
+      "sha256": "549768145502665993adc9ecee4426dfd79694984ae1311f8c0759c95a8df331"
+    },
+    ".gitignore": {
+      "bytes": 106,
+      "sha256": "3f1bc9fc913063782e826f46cbc3c79539f892682d166ce58f2d85fc8f182043"
+    },
+    "services_runtime_guide.md": {
+      "bytes": 14836,
+      "sha256": "272bc7576138eea7c3173698afb7dadf54e13c98fa4a5c296fda80751d9d93d4"
+    },
+    "start_sync.ps1": {
+      "bytes": 1127,
+      "sha256": "6648c473d9c0d02b7259077342c0237b4770202f9605e0d333253348aea5a7b7"
+    }
+  }
+}

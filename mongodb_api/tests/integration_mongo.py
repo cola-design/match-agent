@@ -69,6 +69,10 @@ def main():
             except OSError:
                 if attempt == 49: raise
                 time.sleep(.1)
+        assert get('/ready')['api_version']=='1.3.0'
+        status=get('/v1/status')
+        assert status['products']['available']==len(original)
+        assert status['manufacturer']=='天正电气' and status['automatic_price_updates'] is False
         searches = [('TGB1N-125H','小型断路器','335012800535',3),
                     ('TGH1N-125','隔离开关','336010500031',1),
                     ('TGSCB1-40II','SPD后备保护器','338020700012',1),
@@ -86,6 +90,7 @@ def main():
         rows = get('/v1/products/search', {'q':'TGB1N-125H MX 4P', 'limit':1})
         assert rows[0]['material_code'] == '335012800537'
         exact = get('/v1/products/335012800535')[0]
+        assert exact['manufacturer']=='天正电气'
         assert isinstance(exact['standard_specs'],dict)
         assert isinstance(exact['source_attributes'],list)
         assert isinstance(exact['quality_flags'],list)
