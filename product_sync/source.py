@@ -70,7 +70,7 @@ def request_page(url, api_key, date_from, kind, page, page_size):
         time.sleep(2**attempt)
 
 
-def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000):
+def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000, on_progress=None):
     """fetch(kind,page) is injectable. No MongoDB writes occur in this phase."""
     connection = sqlite3.connect(folder/'stage.sqlite')
     connection.executescript('''
@@ -79,6 +79,7 @@ def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000):
         CREATE INDEX type2_code ON type2(code);
     ''')
     stats = {}
+    fetched_rows={1:0,2:0}
 
     def saved_rows(kind, page):
         payload = fetch(kind, page)
@@ -91,6 +92,10 @@ def stage_snapshot(folder, fetch, page_size=1000, max_pages=20000):
         rows = payload['data']
         if len(rows) > page_size:
             raise SyncError('SOURCE_IGNORED_PAGE_SIZE')
+        fetched_rows[kind]+=len(rows) if rows != [{}] else 0
+        if on_progress:
+            on_progress({'type':kind,'page':page,'page_rows':len(rows),
+                         'rows_received':fetched_rows[kind]})
         return rows
 
     try:

@@ -1,9 +1,11 @@
 .env
 .env.*
 !.env.example
-.venv
-__pycache__
+.venv/
+__pycache__/
+tests/
+*.zip
+logs/
 *.pyc
 *.log
-tests
 products_repair_*

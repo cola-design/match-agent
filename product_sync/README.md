@@ -1,3 +1,7 @@
+> **2026-11-02 / 同步 1.1.0：** 先让Windows电脑当前的全量预览结束，核对原目录 `sync_state/latest.json`。不要在取数中覆盖代码或启动第二次运行。新版增加 `runtime.py` 和依赖，使用完整增强包；不要仅替换 `sync.py`。
+>
+> 当前与后续Linux运行步骤见 [服务运行与验收说明](../services_runtime_guide.md)。新增 `--check`、`--status`、`--reuse-snapshot RUN_ID`，支持实时拉取进度、退审影响统计和错误提示；各模块自动读取本地 `.env`。历史快照复核只读，正式写入仍须完整新拉取。
+
 # 产品接口定时同步：全量拉取、差异写入
 
 这是一项独立的数据更新任务，配合只读查询API使用，不在Dify代码节点中运行。当前字段修复完成并验收后，才运行此任务。先预览，后启用写入和定时器。
@@ -53,9 +57,9 @@ Dify → 只读查询API → MongoDB中当前可发布产品和有效价格
 
 ## 4. 本机先预览
 
-下载包：<https://github.com/cola-design/match-agent/raw/refs/heads/main/product_sync_bundle.zip>
+下载包：<https://raw.githubusercontent.com/cola-design/match-agent/feat/service-operations-20261102/services_runtime_20261102.zip>
 
-解压后进入 `product_sync_bundle` 根目录，其中包含 product_sync 和 mongodb_api 两个子目录。这里的mongodb_api仅提供共享字段处理文件，不需要启动另一个API。
+新版解压后进入 `match_agent_services_20261102` 根目录，其中包含 product_sync 和 mongodb_api 两个子目录。既有安装目录可以继续使用原名。这里的mongodb_api仅提供共享字段处理文件，不需要启动另一个API。
 
 如希望复用之前API的虚拟环境，在PowerShell先设置它的完整路径（不激活虚拟环境）：
 

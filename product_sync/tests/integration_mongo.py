@@ -45,9 +45,11 @@ def main():
     db.prices.insert_one({'material_code':'001','unit_price_ex_tax':123,'status':'ACTIVE'})
     prices=list(db.prices.find({}));before=list(db.products.find({}).sort('material_code'))
     rows=[raw('001'),raw('002','CHANGED MODEL 63A'),raw('004','NEW MODEL')]
+    requests=[]
     bad_response=False
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
+            requests.append(self.path)
             assert self.headers.get('apikey')=='fixture-source-key'
             query=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
             page=int(query['pageNum'][0]);size=int(query['pageSize'][0]);kind=int(query['type'][0])
@@ -69,11 +71,32 @@ def main():
             assert report['counts']['changed']==1
             assert report['counts']['new']==1
             assert report['counts']['not_returned_by_source']==1
+            assert report['impact']['active_to_pending_review']==1
+            assert report['impact']['manual_products_preserved']==0
+            preview_id=report['run_id']
             assert list(db.products.find({}).sort('material_code'))==before
+            request_count=len(requests)
+            args.reuse_snapshot=preview_id
+            source_key=os.environ.pop('PRODUCT_API_KEY')
+            assert execute(args)==0
+            os.environ['PRODUCT_API_KEY']=source_key
+            assert len(requests)==request_count
+            reused=json.loads((Path(folder)/'latest.json').read_text())
+            assert reused['snapshot_reused_from']==preview_id
+            assert reused['counts']==report['counts']
+            assert list(db.products.find({}).sort('material_code'))==before
+            args.reuse_snapshot=None
+            args.check=True
+            assert execute(args)==0
+            assert json.loads((Path(folder)/'latest.json').read_text())['run_id']==reused['run_id']
+            assert json.loads((Path(folder)/'latest_check.json').read_text())['result']=='check_passed'
+            assert list(db.products.find({}).sort('material_code'))==before
+            args.check=False
             args.apply=True
             assert execute(args)==0
             report=json.loads((Path(folder)/'latest.json').read_text())
             assert report['applied_operations']==2 and report['verified_operations']==2
+            assert json.loads((Path(folder)/'last_success.json').read_text())['run_id']==report['run_id']
             assert db.products.find_one({'material_code':'001'})['data_status']=='ACTIVE'
             assert db.products.find_one({'material_code':'002'})['data_status']=='PENDING_REVIEW'
             assert db.products.find_one({'material_code':'002'})['manual_note']=='keep this'

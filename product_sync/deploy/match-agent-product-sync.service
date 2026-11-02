@@ -7,6 +7,8 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/match-agent-sync/product_sync
-ExecStart=/usr/bin/docker compose run --rm sync --apply
+ExecStart=/usr/bin/docker compose run --rm --name match-agent-product-sync-daily sync --apply
+ExecStopPost=-/usr/bin/docker stop --time 30 match-agent-product-sync-daily
 # Exit nonzero when the pull, snapshot checks, write guards or verification fail.
 TimeoutStartSec=4h
+UMask=0077

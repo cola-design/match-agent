@@ -3,6 +3,7 @@ import hmac
 import logging
 import os
 import re
+from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 from typing import Any
 import unicodedata
@@ -13,6 +14,10 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+from dotenv import load_dotenv
+
+# Each service owns its own local config file; explicit process env wins.
+load_dotenv(Path(__file__).with_name('.env'), override=False, encoding='utf-8-sig')
 
 MONGODB_URI = os.environ.get("MONGODB_URI", "")
 MONGODB_DB = os.environ.get("MONGODB_DB", "match_agent")
@@ -35,7 +40,8 @@ db = client[MONGODB_DB]
 products = db["products"]
 prices = db["prices"]
 logger = logging.getLogger("match_agent_api")
-app = FastAPI(title="match-agent MongoDB API", version="1.2.0")
+API_VERSION = "1.3.0"
+app = FastAPI(title="match-agent MongoDB API", version=API_VERSION)
 
 
 def authenticate(x_api_key: str | None = Header(default=None)):
@@ -61,6 +67,15 @@ async def product_contract_error_handler(request, exc):
 def clean_doc(doc: dict[str, Any]) -> dict[str, Any]:
     result = dict(doc)
     result.pop("_id", None)
+    return result
+
+
+def product_output(doc: dict[str, Any]) -> dict[str, Any]:
+    result = clean_doc(normalize_product(doc))
+    # Catalog ownership was confirmed by the user. This is a display default,
+    # not a migration or permission to overwrite an explicitly maintained value.
+    if not result.get('manufacturer'):
+        result['manufacturer'] = '天正电气'
     return result
 
 
@@ -96,6 +111,37 @@ def liveness():
 def health():
     db.command("ping")
     return {"status": "ok", "database": MONGODB_DB}
+
+
+@app.get("/ready", dependencies=[Depends(authenticate)])
+def readiness():
+    """Check actual collection read access, rather than process liveness alone."""
+    db.command('ping')
+    products.find_one({}, {'_id': 1}, max_time_ms=3000)
+    prices.find_one({}, {'_id': 1}, max_time_ms=3000)
+    return {'status': 'ready', 'database': MONGODB_DB, 'api_version': API_VERSION}
+
+
+@app.get("/v1/status", dependencies=[Depends(authenticate)])
+def service_status():
+    rows = products.aggregate([{'$group': {
+        '_id': {'data_status': '$data_status', 'source_status': '$source_status'},
+        'count': {'$sum': 1},
+    }}], maxTimeMS=5000)
+    counts = {'total': 0, 'available': 0, 'pending_review': 0, 'other': 0}
+    for row in rows:
+        amount = row['count']; state = row['_id']
+        counts['total'] += amount
+        if state.get('data_status') == 'ACTIVE' and state.get('source_status') == '有效':
+            counts['available'] += amount
+        elif state.get('data_status') == 'PENDING_REVIEW':
+            counts['pending_review'] += amount
+        else:
+            counts['other'] += amount
+    return {'api_version': API_VERSION, 'database': MONGODB_DB,
+            'checked_at': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
+            'manufacturer': '天正电气', 'products': counts,
+            'automatic_price_updates': False}
 
 
 # Category aliases narrow candidate retrieval only; engineering validation remains in YAML.
@@ -165,7 +211,7 @@ def product_search(
                 {"$sort": {"__match_score": -1, "material_code": 1}}, {"$limit": limit},
                 {"$project": {"_id": 0, "__match_score": 0}}]
     docs = products.aggregate(pipeline, maxTimeMS=5000)
-    return [clean_doc(normalize_product(doc)) for doc in docs]
+    return [product_output(doc) for doc in docs]
 
 
 @app.get("/v1/products/{material_code}", dependencies=[Depends(authenticate)])
@@ -176,7 +222,10 @@ def product_by_code(material_code: str):
     docs = products.find(
         {**active_product_filter(), "material_code": code}, {"_id": 0}
     ).limit(2).max_time_ms(3000)
-    return [clean_doc(normalize_product(doc)) for doc in docs]
+    rows = list(docs)
+    if len(rows) > 1:
+        raise HTTPException(status_code=409, detail='duplicate active material code; database review required')
+    return [product_output(doc) for doc in rows]
 
 
 @app.get("/v1/prices/{material_code}", dependencies=[Depends(authenticate)])
