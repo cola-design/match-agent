@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "date": "2026-11-03",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "adafb7cb82d3ac91d7f5368e8a1dee9c54596b062dbb1914749155c69657d21e"
+    },
+    {
+      "path": "README.md",
+      "sha256": "7200c9a3b5b8fabb867b6559e39d3af4871422fa554ab0c6d80ba8c893ad3292"
+    },
+    {
+      "path": "build_workflow.py",
+      "sha256": "58c9625673e2d98e3087f1a8c9ff0ddce8ecc4047185f1e6f181fe51f3121340"
+    },
+    {
+      "path": "cad_service/.env.example",
+      "sha256": "b9d6e9f1e7520c3b220a8aa7c9df37b738bfb03b87e86a0abfc91229e72bf690"
+    },
+    {
+      "path": "cad_service/__init__.py",
+      "sha256": "a87195268bbf767bd7ee75b8309bacd2ec0fe5310c679e67292e182d6413146b"
+    },
+    {
+      "path": "cad_service/app.py",
+      "sha256": "5ba603905dc1b3f52ee9e21172944098fb40ef4cca7658cb6bb5a038cf8b468c"
+    },
+    {
+      "path": "docs/CAD接口与工程参数.md",
+      "sha256": "11e760740498a97f55aa8fc3c176d13a1eeaf9d67a364410a7396919ac914080"
+    },
+    {
+      "path": "docs/验收记录.md",
+      "sha256": "fb7a0c92273dbb3323de37bdf40173c733888cf9b256db0dfc0c6268836c34d4"
+    },
+    {
+      "path": "project_service/.env.example",
+      "sha256": "371684890020dedd5363636a0d11c622be562d5a99a8b8b44b08930340f7eb70"
+    },
+    {
+      "path": "project_service/__init__.py",
+      "sha256": "f192fd83156c357bcc6dc9d63e0f26d6211841c46354c96c3b825ec5d487b520"
+    },
+    {
+      "path": "project_service/app.py",
+      "sha256": "2825e2085883aec3481d39d5e248132ad8dbef400c194f9ac8dbba35c40b1983"
+    },
+    {
+      "path": "project_service/core.py",
+      "sha256": "65e7cebb8d0030ed0b537df4fa74cd5d5e415388da47c3ae43d42a784bf1d06e"
+    },
+    {
+      "path": "project_service/deliverables.py",
+      "sha256": "7bf519a18ca766d32f9056f285ae83375a79dee9b63300866502721e566c18a9"
+    },
+    {
+      "path": "project_service/engine.py",
+      "sha256": "ac86f6d0e391c6a98c67d865a90599d0c8da9e02ad59e64727d224dbddfc4cbd"
+    },
+    {
+      "path": "project_service/engineering.py",
+      "sha256": "02454707dc93ea4d53314141cce5a99ef352bf03497398b0407ed0f4c09c0967"
+    },
+    {
+      "path": "project_service/forms.py",
+      "sha256": "8d0bf0e747f6b8292fac1e4d22f86c9f2b418074967508e43a97db2a5ce1a10b"
+    },
+    {
+      "path": "project_service/legacy_selection.py",
+      "sha256": "4083f619b3ff9eeea52006e819b10d8a8a7d58d53a49df5d777d8fa3b42bd23e"
+    },
+    {
+      "path": "project_service/pdf_vision.py",
+      "sha256": "47b5b00326b39529057bd65e18ffe8f6bee045490fcc8a68bd42f6a00ab65ea5"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "74084ac07ec9421a870a9aaae16867b8a2556cb0614a722f866f00227e5b1ffa"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "1d00027ff95b43d0031b6bac6748c582ab7d987968727d70b5f5eae7f04844cd"
+    },
+    {
+      "path": "tests/test_project.py",
+      "sha256": "9b7d78ce9977475945ca165ebe7b536f29198409240d3c1cc1191e5a7dc8e727"
+    },
+    {
+      "path": "成套柜项目助手_V19_Dify1.8.0.yml",
+      "sha256": "9ab038694e9375c539bd0139c1043074860cc4666e73ac25565d6bf74229aede"
+    }
+  ]
+}
