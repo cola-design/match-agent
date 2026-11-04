@@ -1,0 +1,65 @@
+{
+  "artifact": "cabinet_agent_v25.yml",
+  "sha256": "673b2124460fc1b7c48d8699eb83881e87296e4fb57e15c35f331e0ccc9a03ae",
+  "git_blob_sha": "086443c13d6aea64761a52ed157faf1df286f768",
+  "bytes": 720908,
+  "characters": 657231,
+  "dify_web": "1.8.0",
+  "nodes": 134,
+  "edges": 145,
+  "editor_errors": [],
+  "total_sandbox_tests": 88,
+  "total_code_node_executions": 1132,
+  "test_suites": {
+    "sandbox_v25_validation.json": {
+      "sandbox_image": "langgenius/dify-sandbox:0.2.12",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "actual_code_node_executions": 313,
+      "model_and_catalog_apis": "test doubles; no customer network requested"
+    },
+    "actions_v25_validation.json": {
+      "tests": 12,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 237,
+      "CAD_service": "controlled 503 fixture; decoded real DXF audited; no real DWG conversion claimed"
+    },
+    "recognition_v25_validation.json": {
+      "tests": 14,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 186,
+      "model_responses": "Controlled malformed/complete JSON fixtures; no live model credentials or billing used",
+      "dify_iteration_cleanup": "Clear per-iteration outputs, matching official Dify1.8 iteration_node.py behavior"
+    },
+    "order_api_v25_validation.json": {
+      "tests": 14,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 329,
+      "api_contract": "Actual delivered FastAPI1.3.1 app via TestClient; in-memory Mongo fixtures; no live server access",
+      "models_and_plugin_transport": "controlled test doubles"
+    },
+    "generality_v25_validation.json": {
+      "tests": 27,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 67,
+      "scope": "Generic uncertainty/evidence/form/ingestion mechanisms with controlled model replies; not live visual accuracy or all-project generalization proof."
+    }
+  },
+  "source_documents_checked": {
+    "user_project_PDFs": 2,
+    "explicitly_synthetic_demo_PDFs": 1,
+    "method": "Same pypdfium2 text extraction as Dify1.8; source pictures also manually reviewed. This is not live model accuracy evaluation."
+  },
+  "live_model_calls": 0,
+  "cross_project_visual_accuracy_measured": false,
+  "project_capacity": {
+    "pages": 20,
+    "items": 100
+  },
+  "scope": "Local official Dify web/sandbox and native-PDF text pathway checks, controlled model/catalog/plugin transport replies; actual delivered API app via TestClient with in-memory Mongo. No live user model inference, private-server access, or real DWG conversion. Generated workflow has no test project identifiers, user project data, internal endpoints or secret defaults."
+}
