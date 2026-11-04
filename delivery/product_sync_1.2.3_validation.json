@@ -1,0 +1,29 @@
+{
+  "service_version": "1.2.3",
+  "fix": "Normalize SQL timestamp fractional seconds on Python 3.10; preserve naive Beijing and aware timezone interpretation",
+  "changed_embedded_modules": [
+    "source",
+    "runtime"
+  ],
+  "unit_tests": {
+    "Python 3.10.22": 49,
+    "Python 3.12.14": 49
+  },
+  "integration": {
+    "runtime": "Python 3.10.22",
+    "MongoDB": "7.0.45",
+    "actual_single_file": true,
+    "source_fixture_sql_fraction": true,
+    "database_fixture_naive_datetime": true,
+    "readonly_preview_no_product_writes": true,
+    "reuse_snapshot_no_source_requests": true,
+    "apply_verified": true,
+    "repeat_zero_writes": true,
+    "missing_products_preserved": true,
+    "manual_fields_preserved": true,
+    "prices_unchanged": true,
+    "source_failure_no_product_writes": true,
+    "concurrent_override_guard": true
+  },
+  "customer_network_accessed": false
+}
