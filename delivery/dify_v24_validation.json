@@ -1,0 +1,49 @@
+{
+  "artifact": "cabinet_agent_v24.yml",
+  "sha256": "9a0cdbe9f0f7f331121b91de0111b989523888f35850f176519e13cbae44f841",
+  "git_blob_sha": "59e67ced2f98731719323726be3e9ddbdec24ec1",
+  "bytes": 601294,
+  "characters": 552926,
+  "dify_web": "1.8.0",
+  "nodes": 126,
+  "edges": 136,
+  "editor_errors": [],
+  "total_sandbox_tests": 61,
+  "total_code_node_executions": 1064,
+  "test_suites": {
+    "sandbox_v24_validation.json": {
+      "sandbox_image": "langgenius/dify-sandbox:0.2.12",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "actual_code_node_executions": 313,
+      "model_and_catalog_apis": "test doubles; no customer network requested"
+    },
+    "actions_v24_validation.json": {
+      "tests": 12,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 237,
+      "CAD_service": "controlled 503 fixture; decoded real DXF audited; no real DWG conversion claimed"
+    },
+    "recognition_v24_validation.json": {
+      "tests": 14,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 185,
+      "model_responses": "Controlled malformed/complete JSON fixtures; no live model credentials or billing used",
+      "dify_iteration_cleanup": "Clear per-iteration outputs, matching official Dify1.8 iteration_node.py behavior"
+    },
+    "order_api_v24_validation.json": {
+      "tests": 14,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 329,
+      "api_contract": "Actual delivered FastAPI1.3.1 app via TestClient; in-memory Mongo fixtures; no live server access",
+      "models_and_plugin_transport": "controlled test doubles"
+    }
+  },
+  "business_order": "source confirmation -> product selection -> BOM approval -> price references and delivery",
+  "API_error_policy": "Block failed product batches without guessed data; preserve approved BOM on delivery API errors",
+  "scope": "Official local Dify web/sandbox. Delivered FastAPI1.3.1 routes checked via TestClient with in-memory Mongo fixtures. Model and plugin transport/CAD test doubles. No private server access, live model billing, or real DWG conversion. Endpoint/secret variables and saved state empty."
+}
