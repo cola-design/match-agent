@@ -1,0 +1,26 @@
+{
+  "service_version": "1.2.4",
+  "sha256": "138673003a9b14fd7a6075f1bc7da18f93abc34945a7b6a12693f8e95bec02ea",
+  "git_blob_sha": "ec9f204c805c3e50fc75ac6990ffa3ac5d7e1cda",
+  "bytes": 63047,
+  "unit_tests": {
+    "Python 3.10.22": 62,
+    "Python 3.12.14": 62
+  },
+  "real_mongodb_integration": {
+    "mongo_version": "7.0.45",
+    "preview_no_product_writes": true,
+    "fresh_apply_verified": true,
+    "repeat_no_product_writes": true,
+    "metadata_business_fields_preserved": true,
+    "quality_only_review_guard": true,
+    "quality_only_counts_toward_change_limit": true,
+    "plan_hash_checked_before_product_writes": true,
+    "manual_fields_preserved": true,
+    "prices_unchanged": true,
+    "fetch_failure_no_product_writes": true,
+    "concurrent_override_guard": true
+  },
+  "private_plan_full_replay_and_database_verification": "passed; private records and counts not distributed",
+  "customer_network_accessed": false
+}
