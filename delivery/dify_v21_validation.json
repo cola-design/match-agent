@@ -1,0 +1,24 @@
+{
+  "dsl_version": "0.4.0",
+  "target_dify_version": "1.8.0",
+  "nodes": 110,
+  "edges": 116,
+  "pdf_plugin_version": "1.0.1",
+  "core_regression_tests": 21,
+  "submission_tests": 8,
+  "real_sandbox_code_executions": 472,
+  "javascript_exceptions": 0,
+  "real_pdf_conversion_files": 2,
+  "real_pdf_conversion_pages": 2,
+  "test_doubles": [
+    "vision and text model responses",
+    "product and price APIs",
+    "Excel plugin transport",
+    "CAD service"
+  ],
+  "live_customer_credentials_used": false,
+  "new_user_server_components_deployed": false,
+  "sha256": "65e2d3bc7f57ab6bd7fbc951c673097f430fe7ca70674f4a6e53e20ad9ba98b4",
+  "git_blob_sha": "e5008b674b3871dfb7e0ba98ebcfcb4bca3cd476",
+  "bytes": 467760
+}
