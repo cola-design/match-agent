@@ -1,0 +1,43 @@
+{
+  "artifact": "cabinet_agent_v23.yml",
+  "sha256": "094e87a824fe075df24f9774b70ef5a691760d3341d7f94e79d639154773ae1e",
+  "git_blob_sha": "c211be5c11e35e2a6b1a110fbdb2d2bdd28c2161",
+  "bytes": 554786,
+  "characters": 511786,
+  "dify_web": "1.8.0",
+  "nodes": 121,
+  "edges": 130,
+  "editor_errors": [],
+  "total_sandbox_tests": 47,
+  "total_code_node_executions": 862,
+  "test_suites": {
+    "sandbox_v23_validation.json": {
+      "sandbox_image": "langgenius/dify-sandbox:0.2.12",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "actual_code_node_executions": 368,
+      "model_and_catalog_apis": "test doubles; no customer network requested"
+    },
+    "actions_v23_validation.json": {
+      "tests": 12,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 272,
+      "CAD_service": "controlled 503 fixture; decoded real DXF audited; no real DWG conversion claimed"
+    },
+    "recognition_v23_validation.json": {
+      "tests": 14,
+      "errors": 0,
+      "failures": 0,
+      "actual_code_node_executions": 222,
+      "model_responses": "Controlled malformed/complete JSON fixtures; no live model credentials or billing used",
+      "dify_iteration_cleanup": "Clear per-iteration outputs, matching official Dify1.8 iteration_node.py behavior"
+    }
+  },
+  "model": "qwen3-vl-plus",
+  "max_output_tokens": 16384,
+  "vision_retries_for_invalid_JSON": 1,
+  "invalid_result_policy": "No heuristic JSON repair; fail entire batch without partial merge; stop before BOM",
+  "scope": "Official local Dify web and sandbox with model, catalog and plugin transport test doubles. No live customer model calls, private server access, or real DWG conversion. API endpoint/secret variables and saved state empty."
+}
