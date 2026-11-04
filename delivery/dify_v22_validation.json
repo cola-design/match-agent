@@ -1,0 +1,32 @@
+{
+  "artifact": "cabinet_agent_v22.yml",
+  "sha256": "22f6fe0629d2b2bb4454b82cb6aa068bdcc1b74c6a74b3049b20f09f481ce611",
+  "git_blob_sha": "16d333f2e3a82a638106f9097ef4136a62c4e203",
+  "bytes": 474482,
+  "characters": 442226,
+  "dify_web": "1.8.0",
+  "nodes": 111,
+  "edges": 118,
+  "editor_errors": [],
+  "all_four_llm_models": "qwen3-vl-plus",
+  "regression": {
+    "sandbox_image": "langgenius/dify-sandbox:0.2.12",
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "actual_code_node_executions": 353,
+    "model_and_catalog_apis": "test doubles; no customer network requested"
+  },
+  "explicit_actions_and_CAD_branch": {
+    "tests": 12,
+    "errors": 0,
+    "failures": 0,
+    "actual_code_node_executions": 262,
+    "CAD_service": "controlled 503 fixture; decoded real DXF audited; no real DWG conversion claimed"
+  },
+  "total_sandbox_tests": 33,
+  "total_code_node_executions": 615,
+  "scope": "Local official Dify UI and sandbox, controlled model/catalog/Excel transport/CAD responses. No user model credentials or private server access. No live DWG conversion. Secrets and endpoint variables left empty.",
+  "preview_checked": true,
+  "preview_errors": []
+}
