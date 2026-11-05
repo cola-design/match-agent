@@ -1,0 +1,40 @@
+{
+  "version": 26,
+  "checked_date_beijing": "2026-11-05",
+  "yml_sha256": "5583955ba41348faee1b9185069ddac8736c61d51f3eb92923e0935d7ee80084",
+  "nodes": 136,
+  "edges": 146,
+  "local_distinct_scenarios": 80,
+  "official_sandbox": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "actual_code_node_executions": 511,
+    "image": "langgenius/dify-sandbox:0.2.12",
+    "model_calls": "test doubles; live calls 0"
+  },
+  "business_order_and_api": {
+    "tests": 26,
+    "errors": 0,
+    "failures": 0,
+    "product_API": "actual FastAPI v1.3.1 via TestClient; MongoDB mock",
+    "model_and_cad_services": "test doubles"
+  },
+  "pdf_recognition_failure_handling": {
+    "tests": 11,
+    "errors": 0,
+    "failures": 0,
+    "vision_model_responses": "controlled malformed/complete JSON; live calls 0"
+  },
+  "official_web": {
+    "image": "langgenius/dify-web:1.8.0",
+    "rendered_nodes": 136,
+    "javascript_errors": [],
+    "server_API_responses": "local synthetic fixtures"
+  },
+  "live_qwen_api_calls": 0,
+  "customer_server_accessed": false,
+  "customer_database_accessed": false,
+  "new_plugins_or_business_backends": false,
+  "limits": "Model outputs are controlled test doubles. Live visual accuracy and real customer import/runtime acceptance remain unmeasured."
+}
