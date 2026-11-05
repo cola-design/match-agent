@@ -1,0 +1,7 @@
+fastapi==0.141.1
+uvicorn==0.52.1
+python-multipart==0.0.32
+PyMuPDF==1.26.6
+ezdxf==1.4.4
+Pillow==12.3.0
+openpyxl==3.1.5

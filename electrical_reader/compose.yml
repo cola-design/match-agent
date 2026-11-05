@@ -1,0 +1,24 @@
+services:
+  electrical-reader:
+    build: .
+    restart: unless-stopped
+    environment:
+      DRAWING_READER_API_KEY: ${DRAWING_READER_API_KEY:?请在.env设置解析工具密钥}
+      DRAWING_DATA_DIR: /data
+    volumes:
+      - electrical_reader_data:/data
+    expose:
+      - '9910'
+    networks:
+      - dify_network
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request;urllib.request.urlopen('http://127.0.0.1:9910/live',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  electrical_reader_data:
+networks:
+  dify_network:
+    external: true
+    name: ${DIFY_NETWORK_NAME:-docker_default}

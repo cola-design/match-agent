@@ -1,0 +1,53 @@
+{
+  "version": "0.1.0",
+  "checked_at_utc": "2026-11-05",
+  "scope": "standalone Dify drawing extraction prototype; no product database, pricing, procurement or CAD generation",
+  "local_tests": {
+    "count": 35,
+    "errors": 0,
+    "failures": 0,
+    "visual_model": "controlled responses, no live calls"
+  },
+  "official_dify_sandbox": {
+    "tests": 8,
+    "errors": 0,
+    "failures": 0,
+    "actual_code_executions": 134,
+    "image": "langgenius/dify-sandbox:0.2.12",
+    "visual_model": "controlled responses; live calls 0"
+  },
+  "official_dify_web_editor": {
+    "version": "1.8.0",
+    "rendered_nodes": 31,
+    "javascript_errors": 0,
+    "api_responses": "local fixtures; this is editor rendering, not a live Dify backend workflow run"
+  },
+  "native_file_validation": {
+    "samples": 4,
+    "pdf_samples": 2,
+    "dwg_samples": 2,
+    "native_extraction_and_region_rendering": "passed",
+    "customer_files_in_delivery": false,
+    "note": "native label occurrence checks do not establish physical component quantities or semantic recognition accuracy"
+  },
+  "actual_container": {
+    "scope": "actual Docker image HTTP parsing, rendering and attachments; no visual model calls",
+    "checks": [
+      {
+        "format": "pdf",
+        "native_parse": true
+      },
+      {
+        "format": "dwg",
+        "native_parse": true
+      }
+    ],
+    "region_images": true,
+    "three_real_attachments": true,
+    "passed": true
+  },
+  "live_qwen_calls": 0,
+  "recognition_accuracy_measured": false,
+  "engineering_verified": false,
+  "external_customer_server_or_database_accessed": false
+}
