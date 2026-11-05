@@ -1,0 +1,46 @@
+{
+  "version": "26.3",
+  "date_beijing": "2026-11-05",
+  "nodes": 153,
+  "edges": 165,
+  "local_tests": {
+    "combined.log": 55,
+    "base.log": 43,
+    "regression.log": 37
+  },
+  "local_total": 135,
+  "official_sandbox": {
+    "tests": 98,
+    "failures": 0,
+    "errors": 0,
+    "actual_code_executions": 779,
+    "image": "langgenius/dify-sandbox:0.2.12",
+    "model_calls": "controlled fixtures plus replay of two user-supplied responses; new live calls 0",
+    "assigner_validation": "official Dify 1.8 predicates run in graph harness"
+  },
+  "official_editor": {
+    "version": "1.8.0",
+    "rendered_nodes": 153,
+    "javascript_errors": [],
+    "application_api": "local fixtures, editor rendering only"
+  },
+  "actual_user_response_replay": {
+    "responses": 2,
+    "retains_items_without_whole_page_index_failure": true,
+    "all_evidence_categories_normalized": true,
+    "ats_suffix_pole_error_detected": true,
+    "visual_correctness_not_assumed": true
+  },
+  "coordinate_contract": "primary normalized_1000 converted to normalized report coordinates; explicit alternate units supported",
+  "location_only_repair": {
+    "max_output_tokens": 4096,
+    "allowed_changes": "subfigure index, geometry and existing-row memberships",
+    "device_parameters_quantities_and_rows_immutable": true
+  },
+  "new_plugin_or_server_required": false,
+  "new_live_qwen_calls": 0,
+  "full_user_dify_backend_run": false,
+  "customer_files_published": false,
+  "yaml_sha256": "e3b3dbeb091f581e2b691bb2129924ab584611422bec39ce014f5e410695e51f",
+  "yaml_git_blob_sha": "0d14015494c7169479da8411168030bcc6388985"
+}
