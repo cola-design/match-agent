@@ -1,0 +1,46 @@
+{
+  "version": "26.2",
+  "date_beijing": "2026-11-05",
+  "base": "V26.1 with original V26 business paths",
+  "nodes": 147,
+  "edges": 157,
+  "host_tests": {
+    "base.log": 43,
+    "extension.log": 12,
+    "regression.log": 37,
+    "coverage.log": 23
+  },
+  "host_total": 115,
+  "official_sandbox": {
+    "tests": 78,
+    "failures": 0,
+    "errors": 0,
+    "actual_code_executions": 707,
+    "image": "langgenius/dify-sandbox:0.2.12",
+    "model_calls": "controlled fixtures; live 0",
+    "assigner_validation": "official Dify 1.8 predicates run in graph harness"
+  },
+  "official_editor": {
+    "version": "1.8.0",
+    "rendered_nodes": 147,
+    "javascript_errors": [],
+    "server_API": "local fixtures; editor rendering only"
+  },
+  "submitted_output_regression": {
+    "input": "reconstructed from the supplied Excel columns, not the original complete model log",
+    "original_pdf_text_used": true,
+    "missing_labels_detected": true,
+    "power_field_normalized": true,
+    "full_graph_keeps_incomplete_status_and_blocks_catalog": true,
+    "devices_or_quantities_fabricated": false
+  },
+  "native_audit_scope": "configured candidate text patterns; occurrences are not physical quantities; full-document text checked across page union",
+  "new_plugin_or_server_required": false,
+  "assigner_contract": "official Dify 1.8 predicates",
+  "live_qwen_calls": 0,
+  "live_visual_accuracy_measured": false,
+  "full_user_dify_backend_run": false,
+  "customer_files_published": false,
+  "yaml_sha256": "9e789c00aa0191624b976ea13511747a0584b3bd77bf4f112423017af86988de",
+  "yaml_git_blob_sha": "ffddda7600607b3eb9e0acc8a5f82b7fc4a1b7e3"
+}
