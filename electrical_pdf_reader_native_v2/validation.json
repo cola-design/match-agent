@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-11-05",
+  "local_tests_passed": 56,
+  "workflow_fixture_tests": 8,
+  "actual_pdf_service_trials": 2,
+  "actual_pdf_trial_kinds": [
+    "native_single_line",
+    "outlined_text_with_equipment_schedule"
+  ],
+  "native_trial_associated_circuits": 8,
+  "ocr_trial_embedded_schedule_rows": 9,
+  "actual_cloud_model_calls": 0,
+  "user_dify_live_run_verified": false,
+  "model_accuracy_verified": false,
+  "full_electrical_connectivity_verified": false,
+  "new_docker_image_build_verified": false,
+  "customer_documents_in_public_package": false
+}

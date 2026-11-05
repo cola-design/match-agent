@@ -1,0 +1,25 @@
+services:
+  electrical-pdf-reader-v2:
+    build: .
+    restart: unless-stopped
+    environment:
+      DRAWING_READER_API_KEY: ${DRAWING_READER_API_KEY:?请在.env设置本解析工具访问口令，不是千问密钥}
+      DRAWING_DATA_DIR: /data
+      DRAWING_MAX_PAGES: 40
+    volumes:
+      - electrical_pdf_reader_v2_data:/data
+    expose:
+      - '9912'
+    networks:
+      - dify_network
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request;urllib.request.urlopen('http://127.0.0.1:9912/live',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  electrical_pdf_reader_v2_data:
+networks:
+  dify_network:
+    external: true
+    name: ${DIFY_NETWORK_NAME:-docker_default}
