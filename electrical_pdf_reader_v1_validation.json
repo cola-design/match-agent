@@ -1,0 +1,44 @@
+{
+  "date_beijing": "2026-11-05",
+  "kind": "PDF-only Dify 1.8 chatflow pilot",
+  "new_server_service_required": false,
+  "http_request_nodes": 0,
+  "environment_variables": 0,
+  "local_tests": {
+    "count": 16,
+    "errors": 0,
+    "failures": 0,
+    "PDF_rasterization": "real PyMuPDF",
+    "model_replies": "controlled fixtures",
+    "Excel_plugin": "local compatible XLSX adapter; not a live plugin daemon call"
+  },
+  "official_sandbox": {
+    "tests": 16,
+    "errors": 0,
+    "failures": 0,
+    "actual_code_executions": 163,
+    "sandbox": "langgenius/dify-sandbox:0.2.12",
+    "model": "controlled replies; live calls 0"
+  },
+  "upstream_pdf_plugin": {
+    "upstream_pdf_plugin": "1.0.1",
+    "transport": "local SDK transport shim; original plugin conversion code executed",
+    "real_pdf_samples": 2,
+    "pages": 2,
+    "page_binding_validated": true,
+    "model_calls": 0,
+    "customer_files_published": false
+  },
+  "official_editor": {
+    "version": "1.8.0",
+    "nodes": 29,
+    "javascript_errors": [],
+    "application_api": "local fixtures, editor rendering only"
+  },
+  "live_qwen_calls": 0,
+  "full_user_dify_backend_run": false,
+  "recognition_accuracy_measured": false,
+  "customer_files_published": false,
+  "engineering_verified": false,
+  "yaml_sha256": "ddff4f8cb9916f8f5e9cbddbcd2b3efa754a8b200782c88c07d61edd0b772ded"
+}
