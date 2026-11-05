@@ -1,0 +1,43 @@
+{
+  "version": "26.1",
+  "date_beijing": "2026-11-05",
+  "base": "V26",
+  "nodes": 147,
+  "edges": 157,
+  "local_tests": {
+    "base_regression.log": 43,
+    "business_regression.log": 37,
+    "pdf_extension_test.log": 12
+  },
+  "local_total": 92,
+  "assigner_nodes": 12,
+  "assigner_contract": {
+    "source": "langgenius/dify tag 1.8.0 variable_assigner/v2/helpers.py",
+    "original_constant_clear_error_reproduced": true,
+    "official_predicates_run_on_every_assignment_path": true,
+    "all_configured_operations": "variable + over-write"
+  },
+  "official_sandbox": {
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "actual_code_executions": 671,
+    "image": "langgenius/dify-sandbox:0.2.12",
+    "model_calls": "controlled fixtures; live 0",
+    "assigner_validation": "official Dify 1.8 predicates run in graph harness"
+  },
+  "official_web": {
+    "version": "1.8.0",
+    "rendered_nodes": 147,
+    "javascript_errors": [],
+    "application_API": "local synthetic fixtures; editor rendering only"
+  },
+  "new_backend_or_plugin_required": false,
+  "full_customer_dify_backend_run": false,
+  "live_qwen_calls": 0,
+  "customer_database_or_server_accessed": false,
+  "customer_files_published": false,
+  "model_replies": "controlled fixtures; visual accuracy unmeasured",
+  "api_checks": "local FastAPI TestClient and MongoDB test double",
+  "yaml_sha256": "ee193b5a174660a0a2a7e6be4f4ac9cdd81296e7f6395189c5032c4091993e3d"
+}
