@@ -1,0 +1,8 @@
+{
+  "tests": 30,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "actual_model_calls": 0,
+  "scope": "Offline protocol and rule tests; private actual-result replay and manually checked development reference, not live recognition accuracy or a blind benchmark."
+}

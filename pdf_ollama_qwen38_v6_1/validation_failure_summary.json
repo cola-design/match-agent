@@ -1,0 +1,7 @@
+{
+  "actual_failure_summary_replayed": true,
+  "recovered_model_items": 0,
+  "pending_checks": 33,
+  "actual_model_calls": 0,
+  "scope": "Report handling of the supplied failure summary. Original deleted raw replies could not be reconstructed."
+}
