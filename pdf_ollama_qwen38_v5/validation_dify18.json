@@ -1,0 +1,6 @@
+{
+  "typed_code_executions": 5,
+  "failures": 0,
+  "actual_ollama_calls": 0,
+  "scope": "Official Dify 1.8 File/Segment classes, CodeNode._run input conversion and JSON serializer; local backend and output transformation supplied by harness. Not installed in user Dify."
+}

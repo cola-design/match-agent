@@ -1,0 +1,122 @@
+desc: ''
+is_team_authorization: true
+output_schema: null
+paramSchemas:
+- auto_generate: null
+  default: null
+  form: llm
+  human_description:
+    en_US: Select one or more PDF files to convert to images
+    ja_JP: 画像に変換するPDFファイルを1つまたは複数選択してください
+    zh_Hans: 选择要转换为图像的一个或多个PDF文件
+    pt_BR: Selecione um ou mais arquivos PDF para converter em imagens
+  label:
+    en_US: PDF Files
+    ja_JP: PDFファイル
+    zh_Hans: PDF文件
+    pt_BR: Arquivos PDF
+  llm_description: Array of PDF files to be converted to images. Each page of each
+    PDF will be converted to a separate image.
+  max: null
+  min: null
+  name: pdf_files
+  options: []
+  placeholder: null
+  precision: null
+  required: true
+  scope: null
+  template: null
+  type: files
+- auto_generate: null
+  default: 72
+  form: llm
+  human_description:
+    en_US: Image resolution in DPI (dots per inch). Higher values produce better quality
+      but larger files.
+    ja_JP: DPI（ドット・パー・インチ）での画像解像度。高い値ほど品質が良くなりますがファイルサイズも大きくなります。
+    zh_Hans: 以DPI（每英寸点数）为单位的图像分辨率。数值越高质量越好但文件越大。
+    pt_BR: Resolução da imagem em DPI (pontos por polegada). Valores maiores produzem
+      melhor qualidade mas arquivos maiores.
+  label:
+    en_US: Resolution (DPI)
+    ja_JP: 解像度 (DPI)
+    zh_Hans: 分辨率 (DPI)
+    pt_BR: Resolução (DPI)
+  llm_description: 'Resolution for the output images in DPI. Default is 72. Common
+    values: 72 (web), 150 (standard), 300 (high quality).'
+  max: null
+  min: null
+  name: dpi
+  options: []
+  placeholder: null
+  precision: null
+  required: false
+  scope: null
+  template: null
+  type: number
+- auto_generate: null
+  default: PNG
+  form: form
+  human_description:
+    en_US: Output image format. PNG for lossless quality, JPEG for smaller file sizes.
+    ja_JP: 出力画像フォーマット。PNGは可逆圧縮、JPEGはファイルサイズが小さくなります。
+    zh_Hans: 输出图像格式。PNG为无损质量，JPEG文件大小更小。
+    pt_BR: Formato da imagem de saída. PNG para qualidade sem perda, JPEG para arquivos
+      menores.
+  label:
+    en_US: Image Format
+    ja_JP: 画像フォーマット
+    zh_Hans: 图像格式
+    pt_BR: Formato de Imagem
+  llm_description: Output format for the converted images. PNG provides lossless quality,
+    JPEG provides smaller file sizes.
+  max: null
+  min: null
+  name: image_format
+  options:
+  - value: PNG
+    label:
+      en_US: PNG (Lossless)
+      ja_JP: PNG（可逆圧縮）
+      zh_Hans: PNG（无损压缩）
+      pt_BR: PNG (Sem Perda)
+  - value: JPEG
+    label:
+      en_US: JPEG (Compressed)
+      ja_JP: JPEG（圧縮）
+      zh_Hans: JPEG（压缩）
+      pt_BR: JPEG (Comprimido)
+  placeholder: null
+  precision: null
+  required: false
+  scope: null
+  template: null
+  type: select
+params:
+  pdf_files: ''
+  dpi: ''
+  image_format: ''
+provider_id: atoy0m0/pdf-to-images/pdf-to-images
+provider_name: atoy0m0/pdf-to-images/pdf-to-images
+provider_type: builtin
+selected: false
+title: 客户图纸：PDF逐页转图片（PDF插件1.0.1）
+tool_configurations:
+  image_format:
+    type: constant
+    value: PNG
+tool_description: Convert PDF pages to high-quality images using PyMuPDF. Supports
+  multiple PDFs and customizable resolution.
+tool_label: PDF to Images Converter
+tool_name: pdf-to-images
+tool_node_version: '2'
+tool_parameters:
+  dpi:
+    type: constant
+    value: 300
+  pdf_files:
+    type: variable
+    value:
+    - sys
+    - files
+type: tool

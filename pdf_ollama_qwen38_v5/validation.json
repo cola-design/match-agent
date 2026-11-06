@@ -1,0 +1,7 @@
+{
+  "tests": 16,
+  "failures": 0,
+  "errors": 0,
+  "actual_ollama_calls": 0,
+  "scope": "Offline code/graph and controlled model reply tests; not a live model recognition test."
+}

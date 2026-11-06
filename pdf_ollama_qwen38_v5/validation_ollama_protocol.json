@@ -1,0 +1,12 @@
+{
+  "provider_version": "0.1.1",
+  "source_ref": "29ddda7d12f3a75c61bba7b82e3cb13c8e084e80",
+  "assertions": 8,
+  "failures": 0,
+  "actual_ollama_calls": 0,
+  "endpoint_path": "/api/chat",
+  "image_in_body": true,
+  "think_false_at_top_level": true,
+  "format_json_at_top_level": true,
+  "backend": "controlled requests.post, no network inference"
+}
