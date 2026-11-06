@@ -1,0 +1,18 @@
+{
+  "date_beijing": "2026-11-06",
+  "version": "3.1",
+  "fixed_error": "Type is not JSON serializable: File",
+  "cause": "Dify 1.8 CodeNode converts ArrayFileSegment but FileSegment.to_object returns a bare File",
+  "fix": "Code receives iteration.index and manifest text. The native iteration.item FileSegment is used only by visual LLM nodes.",
+  "typed_regression_tests": 17,
+  "typed_regression_failures": 0,
+  "sandbox_executions": 64,
+  "old_error_reproduced": true,
+  "official_types_and_input_serializer_used": true,
+  "existing_v3_materials_accepted": true,
+  "source_preparation_unchanged": true,
+  "actual_qwen_calls": 0,
+  "user_dify_live_run_verified": false,
+  "customer_documents_included": false,
+  "scope": "File-type boundary regression and code sandbox tests; not complete workspace or model accuracy verification"
+}
