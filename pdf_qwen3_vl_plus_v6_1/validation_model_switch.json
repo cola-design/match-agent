@@ -1,0 +1,10 @@
+{
+  "llm_nodes_changed": 3,
+  "nodes": 24,
+  "unchanged_edges": true,
+  "vision_and_prompts_preserved": true,
+  "business_code_preserved_except_model_metadata_and_help": true,
+  "provider_parameters_checked": true,
+  "actual_model_calls": 0,
+  "live_dify_server": false
+}

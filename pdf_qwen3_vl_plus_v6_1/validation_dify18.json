@@ -1,0 +1,15 @@
+{
+  "generated_code_nodes_executed": 9,
+  "failures": 0,
+  "actual_model_calls": 0,
+  "live_dify_server": false,
+  "checks": [
+    "ArrayFile inputs",
+    "generated normalization closure",
+    "RCB alias retention",
+    "unknown drawing remains unbound",
+    "broken retry preserves first result",
+    "result collection"
+  ],
+  "scope": "Official Dify 1.8 File/Segment input conversion and serialization; mocked backend and service wiring, not a complete deployed Dify test."
+}
