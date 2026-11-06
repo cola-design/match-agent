@@ -1,0 +1,30 @@
+version: 0.1.0
+type: plugin
+author: cola-design
+name: electrical-pdf
+label:
+  en_US: Electrical PDF Reader
+  zh_Hans: 电气PDF原文定位与自动放大
+description:
+  en_US: Native PDF evidence, automatic zoom and a unified selection workbook.
+  zh_Hans: 完整PDF输入，保留原文坐标，自动放大并统一导出选型信息；无独立后端。
+icon: icon.svg
+resource:
+  memory: 1073741824
+  permission: {}
+plugins:
+  tools:
+  - provider/electrical_pdf.yaml
+meta:
+  version: 0.0.1
+  arch:
+  - amd64
+  - arm64
+  runner:
+    language: python
+    version: '3.12'
+    entrypoint: main
+  minimum_dify_version: 1.8.0
+created_at: '2026-11-06T12:00:00+08:00'
+privacy: PRIVACY.md
+verified: false

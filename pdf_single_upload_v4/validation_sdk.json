@@ -1,0 +1,8 @@
+{
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "sdk_version": "0.4.5",
+  "actual_model_calls": 0,
+  "scope": "Actual SDK registration, File objects and tool message generation; offline, not installed in user Dify."
+}

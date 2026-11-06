@@ -1,0 +1,8 @@
+{
+  "tests": 20,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "actual_model_calls": 0,
+  "scope": "Offline native PDF, file protocol, graph structure and controlled-reply tests; not a deployed Dify workspace or recognition accuracy certification."
+}

@@ -1,0 +1,17 @@
+identity:
+  author: cola-design
+  name: electrical-pdf
+  label:
+    en_US: Electrical PDF Reader
+    zh_Hans: 电气PDF原文定位与自动放大
+  description:
+    en_US: Native PDF evidence and rendering inside Dify.
+    zh_Hans: 在Dify插件内解析PDF、自动放大和生成统一核对表。
+  icon: icon.svg
+credentials_for_provider: {}
+tools:
+- tools/prepare_pdf.yaml
+- tools/export_selection.yaml
+extra:
+  python:
+    source: provider/electrical_pdf.py

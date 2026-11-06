@@ -1,0 +1,6 @@
+{
+  "typed_code_executions": 9,
+  "failures": 0,
+  "source": "Official Dify 1.8 File/Segment classes, CodeNode._run input conversion and segment JSON serializer. Local execution backend; output transform and unrelated services supplied by harness. Not a deployed Dify workspace.",
+  "actual_model_calls": 0
+}

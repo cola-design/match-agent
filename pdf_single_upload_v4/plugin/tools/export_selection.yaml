@@ -1,0 +1,48 @@
+identity:
+  name: export-selection
+  author: cola-design
+  label:
+    en_US: export-selection
+    zh_Hans: 整份选型信息统一导出
+description:
+  human:
+    en_US: 整份选型信息统一导出
+    zh_Hans: 整份选型信息统一导出
+  llm: 整份选型信息统一导出
+parameters:
+- name: pdf_files
+  type: files
+  required: true
+  label:
+    en_US: One complete PDF
+    zh_Hans: 一份完整PDF
+  human_description:
+    en_US: Upload exactly one PDF.
+    zh_Hans: 只上传一份完整PDF，无需拆图。
+  llm_description: Exactly one uploaded PDF file.
+  form: llm
+- name: vision_results
+  type: string
+  required: true
+  label:
+    en_US: Validated visual results
+    zh_Hans: 已校验视觉结果
+  human_description:
+    en_US: Produced by the paired workflow.
+    zh_Hans: 由配套流程自动生成。
+  llm_description: JSON array of validated or explicitly failed visual records.
+  form: llm
+- name: selection_context
+  type: string
+  required: false
+  label:
+    en_US: Selection constraints
+    zh_Hans: 已确认选型约束
+  human_description:
+    en_US: Optional confirmed project constraints.
+    zh_Hans: 可选的已确认项目约束。
+  llm_description: User-supplied constraints, not drawing evidence.
+  form: llm
+extra:
+  python:
+    source: tools/export_selection.py

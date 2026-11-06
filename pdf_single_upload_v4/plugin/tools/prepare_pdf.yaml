@@ -1,0 +1,26 @@
+identity:
+  name: prepare-pdf
+  author: cola-design
+  label:
+    en_US: prepare-pdf
+    zh_Hans: 完整PDF原文定位与自动放大
+description:
+  human:
+    en_US: 完整PDF原文定位与自动放大
+    zh_Hans: 完整PDF原文定位与自动放大
+  llm: 完整PDF原文定位与自动放大
+parameters:
+- name: pdf_files
+  type: files
+  required: true
+  label:
+    en_US: One complete PDF
+    zh_Hans: 一份完整PDF
+  human_description:
+    en_US: Upload exactly one PDF.
+    zh_Hans: 只上传一份完整PDF，无需拆图。
+  llm_description: Exactly one uploaded PDF file.
+  form: llm
+extra:
+  python:
+    source: tools/prepare_pdf.py
