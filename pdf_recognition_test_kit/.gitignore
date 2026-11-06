@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+private*/
+test_run*/
+*.pdf
+*.png
+*.xlsx
+*.log
+.env

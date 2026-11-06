@@ -1,0 +1,23 @@
+{
+  "date_beijing": "2026-11-06",
+  "paired_test_version": 3,
+  "local_flow_and_boundary_tests": 13,
+  "local_test_failures": 0,
+  "sandbox_code_executions": 63,
+  "sandbox_failures": 0,
+  "sandbox_image": "langgenius/dify-sandbox:0.2.12",
+  "text_extractor_contract": "official Dify 1.8.0 document_extractor/node.py, text/plain ArrayString output",
+  "actual_pdf_preparation_trials": 1,
+  "native_text_records_in_trial": 95,
+  "native_circuits_in_trial": 8,
+  "region_images_in_trial": 4,
+  "windows_commands_executed_on_windows": false,
+  "actual_user_dify_import_verified": false,
+  "actual_qwen_calls": 0,
+  "visual_accuracy_verified": false,
+  "full_terminal_netlist_verified": false,
+  "customer_files_in_public_package": false,
+  "parser_server_required": false,
+  "extra_dify_tools_required": false,
+  "model_credentials_location": "existing Dify model provider"
+}
