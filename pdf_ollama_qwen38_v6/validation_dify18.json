@@ -1,0 +1,6 @@
+{
+  "typed_code_executions": 9,
+  "failures": 0,
+  "actual_model_calls": 0,
+  "scope": "Official Dify 1.8 File/Segment classes, CodeNode._run input conversion and JSON serializer. Local backend and output transform supplied by harness; not deployed Dify or live recognition test."
+}
