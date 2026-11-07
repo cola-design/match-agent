@@ -1,0 +1,79 @@
+{
+  "private_pdf_pages": 1,
+  "original_pixels": [
+    3508,
+    2481
+  ],
+  "original_png_bytes": 280507,
+  "lossless_crops_checked": 6,
+  "actual_model_calls": 0,
+  "checks": [
+    {
+      "view": "H1",
+      "pixels": [
+        3508,
+        993
+      ],
+      "png_bytes": 12522,
+      "encoded_parts": 1,
+      "seconds": 0.585,
+      "exact_pixel_match": true
+    },
+    {
+      "view": "H2",
+      "pixels": [
+        3508,
+        993
+      ],
+      "png_bytes": 172550,
+      "encoded_parts": 4,
+      "seconds": 0.605,
+      "exact_pixel_match": true
+    },
+    {
+      "view": "H3",
+      "pixels": [
+        3508,
+        993
+      ],
+      "png_bytes": 187768,
+      "encoded_parts": 5,
+      "seconds": 0.622,
+      "exact_pixel_match": true
+    },
+    {
+      "view": "V1",
+      "pixels": [
+        1404,
+        2481
+      ],
+      "png_bytes": 59926,
+      "encoded_parts": 2,
+      "seconds": 0.622,
+      "exact_pixel_match": true
+    },
+    {
+      "view": "V2",
+      "pixels": [
+        1404,
+        2481
+      ],
+      "png_bytes": 270370,
+      "encoded_parts": 7,
+      "seconds": 0.626,
+      "exact_pixel_match": true
+    },
+    {
+      "view": "V3",
+      "pixels": [
+        1404,
+        2481
+      ],
+      "png_bytes": 116303,
+      "encoded_parts": 3,
+      "seconds": 0.6,
+      "exact_pixel_match": true
+    }
+  ],
+  "scope": "Actual private PDF rendered at 300dpi; each crop compared pixel-for-pixel with Pillow crop. This tests pixel processing, not model interpretation."
+}

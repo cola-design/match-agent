@@ -1,0 +1,10 @@
+{
+  "original_candidate_rows": 29,
+  "retained_rows_and_annotations": 29,
+  "new_product_candidates": 27,
+  "separated_annotations": 2,
+  "fabricated_positions": 0,
+  "bindings_approved_without_positions": 0,
+  "actual_model_calls": 0,
+  "scope": "Replayed supplied V6.1 labels with their actual missing coordinates. No new model output or recovery of omitted physical instances."
+}

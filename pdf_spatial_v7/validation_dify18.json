@@ -1,0 +1,11 @@
+{
+  "generated_code_nodes_executed": 9,
+  "official_list_operator_selection": true,
+  "upstream_base64_0_3_tool_bodies_executed": true,
+  "real_png_byte_bridge": true,
+  "mixed_parameter_chunk_join": true,
+  "original_not_used_as_crop_fallback": true,
+  "actual_model_calls": 0,
+  "live_dify_server": false,
+  "scope": "Official Dify 1.8 File/Segment and list selection methods; unchanged codec tool bodies with mock SDK messages and local code backend. Not a complete deployed Dify or live recognition test."
+}
