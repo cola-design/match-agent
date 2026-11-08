@@ -1,0 +1,91 @@
+{
+  "version": "28.0",
+  "validated_at_utc": "2026-11-08",
+  "yml_sha256": "41491e40763d30cf9762a953930b1030f101ce39a90d9e6dddcfb97c2ec786da",
+  "runtime": {
+    "api": "official Dify 1.8.0 source and dependencies exported from its official image",
+    "api_image_digest": "sha256:b3ff0ba470d16c2f135d20a047d286c8814cec56b67cab9f59b78cb43b01e4e4",
+    "web": "official langgenius/dify-web:1.8.0 container",
+    "sandbox": "official langgenius/dify-sandbox:0.2.12 container",
+    "plugin_daemon": "official langgenius/dify-plugin-daemon:0.2.0-local binary",
+    "node_count": 145,
+    "edge_count": 165
+  },
+  "official_dify_import": {
+    "production_yml": "completed",
+    "controlled_fixture_variant": "completed"
+  },
+  "browser": {
+    "production_nodes_rendered": 145,
+    "fixture_nodes_rendered": 145,
+    "uncaught_page_errors": 0,
+    "preview_form_visible": true,
+    "explicit_stage_commands_visible": true,
+    "mock_console_responses": false,
+    "network_note": "Console calls forwarded to the actual local Dify 1.8 API, not mocked responses."
+  },
+  "business_tests": {
+    "passed": 36,
+    "failed": 0
+  },
+  "actual_dify_negative_and_recovery_checks": {
+    "passed": [
+      "fixed_column_tamper_rejected",
+      "tamper_preserves_source_stage",
+      "http_404_is_explicit",
+      "http_404_preserves_retry_stage",
+      "retry_recovers_without_reupload",
+      "estimate_cannot_approve_quote",
+      "unapproved_quote_blocks_production",
+      "corrected_quote_recovers",
+      "missing_cad_service_is_explicit",
+      "engineering_return_preserves_quote_stage",
+      "project_archive_and_optional_agreement_preserved",
+      "catalog_change_blocks_production",
+      "revision_reopens_source_form",
+      "latest_revision_source_workbook_downloadable"
+    ],
+    "count": 14
+  },
+  "real_engine_business_round_trip": [
+    "synthetic PDF and optional agreement upload",
+    "real PDF conversion tool and Base64 codec",
+    "source confirmation XLSX download and return",
+    "read-only catalog matching",
+    "selection confirmation XLSX return",
+    "reference price query",
+    "quotation confirmation XLSX return",
+    "catalog snapshot verification",
+    "confirmed combined procurement/quotation XLSX and production technical XLSX download",
+    "engineering parameter return",
+    "project archive",
+    "revision recovery"
+  ],
+  "quote_math_checked": {
+    "quantity_per_cabinet": "1",
+    "cabinet_count": "2",
+    "total_quantity": "2",
+    "sell_ex_tax": "6.00",
+    "net": "12.00",
+    "tax_rate": "0.13",
+    "tax": "1.56",
+    "gross": "13.56"
+  },
+  "external_fixtures": {
+    "model": "explicit dify28lab/fixture/fixture provider with fixed synthetic responses; not Qwen",
+    "catalog": "local synthetic read-only HTTP API",
+    "pdf_tool": "author 1.0.1 implementation unchanged, packaged locally with test launcher and assets",
+    "base64": "author original 0.3.0 package",
+    "real_qwen_calls": 0,
+    "company_database_accesses": 0,
+    "actual_dwg_conversions": 0
+  },
+  "not_validated": [
+    "real Qwen recognition accuracy on customer drawings",
+    "company intranet connectivity and production API credentials",
+    "real DXF-to-DWG conversion",
+    "complete production-ready primary, secondary and cabinet layout drawings",
+    "enterprise production document template compliance and actual engineering inspection"
+  ],
+  "deployment_note": "The deliverable runs in Dify using configured existing plugins and services. No new custom project backend is required."
+}
