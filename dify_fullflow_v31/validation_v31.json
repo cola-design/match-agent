@@ -1,0 +1,85 @@
+{
+  "version": "31.0",
+  "sha256": "cc8eba80dddd6d60a4b20f0a85ac6b48b2fb83d06651fe08f8b1a29fbe595551",
+  "native_and_recognition_regression_tests": 31,
+  "existing_business_regression_tests": 35,
+  "real_dify_engine": "1.8.0",
+  "real_browser_nodes": 152,
+  "uncaught_browser_errors": 0,
+  "native_text_position_validation": [
+    {
+      "sample": 1,
+      "pages": 1,
+      "native_spans": 95,
+      "all_first_character_origins_match_independent_renderer": true,
+      "max_normalized_origin_error": 7.747649539169288e-05,
+      "native_reader_status": "available"
+    },
+    {
+      "sample": 2,
+      "pages": 1,
+      "native_spans": 389,
+      "all_first_character_origins_match_independent_renderer": true,
+      "max_normalized_origin_error": 7.946415857418287e-05,
+      "native_reader_status": "available"
+    }
+  ],
+  "actual_pdf_engine_test": {
+    "real_dify_engine": "1.8.0",
+    "actual_customer_pdf_bytes_read": true,
+    "native_spans": 95,
+    "candidate_rows": 31,
+    "mccb_independent_positions": 3,
+    "ats_positions": 1,
+    "transformer_positions": 1,
+    "neighboring_breaker_positions": 1,
+    "native_missing_symbols": 0,
+    "targeted_repair_views": 0,
+    "all_eight_loads_checked": true,
+    "cabinet_tags_preserved": true,
+    "quantity_not_guessed": true,
+    "xlsx_generated_and_downloaded": true,
+    "model": "controlled response fixture, not real Qwen",
+    "real_model_inference": false
+  },
+  "targeted_repair_test": {
+    "real_dify_engine": "1.8.0",
+    "actual_customer_pdf_bytes_read": true,
+    "native_spans": 95,
+    "candidate_rows": 31,
+    "mccb_independent_positions": 3,
+    "ats_positions": 1,
+    "transformer_positions": 1,
+    "neighboring_breaker_positions": 1,
+    "native_missing_symbols": 0,
+    "targeted_repair_views": 1,
+    "all_eight_loads_checked": true,
+    "cabinet_tags_preserved": true,
+    "quantity_not_guessed": true,
+    "xlsx_generated_and_downloaded": true,
+    "model": "controlled response fixture, not real Qwen",
+    "real_model_inference": false
+  },
+  "scanned_pdf_fallback": {
+    "scan_only_fallback_tested": true,
+    "native_coordinates_not_fabricated": true,
+    "visual_candidates_marked_for_review": true,
+    "xlsx_downloaded": true,
+    "model": "controlled fixture; no OCR accuracy acceptance"
+  },
+  "multi_turn_source_selection_quote_and_production": "passed",
+  "file_url_workflow_adapter": "tested with server FILES_URL and INTERNAL_FILES_URL empty",
+  "plugins": "existing Base64 1.1.0 and PDF-to-Images 1.0.1, no plugin source modifications",
+  "new_plugins_required": false,
+  "new_server_required": false,
+  "visual_model_and_catalog": "controlled test fixtures",
+  "real_qwen_calls": 0,
+  "company_database_accesses": 0,
+  "full_electrical_drawing_accuracy_verified": false,
+  "limitations": [
+    "Native text positions do not prove symbol identity, physical quantities or topology.",
+    "Native PDF text can be incomplete or incorrectly mapped; conflicts require source review.",
+    "Unsupported fonts and scanned pages explicitly fall back to visual candidates.",
+    "Real Qwen symbol-recognition acceptance must run in the company Dify environment."
+  ]
+}
