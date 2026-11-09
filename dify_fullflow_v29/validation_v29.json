@@ -1,0 +1,48 @@
+{
+  "version": "29.0",
+  "yml_sha256": "f387778dcf7959d9ea140cadcd1d73a4d632f4140581a4fa51c924721082ca16",
+  "rules_tests": 9,
+  "actual_pdf_lossless_crop_pixel_checks": 6,
+  "source_pixel_crop_checks_passed": true,
+  "old_output_replay": {
+    "scope": "Replayed old model observations; no new model calls and no repaired ground truth",
+    "old_candidates": 126,
+    "new_located_candidates": 58,
+    "retained_quarantined_observations": 73,
+    "quarantine_reasons": {
+      "overview_not_inventory": 27,
+      "outside_overview_regions": 19,
+      "unplaced_local_label": 27
+    },
+    "classification_conflict_groups": 1,
+    "true_instance_count_verified": false
+  },
+  "old_device_observations_retained": 140,
+  "replay_review_workbook_generated": true,
+  "real_dify_version": "1.8.0",
+  "browser_nodes": 127,
+  "uncaught_page_errors": 0,
+  "xlsx_return_and_production": "passed",
+  "blank_branch": {
+    "blank_views": 6,
+    "failed_views": 0,
+    "empty_inventory_blocked": true
+  },
+  "dependency_install_metadata": [],
+  "visible_actions": [
+    "开始选型",
+    "提交问题清单",
+    "提交选型确认",
+    "提交报价表",
+    "查看项目",
+    "生成排产资料"
+  ],
+  "file_url_workflow_adapter_retained": true,
+  "base64_plugin": "existing official 1.1.0, unmodified",
+  "pdf_to_images_plugin": "existing 1.0.1 implementation",
+  "test_services": "controlled visual model and catalog",
+  "real_qwen_calls": 0,
+  "company_database_accesses": 0,
+  "recognition_accuracy_verified": false,
+  "next_validation": "Rerun the same full customer PDF on company Dify. Replayed coordinates are not repaired ground truth."
+}
