@@ -1,0 +1,125 @@
+{
+  "version": "28.1-base64-1.1.0",
+  "validated_at_utc": "2026-11-09T00:37:28+00:00",
+  "yml_sha256": "f35ac4b8dfab0508ec68ae5d48ef5f334055aae85df3858fd703a276949b78e6",
+  "runtime": {
+    "api": "official Dify 1.8.0 source and dependencies exported from its official image",
+    "api_image_digest": "sha256:b3ff0ba470d16c2f135d20a047d286c8814cec56b67cab9f59b78cb43b01e4e4",
+    "web": "official langgenius/dify-web:1.8.0 container",
+    "sandbox": "official langgenius/dify-sandbox:0.2.12 container",
+    "plugin_daemon": "official langgenius/dify-plugin-daemon:0.2.0-local binary",
+    "node_count": 125,
+    "edge_count": 140
+  },
+  "official_dify_import": {
+    "production_yml": "completed",
+    "controlled_fixture_variant": "completed"
+  },
+  "browser": {
+    "production_nodes_rendered": 125,
+    "fixture_nodes_rendered": 125,
+    "uncaught_page_errors": 0,
+    "preview_form_visible": true,
+    "explicit_stage_commands_visible": true,
+    "mock_console_responses": false,
+    "network_note": "Console calls forwarded to the actual local Dify 1.8 API, not mocked responses.",
+    "drawing_actions_removed": true
+  },
+  "business_tests": {
+    "passed": 35,
+    "failed": 0,
+    "scope": "Prior 35 business tests from V28.1; business code unchanged in this dependency update",
+    "validated_at": "2026-11-08"
+  },
+  "actual_dify_negative_and_recovery_checks": {
+    "passed": [
+      "fixed_column_tamper_rejected",
+      "tamper_preserves_source_stage",
+      "http_404_is_explicit",
+      "http_404_preserves_retry_stage",
+      "retry_recovers_without_reupload",
+      "estimate_cannot_approve_quote",
+      "unapproved_quote_blocks_production",
+      "corrected_quote_recovers",
+      "confirmed_quote_stage_is_preserved",
+      "project_archive_and_optional_agreement_preserved",
+      "catalog_change_blocks_production",
+      "revision_reopens_source_form",
+      "latest_revision_source_workbook_downloadable"
+    ],
+    "count": 13
+  },
+  "real_engine_business_round_trip": [
+    "synthetic PDF and optional agreement upload",
+    "real PDF conversion tool and Base64 codec",
+    "source confirmation XLSX download and return",
+    "read-only catalog matching",
+    "selection confirmation XLSX return",
+    "reference price query",
+    "quotation confirmation XLSX return",
+    "catalog snapshot verification",
+    "confirmed combined procurement/quotation XLSX and production technical XLSX download",
+    "project archive",
+    "revision recovery"
+  ],
+  "quote_math_checked": {
+    "quantity_per_cabinet": "1",
+    "cabinet_count": "2",
+    "total_quantity": "2",
+    "sell_ex_tax": "6.00",
+    "net": "12.00",
+    "tax_rate": "0.13",
+    "tax": "1.56",
+    "gross": "13.56"
+  },
+  "external_fixtures": {
+    "model": "explicit dify28lab/fixture/fixture provider with fixed synthetic responses; not Qwen",
+    "catalog": "local synthetic read-only HTTP API",
+    "pdf_tool": "author 1.0.1 implementation unchanged, packaged locally with test launcher and assets",
+    "base64": "official langgenius/dify-plugins Base64 1.1.0 package",
+    "real_qwen_calls": 0,
+    "company_database_accesses": 0,
+    "actual_dwg_conversions": 0
+  },
+  "not_validated": [
+    "real Qwen recognition accuracy on customer drawings",
+    "company intranet connectivity and production API credentials",
+    "enterprise production document template compliance and actual engineering inspection"
+  ],
+  "deployment_note": "The deliverable runs in Dify using configured existing plugins and services. No new custom project backend is required.",
+  "scope_change": {
+    "removed_commands": [
+      "补充工程参数",
+      "提交工程参数",
+      "生成DWG"
+    ],
+    "removed_environment_variables": [
+      "CAD_CONVERT_URL",
+      "CAD_API_KEY"
+    ],
+    "drawing_nodes": 0,
+    "retained_business_order": [
+      "PDF recognition and human review",
+      "database product selection",
+      "selection confirmation",
+      "combined procurement and quotation confirmation",
+      "production technical tables pending engineering review"
+    ]
+  },
+  "out_of_scope": [
+    "DWG generation and CAD conversion services"
+  ],
+  "validated_at_beijing": "2026-11-09T08:37:28+08:00",
+  "base64_plugin": {
+    "unique_identifier": "bowenliang123/base64_codec:1.1.0@22418dd1768fba65c6fcd91c8f6fc0518c113509c1e9a07346bfeb7b6fe149e4",
+    "sha256": "9baa6a88a9fd321a4b6874ac090a4363d1237d0d237c937ad73453d9c0be6116",
+    "repository": "https://github.com/langgenius/dify-plugins",
+    "version": "1.1.0",
+    "sdk_version_tested": "0.10.2",
+    "all_official_tool_source_files_unmodified": true,
+    "dependency_updated": true,
+    "tool_nodes": 9,
+    "decoder_splitters_configured": true,
+    "streaming_text_join": "native Dify 1.8 concatenation; tested through image encoding and signed XLSX return"
+  }
+}

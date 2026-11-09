@@ -1,0 +1,48 @@
+identity:
+  name: base64_image_decoder
+  author: bowenliang123
+  label:
+    en_US: Base64 ⮕ Image File(s)
+    zh_Hans: Base64 ⮕ 图片文件
+description:
+  human:
+    en_US: Decode Base64-encoded text to an image file
+    zh_Hans: 将 Base64 编码文本转为 图片文件
+  llm: Decode Base64-encoded text to an image file
+parameters:
+  - name: encoded_text
+    type: string
+    required: true
+    label:
+      en_US: Base64 encoded Text
+      zh_Hans: 已 Base64 编码的图片字符串
+    human_description:
+      en_US: Base64 encoded image string, default convert to PNG, support PNG ("data:image/png;base64" prefix) and JPG ("data:image/jpeg;base64" prefix), multiple output files are supported when using the delimiter
+      zh_Hans: Base64 编码的图片字符串，默认转为PNG格式，支持PNG格式（data:image/png;base64开头）及JPG格式（data:image/jpeg;base64开头）, 支持使用分隔符分割多个文件
+    llm_description: A tool for decoding Base64-encoded text to image file
+    form: llm
+  - name: output_filename
+    type: string
+    required: false
+    label:
+      en_US: Filename of the output file
+      zh_Hans: 输出文件名
+    human_description:
+      en_US: Optional output filename(s), one per line.
+      zh_Hans: 每行一个，非必填。
+    form: llm
+  - name: splitter_str
+    type: string
+    required: true
+    default: "\n\n"
+    label:
+      en_US: Delimiter
+      zh_Hans: 分隔符
+    human_description:
+      en_US: Support multiple segments of Base64 encoded text, split by the delimiter and decode them into multiple files sequentially
+      zh_Hans: 支持多段Base64编码文本，按分隔符拆分后依次解码为多个文件
+    llm_description: A tool for decoding Base64-encoded text to file file
+    form: llm
+extra:
+  python:
+    source: tools/base64_image_decoder/base64_image_decoder.py
