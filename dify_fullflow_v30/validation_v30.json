@@ -1,0 +1,49 @@
+{
+  "version": "30.0",
+  "sha256": "97fd6e479d31bffb8b9a52ee03d415a6c7eb849a7c55fbb2849ac55b9c6fe503",
+  "recognition_regression_tests": 23,
+  "retained_business_tests": 35,
+  "dify_engine_version": "1.8.0",
+  "browser_node_count": 150,
+  "uncaught_browser_errors": 0,
+  "real_engine_vision_steps": 8,
+  "multi_turn_xlsx_approval_and_production": "passed",
+  "file_urls_on_server": "empty; workflow adapter tested",
+  "master_pixel_crop": {
+    "source_dpi": 300,
+    "full_content_master_crop_valid": true,
+    "pixels_identical": true,
+    "base64_chars": 359498,
+    "budget_chars": 960000,
+    "original_pixels": [
+      3508,
+      2481
+    ],
+    "crop_dimensions": [
+      1668,
+      1370
+    ],
+    "real_model_called": false
+  },
+  "uploaded_workbook_reading_replay": {
+    "uploaded_candidates": 79,
+    "reference_subset_mccb": 3,
+    "reference_subset_ats": 1,
+    "reference_subset_transformer": 1,
+    "local_rows_added_to_reference_inventory": 0,
+    "xlsx_generated": true,
+    "xlsx_base64_chars": 24712,
+    "scope": "Actual uploaded rows replayed as hints against a manually verified reference subset; no new visual inference and not full drawing accuracy acceptance"
+  },
+  "model_and_catalog": "controlled local test doubles",
+  "real_qwen_calls": 0,
+  "company_database_accesses": 0,
+  "recognition_accuracy_verified": false,
+  "new_plugins_required": false,
+  "limitations": [
+    "Full-content reconciliation is an extra visual-model call per page.",
+    "A model-verified page inventory is still tentative until checked against the original drawing.",
+    "Unmatched local observations are preserved for completeness review and are not procurement entities.",
+    "R2 from an old conversation must not be submitted to a new app conversation."
+  ]
+}
