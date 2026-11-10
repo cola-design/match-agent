@@ -1,0 +1,12 @@
+{
+  "app_version": "34.2",
+  "recognition_engine": "34.1",
+  "sha256": "31754658f3a89f0da3c5b4c194187ac45f0a5daa344a9985c32eb98124cf6327",
+  "submission_regression_tests": 8,
+  "graph_node_ids_and_edges_unchanged": true,
+  "model_settings_unchanged": true,
+  "upload_pdf_xlsx_contract_unchanged": true,
+  "real_model_calls": 0,
+  "company_api_calls": 0,
+  "scope": "Compiled DSL route and form tests; this UI help revision does not claim a new live company or visual-model validation."
+}
