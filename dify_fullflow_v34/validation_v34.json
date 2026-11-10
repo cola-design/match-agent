@@ -1,0 +1,74 @@
+{
+  "version": "34.0",
+  "sha256": "d2f0a44ce5afa255ef851f27f9f49982c7e8a092e911234ed7f2ff2e1a0f2e1c",
+  "real_dify_version": "1.8.0",
+  "recognition_and_signed_review_tests": 82,
+  "business_regression_tests": 35,
+  "editor_nodes_rendered": 152,
+  "uncaught_browser_errors": 0,
+  "source_selection_quote_approval_production": "passed",
+  "validation": {
+    "uploaded_replay_validation.json": {
+      "actual_current_uploaded_workbook_replayed": true,
+      "ats_class_associated": true,
+      "timer_classification_corrected": true,
+      "timer_and_contactor_branch_candidate_present": true,
+      "stale_transformer_observation_removed": true,
+      "real_protection_and_coverage_questions_retained": true,
+      "main_candidates": 19,
+      "reference_lines": 12,
+      "outgoing_circuits": 8,
+      "chinese_parameter_sheet": true,
+      "explicit_issue_confirmation_sheet": true,
+      "signed_xlsx_base64_chars": 51184,
+      "real_model_calls": 0
+    },
+    "fault_injection_engine_validation.json": {
+      "engine": "1.8.0",
+      "source_dsl_sha256": "d2f0a44ce5afa255ef851f27f9f49982c7e8a092e911234ed7f2ff2e1a0f2e1c",
+      "actual_pdf_input": true,
+      "controlled_model_deliberately_injected_faults": true,
+      "injected_faults": [
+        "ratio linked to wrong breakers",
+        "function glyph as order line",
+        "phase/cable/incoming annotations as outgoing circuit IDs",
+        "VA label without initial model target"
+      ],
+      "all_known_fault_assertions_passed": true,
+      "ats_class_corrected": true,
+      "timer_category_corrected": true,
+      "control_branch_candidate_present": true,
+      "candidate_rows": 31,
+      "main_quote_candidates": 19,
+      "unpriced_line_references": 12,
+      "model_omitted_all_transformers": true,
+      "native_vector_transformers": 1,
+      "outgoing_circuits": 8,
+      "quantities_not_guessed": true,
+      "xlsx_downloaded": true,
+      "real_qwen_calls": 0,
+      "validation_errors": []
+    },
+    "layout_engine_validation.json": {
+      "two_page_different_orientations": true,
+      "same_model_independent_positions_preserved": 3,
+      "external_reference_count": 1,
+      "real_model_calls": 0,
+      "source_dsl_sha256": "d2f0a44ce5afa255ef851f27f9f49982c7e8a092e911234ed7f2ff2e1a0f2e1c"
+    },
+    "issue_gate_engine_validation.json": {
+      "unresolved_issue_rejected_despite_overall_confirmation": true,
+      "no_catalog_query_before_issue_decision": true,
+      "explicit_engineer_decision_allows_selection": true,
+      "real_model_calls": 0,
+      "source_dsl_sha256": "d2f0a44ce5afa255ef851f27f9f49982c7e8a092e911234ed7f2ff2e1a0f2e1c"
+    }
+  },
+  "real_qwen_calls": 0,
+  "company_database_accesses": 0,
+  "model_and_catalog": "controlled local fixtures",
+  "new_plugins_required": false,
+  "new_server_required": false,
+  "full_drawing_accuracy_verified": false,
+  "scope": "Local engine, controlled model errors, multi-page layout, explicit human issue gate and actual-output replay. Company model and API still require intranet validation."
+}
