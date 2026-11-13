@@ -1,0 +1,39 @@
+{
+  "version": "35.0",
+  "sha256": "6cf4b4bd4f3178868a1439d2650676fe6d41b1588dfa9b2def090a5d80eb4fb9",
+  "real_dify_version": "1.8.0",
+  "import_and_compatibility_tests": 28,
+  "editor_nodes_rendered": 155,
+  "uncaught_browser_errors": 0,
+  "direct_issue_entry_validation": {
+    "real_dify_version": "1.8.0",
+    "new_chat_issue_list_to_selection": true,
+    "top_form_issue_list_to_selection": true,
+    "incomplete_import_preserves_values_and_reissues_form": true,
+    "fresh_project_form_return_to_selection": true,
+    "direct_entry_bom_quote_and_production": "passed",
+    "pdf_conversion_nodes_executed": 0,
+    "vision_model_nodes_executed": 0,
+    "old_signature_required": false,
+    "real_company_api_calls": 0,
+    "catalog": "controlled local fixture",
+    "source_dsl_sha256": "6cf4b4bd4f3178868a1439d2650676fe6d41b1588dfa9b2def090a5d80eb4fb9"
+  },
+  "actual_demo_entry_validation": {
+    "actual_user_demo_uploaded_in_new_chat": true,
+    "source_read_and_validation": "passed",
+    "catalog_queries_prepared": 13,
+    "pdf_conversion_nodes_executed": 0,
+    "vision_model_nodes_executed": 0,
+    "catalog_matches_for_all_items_claimed": false,
+    "catalog": "controlled single-product fixture; actual matches require company API",
+    "real_company_api_calls": 0,
+    "source_dsl_sha256": "6cf4b4bd4f3178868a1439d2650676fe6d41b1588dfa9b2def090a5d80eb4fb9"
+  },
+  "pdf_entry_full_business_regression": "passed",
+  "real_vision_model_calls": 0,
+  "real_company_api_calls": 0,
+  "api_product_approval_filter_changed": false,
+  "catalog": "controlled local fixture",
+  "scope": "Two independent project entries; does not claim actual company catalog coverage or approval of imported engineering requirements."
+}
