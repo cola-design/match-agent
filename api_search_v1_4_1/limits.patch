@@ -1,0 +1,8 @@
+--- app.py
++++ app.py
+@@ -268 +268 @@
+-    limit: int = Query(default=30, ge=1, le=50),
++    limit: int = Query(default=200, ge=1, le=500),
+@@ -272 +272 @@
+-    page_size: int | None = Query(default=None, ge=1, le=200),
++    page_size: int | None = Query(default=None, ge=1, le=500),
