@@ -1,6 +1,0 @@
-.env
-.env.*
-!.env.example
-sync_state/
-__pycache__/
-*.pyc
