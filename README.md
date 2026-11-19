@@ -1,8 +1,8 @@
 # 天正电气系统图识别工作台 · 华为云接入版
 
-- [下载 CCE 兼容接入包](tengen-dify-cloud-workbench-cce.zip)
-- [已有安装的 CCE 用户单独下载 server.py](cce/server.py)
+- [下载 CCE 接口部署包](https://github.com/cola-design/match-agent/raw/refs/heads/tengen-cloud-dify-download-20261119/tengen-cce-dify-gateway.zip)。包含容器构建文件、接口代码和 CCE 部署 YAML。
+- [下载 Windows 工作台与云主机接入包](https://github.com/cola-design/match-agent/raw/refs/heads/tengen-cloud-dify-download-20261119/tengen-dify-cloud-workbench-cce.zip)。
 
-CCE 容器需要替换云端 server.py，设置环境变量 `BIND_HOST=0.0.0.0` 和 `PORT=8791` 后重新部署。日志显示 `0.0.0.0:8791` 时，在 CCE 创建 ClusterIP 服务，并通过 HTTPS Ingress 提供工作台访问地址。
+CCE 接口部署包内附部署说明。镜像默认监听容器端口 8791。部署配置创建工作负载、Service 和 HTTPS Ingress。Windows 工作台的 GATEWAY_URL 填 Ingress 的 HTTPS 域名。
 
-云主机直接启动时，默认继续监听 `127.0.0.1:8791`。完整包内有部署与接入说明，示例凭据留空。
+示例配置使用占位地址，密钥留空。
