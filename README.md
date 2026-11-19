@@ -1,5 +1,8 @@
 # 天正电气系统图识别工作台 · 华为云接入版
 
-[下载完整接入包](https://github.com/cola-design/match-agent/raw/refs/heads/tengen-cloud-dify-download-20261119/tengen-dify-cloud-workbench.zip)。
+- [下载 CCE 兼容接入包](tengen-dify-cloud-workbench-cce.zip)
+- [已有安装的 CCE 用户单独下载 server.py](cce/server.py)
 
-解压后打开“部署与接入说明.md”。包内包含 Windows 本机工作台、华为云 Dify 调用服务、Nginx 与 systemd 配置示例和前端源码。示例配置中的密钥留空，实际内网地址由公司管理员填写。
+CCE 容器需要替换云端 server.py，设置环境变量 `BIND_HOST=0.0.0.0` 和 `PORT=8791` 后重新部署。日志显示 `0.0.0.0:8791` 时，在 CCE 创建 ClusterIP 服务，并通过 HTTPS Ingress 提供工作台访问地址。
+
+云主机直接启动时，默认继续监听 `127.0.0.1:8791`。完整包内有部署与接入说明，示例凭据留空。
